@@ -59,7 +59,7 @@ function SpawnDamageIndicator(attacker: player, victim: player, dmg: number):
         set text of event-entity to "&c-%{_dmg}%"
         set billboard of event-entity to center
         set gravity of event-entity to false
-        set color of event-entity to rgb(r,g,b,a)
+        set color of event-entity to rgb(0,0,0,0)
         set interpolation delay of event-entity to 0 ticks
         set interpolation duration of event-entity to 15 ticks
         set {_display} to event-entity
