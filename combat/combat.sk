@@ -41,7 +41,7 @@ function ExitCombat(player: player):
     send action bar "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7ʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ&7." to {_player}
     send "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7ʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ&7." to {_player}
 
-every 1 second:
+every 10 tick:
     loop all players:
         InitCombatTag(loop-player)
         if text data tag "combat:status" of loop-player is "enabled":
@@ -49,7 +49,7 @@ every 1 second:
             if {_time} = 0:
                 ExitCombat(loop-player)
             else:
-                subtract 1 from {_time}
+                subtract 0.5 from {_time}
                 set number data tag "combat:time" of loop-player to {_time}
                 if {combat::bar::%loop-player%} is set:
                     set bar progress of {combat::bar::%loop-player%} to ({_time} / 20) * 100
