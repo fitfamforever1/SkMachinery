@@ -20,7 +20,6 @@ on damage:
     set {_dmg} to calculateDamage(attacker, victim)
     
     set damage to ({_dmg} / 2)
-    play 1 damage indicator particles at victim's location
     send action bar "&c-%{_dmg}%" to attacker
         
 function InitCombatTag(player: player):
