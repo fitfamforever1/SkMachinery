@@ -46,7 +46,8 @@ function SpawnDamageIndicator(_victim: player, _dmg: number):
     add 2.3 to y-coordinate of {_loc}
     add (random number between -0.4 and 0.4) to x-coordinate of {_loc}
     add (random number between -0.4 and 0.4) to z-coordinate of {_loc}
-
+    
+    broadcast "%{_loc}%"
     spawn text display at {_loc}:
         set text of event-entity to "&c-%{_dmg}%"
         set billboard of event-entity to center
