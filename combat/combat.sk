@@ -52,6 +52,7 @@ every 10 tick:
                 subtract 0.5 from {_time}
                 set number data tag "combat:time" of loop-player to {_time}
                 if {combat::bar::%loop-player%} is set:
+                    set {_time} to ceil({_time})
                     set bar progress of {combat::bar::%loop-player%} to ({_time} / 20) * 100
                     set bar title of {combat::bar::%loop-player%} to formatted "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7%{_time}%s"
 
