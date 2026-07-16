@@ -118,10 +118,7 @@ on quit:
         
 on death:
     if IsInCombat(victim) is true:
-        set {_player} to SmallCaps("%victim%")
-        broadcast "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7%{_player}% &cᴄᴏᴍʙᴀᴛ ʟᴏɢɢᴇᴅ&7!"
         RemoveCombatBar(victim)
-        kill victim
         
 on command:
     if player have permission "admin.combat":
