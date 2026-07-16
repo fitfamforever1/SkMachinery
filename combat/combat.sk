@@ -55,7 +55,7 @@ every 1 second:
                 set number data tag "combat:time" of loop-player to {_time}
                 if {combat::bar::%loop-player%} is set:
                     set bar progress of {combat::bar::%loop-player%} to ({_time} / 20) * 100
-                    set bar title of {combat::bar::%loop-player%} to "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7%{_time}%s"
+                    set bar title of {combat::bar::%loop-player%} to formatted "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7%{_time}%s"
 
 
 on damage:
