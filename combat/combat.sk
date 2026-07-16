@@ -59,18 +59,16 @@ function SpawnDamageIndicator(attacker: player, victim: player, dmg: number):
         set text of event-entity to "&c-%{_dmg}%"
         set billboard of event-entity to center
         set gravity of event-entity to false
+        set background of event-entity to transparent
         set interpolation delay of event-entity to 0 ticks
         set interpolation duration of event-entity to 15 ticks
         set {_display} to event-entity
     
-    set text opacity of {_display} to 0
     set {_end} to {_loc}
     add 0.8 to y-coordinate of {_end}
     teleport {_display} to {_end}
 
     wait 12 ticks
-    set text opacity of {_display} to 0
-    wait 6 ticks
     kill {_display}
 
 every 10 tick:
