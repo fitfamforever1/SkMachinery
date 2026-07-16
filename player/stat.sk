@@ -245,7 +245,7 @@ command /removeqi <player> <number>:
     permission: admin.stat
     trigger:
         if removeQi(arg-1, arg-2) is true:
-            send "&9Removed &f%arg-2%&9 qi from &f%arg-1%&9. Current: &f%round({player::stat::current_qi::%arg-1%})%" to player
+            send "&9Removed &f%arg-2%&9 qi from &f%arg-1%&9." to player
 
 command /removehealth <player> <number>:
     permission: admin.stat

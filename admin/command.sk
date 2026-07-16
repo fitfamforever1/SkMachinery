@@ -34,7 +34,6 @@ command /bcast <text>:
 
 command /clearchat:
     permission: warn.chat
-    permission message: &8[&4ꜱʏꜱᴛᴇᴍ&8] &cʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪꜱꜱɪᴏɴ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ.
     trigger:
         loop all players:
             loop 150 times:
@@ -46,7 +45,6 @@ variables:
 
 command /lockchat:
     permission: warn.chat
-    permission message: &8[&4ꜱʏꜱᴛᴇᴍ&8] &cʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪꜱꜱɪᴏɴ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ.
     trigger:
         if {chat.locked} is true:
             set {chat.locked} to false
