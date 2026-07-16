@@ -20,7 +20,7 @@ function EnterCombat(player: player):
     set text data tag "combat:status" of {_player} to "enabled"
 
     if {combat::bar::%{_player}%} is not set:
-        set {combat::bar::%{_player}%} to boss bar with id "combat-%{_player}%" with title formatted "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &720s" with color red with style segmented 10 with progress 100
+        set {combat::bar::%{_player}%} to boss bar with id "combat-%{_player}%" with title formatted "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &720s" with color red with style segmented 20 with progress 100
         add {_player} to {combat::bar::%{_player}%}
     else:
         set bar title of {combat::bar::%{_player}%} to formatted "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &720s"
