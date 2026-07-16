@@ -43,10 +43,8 @@ function ExitCombat(player: player):
 
 function SpawnDamageIndicator(attacker: player, victim: player, dmg: number):
     set {_loc} to location of {_attacker}
-    add 1.2 to y-coordinate of {_loc}
 
     set {_loc2} to location of {_victim}
-    add 1.2 to y-coordinate of {_loc2}
 
     set x-coordinate of {_loc} to ((x-coordinate of {_loc}) + (x-coordinate of {_loc2})) / 2
     set y-coordinate of {_loc} to ((y-coordinate of {_loc}) + (y-coordinate of {_loc2})) / 2
