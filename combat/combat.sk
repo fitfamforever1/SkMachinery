@@ -1,3 +1,69 @@
+function InitCombatTag(player: player):
+    if number data tag "combat:time" of {_player} is not set:
+        set number data tag "combat:time" of {_player} to 0
+    if text data tag "combat:status" of {_player} is not set:
+        set text data tag "combat:status" of {_player} to "disabled"
+
+function IsInCombat(player: player) :: boolean:
+    InitCombatTag({_player})
+    if text data tag "combat:status" of {_player} is "enabled":
+        return true
+    return false
+
+function GetCombatTime(player: player) :: integer:
+    InitCombatTag({_player})
+    return number data tag "combat:time" of {_player}
+
+function EnterCombat(player: player):
+    InitCombatTag({_player})
+    set number data tag "combat:time" of {_player} to 20
+    set text data tag "combat:status" of {_player} to "enabled"
+
+    if {combat::bar::%{_player}%} is not set:
+        set {combat::bar::%{_player}%} to boss bar with id "combat-%{_player}%" with title "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &720s" with color red with style segmented 10 with progress 100
+        add {_player} to {combat::bar::%{_player}%}
+    else:
+        set bar title of {combat::bar::%{_player}%} to "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &720s"
+        set bar progress of {combat::bar::%{_player}%} to 100
+
+function RemoveCombatBar(player: player):
+    if {combat::bar::%{_player}%} is set:
+        loop bar players of {combat::bar::%{_player}%}:
+            remove loop-value from bar players of {combat::bar::%{_player}%}
+        delete {combat::bar::%{_player}%}
+    delete {combat::bar::%{_player}%}
+
+function ExitCombat(player: player):
+    set number data tag "combat:time" of {_player} to 0
+    set text data tag "combat:status" of {_player} to "disabled"
+
+    RemoveCombatBar({_player})
+
+    send action bar "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7ʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ&7." to {_player}
+    send "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7ʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ&7." to {_player}
+
+every 1 second:
+    loop all players:
+        InitCombatTag(loop-player)
+        if text data tag "combat:status" of loop-player is "enabled":
+            set {_time} to number data tag "combat:time" of loop-player
+            if {_time} <= 0:
+                ExitCombat(loop-player)
+            else:
+                subtract 1 from {_time}
+                set number data tag "combat:time" of loop-player to {_time}
+                if {combat::bar::%loop-player%} is set:
+                    set bar progress of {combat::bar::%loop-player%} to ({_time} / 20) * 100
+                    set bar title of {combat::bar::%loop-player%} to "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7%{_time}%s"
+
+    loop {combat::bar::*}:
+        set {_name} to loop-index
+        if player named {_name} is not online:
+            loop bar players of loop-value:
+                remove loop-value-2 from bar players of loop-value
+            delete loop-value
+            delete {combat::bar::%{_name}%}
+
 on damage:
     attacker is a player
     set {_toolName} to "%type of attacker's held item%" in lowercase
@@ -16,82 +82,24 @@ on damage:
     set {_dmg} to calculateDamage(attacker, victim)
     set damage to ({_dmg} / 2)
     send action bar "&c-%{_dmg}%" to attacker
-        
-function InitCombatTag(player: player):
-    if number data tag "combat:time" of {_player} is not set:
-        set number data tag "combat:time" of {_player} to 0
-    if text data tag "combat:status" of {_player} is not set:
-        set text data tag "combat:status" of {_player} to "disabled"
-
-
-function IsInCombat(player: player) :: boolean:
-    InitCombatTag({_player})
-    if text data tag "combat:status" of {_player} is "enabled":
-        return true
-    return false
-
-function EnterCombat(player: player):
-    InitCombatTag({_player})
-    set number data tag "combat:time" of {_player} to 20
-    set text data tag "combat:status" of {_player} to "enabled"
-
-    if {combat::bar::%{_player}%} is not set:
-        set {combat::bar::%{_player}%} to boss bar with id "combat-%{_player}%" with title "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &720s" with color red with style segmented 10 with progress 100
-        add {_player} to {combat::bar::%{_player}%}
-    else:
-        set bar title of {combat::bar::%{_player}%} to "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &720s"
-        set bar progress of {combat::bar::%{_player}%} to 100
-
-function ExitCombat(player: player):
-    set number data tag "combat:time" of {_player} to 0
-    set text data tag "combat:status" of {_player} to "disabled"
-
-    if {combat::bar::%{_player}%} is set:
-        remove {_player} from bar players of {combat::bar::%{_player}%}
-        delete {combat::bar::%{_player}%}
-    delete {combat::bar::%{_player}%}
-
-    send action bar "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7ʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ&7." to {_player}
-    send "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7ʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ&7." to {_player}
-
-every 1 second:
-    loop all players:
-        InitCombatTag(loop-player)
-        if text data tag "combat:status" of loop-player is "enabled":
-            set {_time} to number data tag "combat:time" of loop-player
-            if {_time} <= 0:
-                ExitCombat(loop-player)
-            else:
-                subtract 1 from {_time}
-                if {combat::bar::%loop-player%} is set:
-                    set bar progress of {combat::bar::%loop-player%} to ({_time} / 20) * 100
-                    set bar title of {combat::bar::%loop-player%} to "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7%{_time}%s"
-
-
-function GetCombatTime(player: player) :: integer:
-    InitCombatTag({_player})
-    return number data tag "combat:time" of {_player}
-
 
 on first join:
     InitCombatTag(player)
-    
-
 
 on quit:
     if IsInCombat(player) is true:
         set {_player} to SmallCaps("%player%")
         broadcast "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7%{_player}% &cᴄᴏᴍʙᴀᴛ ʟᴏɢɢᴇᴅ&7!"
+        RemoveCombatBar(player)
         kill player
-        
+
 on command:
     if player have permission "admin.combat":
         stop
     if IsInCombat(player) is true:
         cancel event
         send "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜꜱᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ɪɴ ᴄᴏᴍʙᴀᴛ!"
-       
-       
+
 on player enters a chunk:
     if event-chunk = chunk at location(16, 0, 32, "world"):
         if past event-chunk is not chunk at location(16, 0, 32, "world"):
