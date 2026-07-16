@@ -56,13 +56,6 @@ every 1 second:
                     set bar progress of {combat::bar::%loop-player%} to ({_time} / 20) * 100
                     set bar title of {combat::bar::%loop-player%} to "&8[<#E74C3C>ᴄᴏᴍʙᴀᴛ&8] &7%{_time}%s"
 
-    loop {combat::bar::*}:
-        set {_name} to loop-index
-        if {_name} is offline:
-            loop bar players of loop-value:
-                remove loop-value-2 from bar players of loop-value
-            delete loop-value
-            delete {combat::bar::%{_name}%}
 
 on damage:
     attacker is a player
