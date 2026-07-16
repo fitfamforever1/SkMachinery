@@ -62,7 +62,8 @@ function SpawnDamageIndicator(attacker: player, victim: player, dmg: number):
         set interpolation delay of event-entity to 0 ticks
         set interpolation duration of event-entity to 15 ticks
         set {_display} to event-entity
-
+    
+    set text opacity of {_display} to 0
     set {_end} to {_loc}
     add 0.8 to y-coordinate of {_end}
     teleport {_display} to {_end}
