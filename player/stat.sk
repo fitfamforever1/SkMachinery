@@ -179,5 +179,3 @@ on damage of player:
     removeHealth(victim, damage)
     
     set {_current} to number data tag "current:health" of victim
-    if {_current} <= 0:
-        set health of victim to 0
