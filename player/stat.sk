@@ -177,5 +177,9 @@ function calculateDamage(attacker: player, defender: player) :: number:
 on damage of player:
     cancel event
     removeHealth(victim, damage)
-    
+    set {_temp} to 1
     set {_current} to number data tag "current:health" of victim
+    if {_current} <= 0:
+        if {_temp} is 1:
+            set {_temp} to 0
+            set health of victim to 0
