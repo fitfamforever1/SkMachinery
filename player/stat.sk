@@ -9,7 +9,9 @@ function Actionbar(p: player):
     set {_mana} to number data tag "playerstat:mana" of {_p}
     set {_current2} to number data tag "current:mana" of {_p}
     
-    send action bar "&cround(%{_current1}%)&8/&c%{_health}% &8| <##0096FF>%{_current2}%&8/<##0096FF>%{_mana}%" to {_p}
+    set {_current1} to round({_current1})
+    
+    send action bar "&c%{_current1}%&8/&c%{_health}% &8| <##0096FF>%{_current2}%&8/<##0096FF>%{_mana}%" to {_p}
 
 on join:
     if number data tag "playerstat:lvl" of player is not set:
