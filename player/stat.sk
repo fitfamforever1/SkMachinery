@@ -179,6 +179,5 @@ function calculateDamage(attacker: player, defender: player) :: number:
     
 on damage of player:
     if victim's health > 0:
+        cancel event
         removeHealth(victim, damage)
-        set damage to 0
-    
