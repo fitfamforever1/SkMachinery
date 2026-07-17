@@ -176,10 +176,4 @@ function calculateDamage(attacker: player, defender: player) :: number:
     return round({_damage})
     
 on damage of player:
-    set {_current} to number data tag "current:health" of victim
-    set {_damage} to damage
-    set {_current} to {_current} - {_damage}
-    set number data tag "current:health" of victim to {_current}
-    set damage to 0
-    if {_current} <= 0:
-        set health of victim to 0
+    removeHealth(victim, damage)
