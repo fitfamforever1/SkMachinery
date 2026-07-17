@@ -155,11 +155,6 @@ function heal(p: player):
     
 on join:
     heal(player)
-
-on death:
-    cancel event
-    teleport victim to location(0,0,0,"world")
-    heal(victim)
     
 function calculateDamage(attacker: player, defender: player) :: number:
     set {_rawDamage} to {player::stat::physical_damage::%{_attacker}%}
@@ -180,7 +175,7 @@ on damage of player:
     removeHealth(victim, damage)
     set damage to 0
     set {_current} to number data tag "current:health" of victim
-    if {_current} < 0:
-        set {_current} to 0
     if {_current} <= 0:
-        kill victim
+        teleport victim to location(0,0,0,"world")
+        heal(victim)
+        send "1" to victim
