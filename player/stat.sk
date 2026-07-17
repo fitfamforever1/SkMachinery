@@ -118,11 +118,8 @@ function removeHealth(p: player, amount: number):
     set {_current} to number data tag "current:health" of {_p}
     
     remove {_amount} from {_current}
-    if {_current} < 0:
-        set {_current} to 0
     set number data tag "current:health" of {_p} to {_current}
-    if {_current} = 0:
-        set health of {_p} to 0
+    
 
 function removeMana(p: player, amount: number) :: boolean:
     set {_current} to number data tag "current:mana" of {_p}
@@ -178,6 +175,9 @@ function calculateDamage(attacker: player, defender: player) :: number:
     return round({_damage})
     
 on damage of player:
-    if victim's health > 0:
-        cancel event
-        removeHealth(victim, damage)
+    cancel event
+    removeHealth(victim, damage)
+    
+    set {_current} to number data tag "current:health" of {_p}
+    if {_current} <= 0:
+        set health of {_p} to 0
