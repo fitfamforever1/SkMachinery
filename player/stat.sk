@@ -183,4 +183,4 @@ on damage of player:
         set victim's fall distance to 0
         teleport victim to location(0,0,0,"world")
         heal(victim)
-        send "1" to victim
+        send title "&4ʏᴏᴜ ʜᴀᴠᴇ ᴅɪᴇᴅ!" with subtitle "&cʀᴇꜱᴘᴀᴡɴᴇᴅ ᴀᴛ ꜱᴘᴀᴡɴ." to player for 2 seconds with fadein 1 second and fade out 1 second
