@@ -172,7 +172,6 @@ on damage of player:
     set {_current} to number data tag "current:health" of victim
     set {_damage} to damage
     send "%{_current}% | %{_damage}%" to victim
-    set {_current} to {_current} / 2
     set {_current} to {_current} - {_damage}
     send "%{_current}% | %{_damage}%" to victim
     set number data tag "current:health" of victim to {_current}
