@@ -105,6 +105,7 @@ every 1 second in "world":
         if loop-player is alive:
             Actionbar(loop-player)
             SyncSpeed(loop-player)
+            RegenPlayer(loop-player)
             
 every 2 tick in "world":
     loop all players:
