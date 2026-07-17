@@ -157,6 +157,7 @@ on join:
     heal(player)
 
 on death:
+    cancel event
     heal(victim)
     
 function calculateDamage(attacker: player, defender: player) :: number:
