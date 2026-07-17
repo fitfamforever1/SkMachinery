@@ -157,7 +157,6 @@ on join:
     heal(player)
 
 on death:
-    cancel event
     teleport victim to location(0,0,0,"world")
     heal(victim)
     
