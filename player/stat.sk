@@ -1,222 +1,123 @@
-function SmallCaps(text: text) :: text:
-    set {_result} to ""
-    set {_chars::*} to {_text} split at ""
-    set {_map::a} to "ᴀ"
-    set {_map::b} to "ʙ"
-    set {_map::c} to "ᴄ"
-    set {_map::d} to "ᴅ"
-    set {_map::e} to "ᴇ"
-    set {_map::f} to "ꜰ"
-    set {_map::g} to "ɢ"
-    set {_map::h} to "ʜ"
-    set {_map::i} to "ɪ"
-    set {_map::j} to "ᴊ"
-    set {_map::k} to "ᴋ"
-    set {_map::l} to "ʟ"
-    set {_map::m} to "ᴍ"
-    set {_map::n} to "ɴ"
-    set {_map::o} to "ᴏ"
-    set {_map::p} to "ᴘ"
-    set {_map::q} to "q"
-    set {_map::r} to "ʀ"
-    set {_map::s} to "ꜱ"
-    set {_map::t} to "ᴛ"
-    set {_map::u} to "ᴜ"
-    set {_map::v} to "ᴠ"
-    set {_map::w} to "ᴡ"
-    set {_map::x} to "x"
-    set {_map::y} to "ʏ"
-    set {_map::z} to "ᴢ"
-    loop {_chars::*}:
-        if loop-value is "&":
-            set {_skipNext} to true
-            set {_result} to "%{_result}%&"
-        else if {_skipNext} is true:
-            set {_result} to "%{_result}%%loop-value%"
-            set {_skipNext} to false
-        else:
-            set {_char} to loop-value in lowercase
-            if {_map::%{_char}%} is set:
-                set {_result} to "%{_result}%%{_map::%{_char}%}%"
-            else:
-                set {_result} to "%{_result}%%loop-value%"
-    return {_result}
-
 function statAdd(p: player, t: string, a: number):
     set {_current} to number data tag "playerstat:%{_t}%" of {_p}
     set number data tag "playerstat:%{_t}%" of {_p} to ({_current} + {_a})
 
-function updateStats(p: player):
-    set {_str} to number data tag "playerstat:str" of {_p}
-    set {_con} to number data tag "playerstat:con" of {_p}
-    set {_agi} to number data tag "playerstat:agi" of {_p}
-    set {_spi} to number data tag "playerstat:spi" of {_p}
-    set {_int} to number data tag "playerstat:int" of {_p}
-    
-    set {_tool} to {_p}'s tool
-    set {_weapan} to data tag "itemstat:damage" of {_tool}
-    loop {_p}'s helmet, {_p}'s chestplate, {_p}'s leggings, {_p}'s boots:
-        if loop-value is not air:
-            set {_val} to data tag "itemstat:defense" of loop-value
-            if {_val} is set:
-                add {_val} to {_armor}
-
-    # Health
-    # Derived from: Constitution
-    set {_health} to 100 + ({_con} * 20)
-
-    # Health Regeneration
-    # Derived from: Constitution
-    set {_healthRegen} to 1 + ({_con} * 0.5)
-
-    # Qi
-    # Derived from: Spirit
-    set {_qi} to 100 + ({_spi} * 15)
-
-    # Qi Regeneration
-    # Derived from: Spirit
-    set {_qiRegen} to 2 + ({_spi} * 0.4)
-
-    # Physical Damage
-    # Derived from: Strength
-    set {_damage} to (10 + ({_str} * 1.5)) + {_weapan}
-
-    # Defense
-    # Derived from: Constitution
-    set {_defense} to ({_con} * 2) + {_armor}
-
-    # Movement Speed
-    # Derived from: Agility
-    set {_speed} to (100 + ({_agi} * 0.4)) / 1000
-
-    # Meditation Efficiency
-    # Derived from: Intelligence
-    set {_meditation} to 100 + ({_int} * 2)
-
-    # Store Hidden Stats
-    set {player::stat::health::%{_p}%} to {_health}
-    set {player::stat::health_regeneration::%{_p}%} to {_healthRegen}
-    
-    set {player::stat::qi::%{_p}%} to {_qi}
-    set {player::stat::current_qi::%{_p}%} to {_qi}
-    
-    set {player::stat::physical_damage::%{_p}%} to {_damage}
-    set {player::stat::defense::%{_p}%} to {_defense}
-    
-    set {player::stat::movement_speed::%{_p}%} to {_speed}
-    
-    set {player::stat::meditation_efficiency::%{_p}%} to {_meditation}
-
 function Actionbar(p: player):
-    set {_ch} to round({player::stat::current_health::%{_p}%})
-    set {_h} to round({player::stat::health::%{_p}%})
-    set {_cq} to round({player::stat::current_qi::%{_p}%})
-    set {_q} to round({player::stat::qi::%{_p}%})
-    send action bar "&c%{_ch}%&8/&c%{_h}% &8| <##0096FF>%{_cq}%&8/<##0096FF>%{_q}%" to {_p}
+    set {_health} to number data tag "playerstat:health" of {_p}
+    set {_current1} to number data tag "current:health" of {_p}
+    set {_mana} to number data tag "playerstat:mana" of {_p}
+    set {_current2} to number data tag "current:mana" of {_p}
+    
+    send action bar "&c%{_current1}%&8/&c%{_health}% &8| <##0096FF>%{_current2}%&8/<##0096FF>%{_current2}%" to {_p}
 
-on first join:
+on join:
     if number data tag "playerstat:lvl" of player is not set:
-        set number data tag "playerstat:str" of player to 5
-        set number data tag "playerstat:con" of player to 5
-        set number data tag "playerstat:agi" of player to 5
-        set number data tag "playerstat:spi" of player to 5
-        set number data tag "playerstat:int" of player to 5
+        set number data tag "playerstat:damage" of player to 1
+        set number data tag "playerstat:armor" of player to 0
+        set number data tag "playerstat:speed" of player to 10
+        set number data tag "playerstat:health" of player to 20
+        set number data tag "playerstat:mana" of player to 100
         set number data tag "playerstat:lvl" of player to 1
+        
+        set number data tag "current:mana" of player to 100
+        set number data tag "current:health" of player to 20
+        
+        set number data tag "current:crit_chance" of player to 30
+        set number data tag "current:crit_damage" of player to 50
         
 command /statreset <player>:
     permission: admin.stat
     trigger:
-        set number data tag "playerstat:str" of arg-1 to 5
-        set number data tag "playerstat:con" of arg-1 to 5
-        set number data tag "playerstat:agi" of arg-1 to 5
-        set number data tag "playerstat:spi" of arg-1 to 5
-        set number data tag "playerstat:int" of arg-1 to 5
+        set number data tag "playerstat:damage" of arg-1 to 1
+        set number data tag "playerstat:defense" of arg-1 to 0
+        set number data tag "playerstat:speed" of arg-1 to 10
+        set number data tag "playerstat:health" of arg-1 to 20
+        set number data tag "playerstat:mana" of arg-1 to 100
         set number data tag "playerstat:lvl" of arg-1 to 1
+        set number data tag "current:mana" of arg-1 to 100
+        set number data tag "current:health" of arg-1 to 20
+        
+        set number data tag "current:crit_chance" of arg-1 to 30
+        set number data tag "current:crit_damage" of arg-1 to 50
             
 command /stat:
     permission: admin.stat
     trigger:
-        send "&6--- &eYour Stats &6---" to player
-        set {_temp} to number data tag "playerstat:lvl" of player
-        send "&aLevel: &f%{_temp}%" to player
-        set {_temp} to number data tag "playerstat:str" of player
-        send "&aSTR: &f%{_temp}%" to player
-        set {_temp} to number data tag "playerstat:con" of player
-        send "&aCON: &f%{_temp}%" to player
-        set {_temp} to number data tag "playerstat:agi" of player
-        send "&aAGI: &f%{_temp}%" to player
-        set {_temp} to number data tag "playerstat:spi" of player
-        send "&aSPI: &f%{_temp}%" to player
-        set {_temp} to number data tag "playerstat:int" of player
-        send "&aINT: &f%{_temp}%" to player
+        set number data tag "playerstat:damage" of arg-1 to 1
+        set number data tag "playerstat:defense" of arg-1 to 0
+        set number data tag "playerstat:speed" of arg-1 to 10
+        set number data tag "playerstat:health" of arg-1 to 20
+        set number data tag "playerstat:mana" of arg-1 to 100
+        set number data tag "playerstat:lvl" of arg-1 to 1
+        set number data tag "current:mana" of arg-1 to 100
+        set number data tag "current:health" of arg-1 to 20
+        set number data tag "current:crit_chance" of arg-1 to 30
+        set number data tag "current:crit_damage" of arg-1 to 50
+
+        send message "&a&lSTATS SET" to arg-1
+        send message "&7Damage: &f%data tag "playerstat:damage" of arg-1%" to arg-1
+        send message "&7Defense: &f%data tag "playerstat:defense" of arg-1%" to arg-1
+        send message "&7Speed: &f%data tag "playerstat:speed" of arg-1%" to arg-1
+        send message "&7Health: &f%data tag "playerstat:health" of arg-1%" to arg-1
+        send message "&7Mana: &f%data tag "playerstat:mana" of arg-1%" to arg-1
+        send message "&7Level: &f%data tag "playerstat:lvl" of arg-1%" to arg-1
+        send message "&7Current Mana: &f%data tag "current:mana" of arg-1%" to arg-1
+        send message "&7Current Health: &f%data tag "current:health" of arg-1%" to arg-1
+        send message "&7Crit Chance: &f%data tag "current:crit_chance" of arg-1%%%" to arg-1
+        send message "&7Crit Damage: &f%data tag "current:crit_damage" of arg-1%%%" to arg-1
         
 command /setlevel <number>:
     trigger:
         set number data tag "playerstat:lvl" of player to arg-1
-        
-command /statdev:
-    permission: admin.stat
-    trigger:
-        updateStats(player)
-
-        send "&6&l======== Hidden Stats ========"
-
-        send "&cHealth: &f%{player::stat::health::%player%}%"
-        send "&cHealth Regeneration: &f%{player::stat::health_regeneration::%player%}%"
-        send "&cHealth Current: &f%{player::stat::current_health::%player%}%"
-
-        send "&9Qi: &f%{player::stat::qi::%player%}%"
-        send "&9Qi Regeneration: &f%{player::stat::qi_regeneration::%player%}%"
-        send "&9Qi Current: &f%{player::stat::current_qi::%player%}%"
-
-        send "&4Physical Damage: &f%{player::stat::physical_damage::%player%}%"
-        send "&7Defense: &f%{player::stat::defense::%player%}%"
-
-        send "&aMovement Speed: &f%{player::stat::movement_speed::%player%}%"
-
-        send "&dMeditation Efficiency: &f%{player::stat::meditation_efficiency::%player%}%"
-
-        send "&6&l==============================="
 
 command /statadd <text> <number>:
     permission: admin.stat
     trigger:
-        if arg-1 is not "str":
-            if arg-1 is not "con":
-                if arg-1 is not "agi":
-                    if arg-1 is not "spi":
-                        if arg-1 is not "int":
-                            send "&cInvalid stat. Use: str, con, agi, spi, or int." to player
-                            stop trigger
-        statAdd(player, arg-1, arg-2)
-        send "&aAdded %arg-2% to %player%'s %arg-1%." to player
-        send "&aYour %arg-1% was increased by %arg-2%!" to arg-1
+        if arg-1 is "damage", "speed", "mana", "health", "defense", "crit_damage" or "crit_chance":
+            statAdd(player, arg-1, arg-2)
+            send "&aAdded %arg-2% to %player%'s %arg-1%." to player
+        else:
+            send "&cInvalid stat." to player
 
 function RegenPlayer(p: player):
-    add {player::stat::health_regeneration::%{_p}%} to {player::stat::current_health::%{_p}%}
-    add {player::stat::qi_regeneration::%{_p}%} to {player::stat::current_qi::%{_p}%}
+    set {_health} to number data tag "playerstat:health" of {_p}
+    set {_current1} to number data tag "current:health" of {_p}
+    
+    set {_mana} to number data tag "playerstat:mana" of {_p}
+    set {_current2} to number data tag "current:mana" of {_p}
 
-    if {player::stat::current_health::%{_p}%} > {player::stat::health::%{_p}%}:
-        set {player::stat::current_health::%{_p}%} to {player::stat::health::%{_p}%}
-
-    if {player::stat::current_qi::%{_p}%} > {player::stat::qi::%{_p}%}:
-        set {player::stat::current_qi::%{_p}%} to {player::stat::qi::%{_p}%}
+    set {_temp} to {_mana} / 20
+    set {_current2} to {_temp} + {_current2}
+    if {_current2} >= {_mana}
+        set {_temp} to {_mana}
+    set {_temp} to round({_temp})
+    set number data tag "current:mana" of {_p} to {_temp}
+    
+    set {_temp} to {_health} / 20
+    set {_current1} to {_temp} + {_current1}
+    if {_current1} >= {_health}
+        set {_temp} to {_health}
+    set {_temp} to round({_temp})
+    set number data tag "current:health" of {_p} to {_temp}
 
 function SyncHealthBar(p: player):
-    set {_max} to {player::stat::health::%{_p}%}
-    set {_current} to {player::stat::current_health::%{_p}%}
-
-    if {_max} <= 0:
-        set {_max} to 1
+    set {_max} to number data tag "playerstat:health" of {_p}
+    set {_current} to number data tag "current:health" of {_p}
 
     set {_vanillaHealth} to ({_current} / {_max}) * 10
-
+    
     if {_vanillaHealth} > 10:
         set {_vanillaHealth} to 10
     if {_vanillaHealth} < 0:
         set {_vanillaHealth} to 0.5
     
     set health of {_p} to {_vanillaHealth}
+    
+function SyncSpeed(p: player):
+    set {_temp} to number data tag "playerstat:speed" of {_p}
+    set {_temp} to {_temp} / 1000
+    
+    set loop-player's movement speed attribute to {_temp}
 
 every 1 second in "world":
     loop all players:
@@ -224,28 +125,34 @@ every 1 second in "world":
             RegenPlayer(loop-player)
             Actionbar(loop-player)
             SyncHealthBar(loop-player)
-            set loop-player's movement speed attribute to {player::stat::movement_speed::%loop-player%}
+            SyncSpeed(loop-player)
             
 function removeHealth(p: player, amount: number):
-    remove {_amount} from {player::stat::current_health::%{_p}%}
-    if {player::stat::current_health::%{_p}%} <= 0:
-        set {player::stat::current_health::%{_p}%} to 0
+    set {_max} to number data tag "playerstat:health" of {_p}
+    set {_current} to number data tag "current:health" of {_p}
+    
+    remove {_amount} from {_current}
+    if {_current} <= 0:
         kill {_p}
 
-function removeQi(p: player, amount: number) :: boolean:
-    if {player::stat::current_qi::%{_p}%} >= {_amount}:
-        remove {_amount} from {player::stat::current_qi::%{_p}%}
-        if {player::stat::current_qi::%{_p}%} < 0:
-            set {player::stat::current_qi::%{_p}%} to 0
+function removeMana(p: player, amount: number) :: boolean:
+    set {_current} to number data tag "current:mana" of {_p}
+    
+    if {_current} >= {_amount}:
+        remove {_amount} from {_current}
+        if {_current} < 0:
+            set number data tag "current:mana" of player to 0
+        set number data tag "current:mana" of player to {_current}
+            
         return true
     else:
-        send action bar "&cɴᴏᴛ ᴇɴᴏᴜɢʜ ǫɪ." to {_p}
+        send action bar "&cɴᴏᴛ ᴇɴᴏᴜɢʜ ᴍᴀɴᴀ." to {_p}
         return false
 
-command /removeqi <player> <number>:
+command /removemana <player> <number>:
     permission: admin.stat
     trigger:
-        if removeQi(arg-1, arg-2) is true:
+        if removeMana(arg-1, arg-2) is true:
             send "&9Removed &f%arg-2%&9 qi from &f%arg-1%&9." to player
 
 command /removehealth <player> <number>:
@@ -254,14 +161,19 @@ command /removehealth <player> <number>:
         removeHealth(arg-1, arg-2)
         send "&cRemoved &f%arg-2%&c health from &f%arg-1%" to player
        
+function heal(p: player):
+    set {_temp} to number data tag "playerstat:mana" of {_p}
+    set number data tag "current:mana" of {_p} to {_temp}
+        
+    set {_temp} to number data tag "playerstat:health" of {_p}
+    set number data tag "current:health" of {_p} to {_temp}
+    
 on join:
     updateStats(player)
-    set {player::stat::current_health::%player%} to {player::stat::health::%player%}
-    set {player::stat::current_qi::%player%} to {player::stat::qi::%player%}
+    heal(player)
 
 on respawn:
-    set {player::stat::current_health::%player%} to {player::stat::health::%player%}
-    set {player::stat::current_qi::%player%} to {player::stat::qi::%player%}
+    heal(player)
     
 function calculateDamage(attacker: player, defender: player) :: number:
     set {_rawDamage} to {player::stat::physical_damage::%{_attacker}%}
