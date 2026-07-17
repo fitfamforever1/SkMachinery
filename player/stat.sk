@@ -112,6 +112,8 @@ every 2 tick in "world":
             Actionbar(loop-player)
             
 function removeHealth(p: player, amount: number):
+    if {_p} is dead:
+        stop
     set {_max} to number data tag "playerstat:health" of {_p}
     set {_current} to number data tag "current:health" of {_p}
     
