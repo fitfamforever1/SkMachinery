@@ -180,6 +180,7 @@ on damage of player:
     removeHealth(victim, damage)
     set damage to 0
     set {_current} to number data tag "current:health" of victim
-    send "%{_current}%" to victim
+    if {_current} < 0:
+        set {_current} to 0
     if {_current} <= 0:
         kill victim
