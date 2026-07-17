@@ -156,7 +156,7 @@ function heal(p: player):
 on join:
     heal(player)
 
-on respawn:
+on death:
     heal(player)
     
 function calculateDamage(attacker: player, defender: player) :: number:
