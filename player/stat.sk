@@ -157,6 +157,7 @@ on join:
     heal(player)
 
 on death:
+    cancel event
     teleport victim to location(0,0,0,"world")
     heal(victim)
     
@@ -179,5 +180,6 @@ on damage of player:
     set damage to 0
     removeHealth(victim, damage)
     set {_current} to number data tag "current:health" of victim
+    send "%{_current}%"
     if {_current} <= 0:
         kill victim
