@@ -1,6 +1,7 @@
 function statAdd(p: player, t: string, a: number):
     set {_current} to number data tag "playerstat:%{_t}%" of {_p}
     set number data tag "playerstat:%{_t}%" of {_p} to ({_current} + {_a})
+    send "%{_current}% | %{_a}%" to {_p}
 
 function Actionbar(p: player):
     set {_health} to number data tag "playerstat:health" of {_p}
