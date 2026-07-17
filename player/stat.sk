@@ -187,9 +187,8 @@ function death(p: player):
     set {_p}'s fall distance to 0
     teleport {_p} to location(0,0,0,"world")
     heal({_p})
-    send title "&4ʏᴏᴜ ʜᴀᴠᴇ ᴅɪᴇᴅ!" with subtitle "&cʀᴇꜱᴘᴀᴡɴᴇᴅ ᴀᴛ ꜱᴘᴀᴡɴ." to {_p} for 0.5 seconds with fadein 0.2 second and fade out 0.2 second
+    send title "&4ʏᴏᴜ ʜᴀᴠᴇ ᴅɪᴇᴅ!" with subtitle "&cʀᴇꜱᴘᴀᴡɴᴇᴅ ᴀᴛ ꜱᴘᴀᴡɴ." to {_p} for 0.8 seconds with fadein 0.2 second and fade out 0.2 second
     
-command /death:
-    permission: admin.stat
+command /suicide:
     trigger:
         death(player)
