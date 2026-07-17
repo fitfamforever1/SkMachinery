@@ -147,7 +147,6 @@ command /removehealth <player> <number>:
         send "&cRemoved &f%arg-2%&c health from &f%arg-1%" to player
        
 function heal(p: player):
-    delete {respawning::%{_p}%}
     set {_temp} to number data tag "playerstat:mana" of {_p}
     set number data tag "current:mana" of {_p} to {_temp}
         
@@ -180,7 +179,12 @@ on damage of player:
         if {respawning::%victim%} is set:
             stop
         set {respawning::%victim%} to true
-        set victim's fall distance to 0
-        teleport victim to location(0,0,0,"world")
-        heal(victim)
-        send title "&4ʏᴏᴜ ʜᴀᴠᴇ ᴅɪᴇᴅ!" with subtitle "&cʀᴇꜱᴘᴀᴡɴᴇᴅ ᴀᴛ ꜱᴘᴀᴡɴ." to victim for 0.5 seconds with fadein 0.2 second and fade out 0.2 second
+        death(player)
+        
+        
+function death(p: player):
+    delete {respawning::%{_p}%}
+    set {_p}'s fall distance to 0
+    teleport {_p} to location(0,0,0,"world")
+    heal({_p})
+    send title "&4ʏᴏᴜ ʜᴀᴠᴇ ᴅɪᴇᴅ!" with subtitle "&cʀᴇꜱᴘᴀᴡɴᴇᴅ ᴀᴛ ꜱᴘᴀᴡɴ." to {_p} for 0.5 seconds with fadein 0.2 second and fade out 0.2 second
