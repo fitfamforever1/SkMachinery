@@ -6,7 +6,7 @@ function teleportToRoom(p: player, room: number):
 
     set {_targetZ} to {_baseZ} + (({_room} - 1) * {_spacing})
 
-    set {_loc} to location({_baseX}, {_baseY}, {_targetZ}, world of {_p},90 ,0)
+    set {_loc} to location({_baseX}, {_baseY}, {_targetZ}, world of {_p},-90 ,0)
     teleport {_p} to {_loc}
     
 command /room <number>:
