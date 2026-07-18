@@ -215,12 +215,6 @@ on damage:
     else:
         set damage to calculateAttack(attacker)
         
-function DamagePlayer(data: skilldata, target: entity, loc: location) :: boolean:
-    if {_target} is set:
-        if {_target} is a player:
-            damage {_target} by (power of {_data})
-            return true
-    return false
         
 function death(p: player):
     delete {respawning::%{_p}%}

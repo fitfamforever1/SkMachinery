@@ -53,8 +53,7 @@ function spawnMob(locId: number, roomId: number, mob: text, amount: number):
     set {_loc} to location({_x}, {_y}, {_z}, world "world", {_yawVal}, {_pitch})
 
     loop {_amount} times:
-        set {_am} to spawn mythicmob {_mob} at location {_loc} in world "world"
-        set number data tag "room:id" of {_am} to %{_roomId}%
+        break
         
 
 function FreeRoom(max: number) :: number:
@@ -93,4 +92,6 @@ command /dungeonreset:
         loop 10 times:
             set boolean data tag "room%loop-number%:status" of world "world" to false
         send "&eAll rooms have been reset." to player
+        
+        
         
