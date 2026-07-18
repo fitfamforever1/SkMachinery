@@ -50,7 +50,7 @@ function spawnMob(locId: number, roomId: number, mob: text, amount: number):
     set {_z} to {_baseZ::%{_locId}%} + (({_roomId} - 1) * {_spacing})
     set {_yawVal} to {_yaw::%{_locId}%}
 
-    set {_loc} to location({_x}, {_y}, {_z}, {_yawVal}, {_pitch}, world "world")
+    set {_loc} to location({_x}, {_y}, {_z}, world "world", {_yawVal}, {_pitch})
 
     loop {_amount} times:
         set {_am} to spawn mythicmob {_mob} at location {_loc} in world "world"
