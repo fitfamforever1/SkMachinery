@@ -103,7 +103,6 @@ function SyncSpeed(p: player):
 every 1 second in "world":
     loop all players:
         if loop-player is alive:
-            Actionbar(loop-player)
             SyncSpeed(loop-player)
             RegenPlayer(loop-player)
             
@@ -195,9 +194,13 @@ command /damage <player> <number>:
         
         
     
-on damage of player:
+on damage:
     if victim is player:
         DamagePlayer(victim, damage)
+        set damage to 0
+        stop
+    else:
+        RemoveHealth(victim, damage)
         set damage to 0
         
         
