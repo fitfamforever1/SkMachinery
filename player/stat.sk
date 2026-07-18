@@ -188,6 +188,11 @@ function calculateDamage(attacker: player, defender: player) :: number:
 
     return round({_damage})
     
+command /damage [<number>]:
+    permission: admin.stat
+    trigger:
+        DamagePlayer(player, arg-1)
+    
 on damage of player:
     if victim is player:
         DamagePlayer(victim, damage)
