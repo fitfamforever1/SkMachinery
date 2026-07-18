@@ -8,7 +8,59 @@ function teleportToRoom(p: player, room: number):
 
     set {_loc} to location({_baseX}, {_baseY}, {_targetZ}, world of {_p},-90 ,0)
     teleport {_p} to {_loc}
-    
+
+function spawnMob(locId: number, roomId: number, mob: text, amount: number):
+    set {_baseX::1} to 92.9
+    set {_baseZ::1} to 107.9
+    set {_yaw::1} to -180
+
+    set {_baseX::2} to 100.9
+    set {_baseZ::2} to 107.9
+    set {_yaw::2} to 134
+
+    set {_baseX::3} to 108.9
+    set {_baseZ::3} to 107.9
+    set {_yaw::3} to 115
+
+    set {_baseX::4} to 108.9
+    set {_baseZ::4} to 99.9
+    set {_yaw::4} to 90
+
+    set {_baseX::5} to 108.9
+    set {_baseZ::5} to 91.9
+    set {_yaw::5} to 60
+
+    set {_baseX::6} to 100.9
+    set {_baseZ::6} to 91.9
+    set {_yaw::6} to 40
+
+    set {_baseX::7} to 92.9
+    set {_baseZ::7} to 91.9
+    set {_yaw::7} to 0
+
+    set {_baseX::8} to 100.9
+    set {_baseZ::8} to 99
+    set {_yaw::8} to 90
+
+    set {_spacing} to 32
+    set {_y} to 1
+    set {_pitch} to 0
+
+    set {_x} to {_baseX::%{_locId}%}
+    set {_z} to {_baseZ::%{_locId}%} + (({_roomId} - 1) * {_spacing})
+    set {_yawVal} to {_yaw::%{_locId}%}
+
+    set {_loc} to location({_x}, {_y}, {_z}, {_yawVal}, {_pitch}, world "world")
+
+    loop {_amount} times:
+        set {_am} to spawn mythicmob {_mob} at location {_loc} in world "world"
+
 command /room <number>:
+    permission: admin.dungeon
     trigger:
         teleportToRoom(player, arg-1)
+        
+command /spawn <number> <number> <text> <number>:
+    permission: admin.dungeon
+    trigger:
+        spawnMob(arg-1, arg-2, arg-3, arg-4)
