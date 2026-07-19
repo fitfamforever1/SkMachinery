@@ -210,8 +210,8 @@ function calculateAttack(p: player) :: number:
 on damage:
     if victim is player:
         if projectile is an arrow:
-            set {_arrow} to projectile
-            set {_temp} number data tag "mobstat:damage" of {_arrow}
+            set {_temp} to number data tag "mobstat:damage" of projectile
+            send "%{_temp}%"
             cancel event
             delete projectile
             DamagePlayer(victim, {_temp})

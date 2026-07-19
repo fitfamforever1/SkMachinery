@@ -18,7 +18,7 @@ on shoot:
     if projectile is an arrow:
         if shooter is not player:
             set {_arrow} to event-projectile
-            set {_temp} number data tag "mobstat:damage" of shooter
+            set {_temp} to number data tag "mobstat:damage" of shooter
             set number data tag "mobstat:damage" of {_arrow} to {_temp}
             wait 10 seconds
             delete {_arrow}
