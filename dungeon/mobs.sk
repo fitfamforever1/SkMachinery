@@ -26,6 +26,6 @@ on shoot:
             
 on death:
     if victim is not player:
-        set {_roomId} number data tag "mob:floor" of victim
-        set {_floorId} number data tag "mob:room" of victim
+        set {_roomId} to number data tag "mob:floor" of victim
+        set {_floorId} to number data tag "mob:room" of victim
         send "%{_roomId}% | %{_floorId}%" to attacker
