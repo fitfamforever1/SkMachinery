@@ -1,6 +1,23 @@
 function spawn(loc: location, mob: text, roomId: number, floorId: number):
+    if {_mob} is "undead1":
+        spawnUndead1({_loc}, {_roomId}, {_floorId})
     if {_mob} is "undead2":
         spawnUndead2({_loc}, {_roomId}, {_floorId})
+    if {_mob} is "undead3":
+        spawnUndead3({_loc}, {_roomId}, {_floorId})
+
+function spawnUndead1(loc: location, roomId: number, floorId: number) :: entity:
+    spawn zombie at {_loc}
+    set {_e} to last spawned entity
+    set custom name of {_e} to "&cZombie"
+    set max health of {_e} to 50
+    set health of {_e} to 50
+    set movement speed attribute of {_e} to 0.2
+    set tool of {_e} to air
+    set number data tag "mobstat:damage" of {_e} to 4
+    set number data tag "mob:floor" of {_e} to {_floorId}
+    set number data tag "mob:room" of {_e} to {_roomId}
+    return {_e}
 
 function spawnUndead2(loc: location, roomId: number, floorId: number) :: entity:
     spawn skeleton at {_loc}
@@ -11,6 +28,20 @@ function spawnUndead2(loc: location, roomId: number, floorId: number) :: entity:
     set movement speed attribute of {_e} to 0.18
     set tool of {_e} to bow
     set number data tag "mobstat:damage" of {_e} to 6
+    set number data tag "mob:floor" of {_e} to {_floorId}
+    set number data tag "mob:room" of {_e} to {_roomId}
+    return {_e}
+
+function spawnUndead3(loc: location, roomId: number, floorId: number) :: entity:
+    spawn zombie at {_loc}
+    set {_e} to last spawned entity
+    set custom name of {_e} to "&cBrute"
+    set max health of {_e} to 75
+    set health of {_e} to 75
+    set movement speed attribute of {_e} to 0.14
+    set tool of {_e} to air
+    set victim's scale attribute to 1.4
+    set number data tag "mobstat:damage" of {_e} to 8
     set number data tag "mob:floor" of {_e} to {_floorId}
     set number data tag "mob:room" of {_e} to {_roomId}
     return {_e}
