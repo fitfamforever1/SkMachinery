@@ -1,19 +1,19 @@
 function spawn(mob: text)
-    if {_mob} is "undead2"
-        spawnUndead2({loc})
+	if {_mob} is "undead2"
+		spawnUndead2({loc})
 
 
 function spawnUndead2(loc: location) :: entity:
-    spawn skeleton at {_loc}
-    set {_e} to last spawned entity
+	spawn skeleton at {_loc}
+	set {_e} to last spawned entity
 
-    set custom name of {_e} to "&cSkeleton"
-    set custom name visibility of {_e} to true
+	set custom name of {_e} to "&cSkeleton"
+	set custom name visibility of {_e} to true
 
-    set max health of {_e} to 35
-    set health of {_e} to 35
-    set movement speed attribute of {_e} to 0.18
+	set max health of {_e} to 35
+	set health of {_e} to 35
+	set movement speed attribute of {_e} to 0.18
 
-    equip {_e} with bow
+	equip {_e} with bow
 
-    return {_e}
+	return {_e}
