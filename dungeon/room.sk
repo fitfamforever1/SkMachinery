@@ -53,7 +53,7 @@ function spawnMob(locId: number, roomId: number, mob: text, amount: number):
     set {_loc} to location({_x}, {_y}, {_z}, world "world", {_yawVal}, {_pitch})
 
     loop {_amount} times:
-        spawn({loc}, {_mob})
+        spawn({_loc}, {_mob})
         
 command /test1:
     trigger:

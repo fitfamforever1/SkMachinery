@@ -1,6 +1,6 @@
 function spawn(loc: location, mob: text):
     if {_mob} is "undead2":
-        spawnUndead2({loc})
+        spawnUndead2({_loc})
 
 
 function spawnUndead2(loc: location) :: entity:
