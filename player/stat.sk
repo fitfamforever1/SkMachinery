@@ -211,7 +211,6 @@ on damage:
     if victim is player:
         if projectile is an arrow:
             set {_temp} to number data tag "mobstat:damage" of projectile
-            send "%{_temp}%" to victim
             cancel event
             delete projectile
             DamagePlayer(victim, {_temp})

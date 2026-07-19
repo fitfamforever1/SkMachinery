@@ -9,7 +9,7 @@ function teleportToRoom(p: player, room: number):
     set {_loc} to location({_baseX}, {_baseY}, {_targetZ}, world of {_p},-90 ,0)
     teleport {_p} to {_loc}
 
-function spawnMob(locId: number, roomId: number, mob: text, amount: number):
+function spawnMob(locId: number, roomId: number, floorId: number, mob: text, amount: number):
     set {_baseX::1} to 92.9
     set {_baseZ::1} to 107.9
     set {_yaw::1} to -180
@@ -53,11 +53,11 @@ function spawnMob(locId: number, roomId: number, mob: text, amount: number):
     set {_loc} to location({_x}, {_y}, {_z}, world "world", {_yawVal}, {_pitch})
 
     loop {_amount} times:
-        spawn({_loc}, {_mob})
+        spawn({_loc}, {_mob}, {_roomId}, {_floorId})
         
 command /test1 <text>:
     trigger:
-        spawnMob(8, 1, arg-1, 1)
+        spawnMob(8, 1, 10, arg-1, 1)
 
 function FreeRoom(max: number) :: number:
     loop {_max} times:

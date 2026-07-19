@@ -1,9 +1,8 @@
-function spawn(loc: location, mob: text):
+function spawn(loc: location, mob: text, roomId: number, floorId: number):
     if {_mob} is "undead2":
-        spawnUndead2({_loc})
+        spawnUndead2({_loc}, {_roomId}, {_floorId})
 
-
-function spawnUndead2(loc: location) :: entity:
+function spawnUndead2(loc: location, roomId: number, floorId: number) :: entity:
     spawn skeleton at {_loc}
     set {_e} to last spawned entity
     set custom name of {_e} to "&cSkeleton"
@@ -12,8 +11,10 @@ function spawnUndead2(loc: location) :: entity:
     set movement speed attribute of {_e} to 0.18
     set tool of {_e} to bow
     set number data tag "mobstat:damage" of {_e} to 6
+    set number data tag "mob:floor" of {_e} to {_floorId}
+    set number data tag "mob:room" of {_e} to {_roomId}
     return {_e}
-    
+
 on shoot:
     if projectile is an arrow:
         if shooter is not player:
@@ -22,3 +23,9 @@ on shoot:
             set number data tag "mobstat:damage" of {_arrow} to {_temp}
             wait 10 seconds
             delete {_arrow}
+            
+on death:
+    if victim is not player:
+        set {_roomId} number data tag "mob:floor" of victim
+        set {_floorId} number data tag "mob:room" of victim
+        send "%{_roomId}% | %{_floorId}%"
