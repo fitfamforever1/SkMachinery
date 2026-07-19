@@ -1,4 +1,4 @@
-function spawn(mob: text):
+function spawn(loc: location, mob: text):
     if {_mob} is "undead2":
         spawnUndead2({loc})
 
