@@ -12,19 +12,26 @@ function openItemDialog(p: player):
         inputs:
             add text input:
                 key: "item_name"
-                label: "Item Name"
+                label: "Item Name *"
                 width: 200
                 max_length: 32
             add text input:
                 key: "item_rarity"
-                label: "Rarity"
+                label: "Rarity *"
                 width: 200
                 max_length: 32
             add text input:
                 key: "item_type"
-                label: "Item Type"
+                label: "Item Type *"
                 width: 200
                 max_length: 32
+            add text input:
+                key: "ability"
+                label: "Ability"
+                width: 200
+                max_length: 512
+                multiline_max_lines: 6
+                multiline_height: 100
             add text input:
                 key: "damage"
                 label: "Damage"
@@ -72,6 +79,7 @@ function openItemDialog(p: player):
                     set {_name} to string tag "item_name" of {_nbt}
                     set {_rarity} to string tag "item_rarity" of {_nbt}
                     set {_type} to string tag "item_type" of {_nbt}
+                    set {_ability} to string tag "ability" of {_nbt}
                     set {_damage} to string tag "damage" of {_nbt}
                     set {_critchance} to string tag "crit_chance" of {_nbt}
                     set {_critdamage} to string tag "crit_damage" of {_nbt}
@@ -80,16 +88,37 @@ function openItemDialog(p: player):
                     set {_defense} to string tag "defense" of {_nbt}
                     set {_speed} to string tag "speed" of {_nbt}
 
-                    send "&8&m----------------------------" to {_p}
-                    send "&a&lItem Created!" to {_p}
+                    # --- required field validation ---
+                    if {_name} is "" or {_name} is not set:
+                        send "&cItem Name is required. Please try again." to {_p}
+                        openItemDialog({_p})
+                        stop
+                    if {_rarity} is "" or {_rarity} is not set:
+                        send "&cRarity is required. Please try again." to {_p}
+                        openItemDialog({_p})
+                        stop
+                    if {_type} is "" or {_type} is not set:
+                        send "&cItem Type is required. Please try again." to {_p}
+                        openItemDialog({_p})
+                        stop
+
+                    # --- output, only showing filled-in values ---
                     send "&7Name: &f%{_name}%" to {_p}
                     send "&7Rarity: &f%{_rarity}%" to {_p}
                     send "&7Type: &f%{_type}%" to {_p}
-                    send "&7Damage: &f%{_damage}%" to {_p}
-                    send "&7Crit Chance: &f%{_critchance}%%%" to {_p}
-                    send "&7Crit Damage: &f%{_critdamage}%%%" to {_p}
-                    send "&7Health: &f%{_health}%" to {_p}
-                    send "&7Mana: &f%{_mana}%" to {_p}
-                    send "&7Defense: &f%{_defense}%" to {_p}
-                    send "&7Speed: &f%{_speed}%" to {_p}
-                    send "&8&m----------------------------" to {_p}
+                    if {_ability} is set and {_ability} is not "":
+                        send "&7Ability: &f%{_ability}%" to {_p}
+                    if {_damage} is set and {_damage} is not "" and {_damage} is not "0":
+                        send "&7Damage: &f%{_damage}%" to {_p}
+                    if {_critchance} is set and {_critchance} is not "" and {_critchance} is not "0":
+                        send "&7Crit Chance: &f%{_critchance}%%%" to {_p}
+                    if {_critdamage} is set and {_critdamage} is not "" and {_critdamage} is not "0":
+                        send "&7Crit Damage: &f%{_critdamage}%%%" to {_p}
+                    if {_health} is set and {_health} is not "" and {_health} is not "0":
+                        send "&7Health: &f%{_health}%" to {_p}
+                    if {_mana} is set and {_mana} is not "" and {_mana} is not "0":
+                        send "&7Mana: &f%{_mana}%" to {_p}
+                    if {_defense} is set and {_defense} is not "" and {_defense} is not "0":
+                        send "&7Defense: &f%{_defense}%" to {_p}
+                    if {_speed} is set and {_speed} is not "" and {_speed} is not "0":
+                        send "&7Speed: &f%{_speed}%" to {_p}
