@@ -232,7 +232,7 @@ function displayDamage(attacker: player, victim: entity, damage: number):
 
     set text of {_display} to "<##D22B2B>%round({_damage})%"
 
-    wait 1.5 second
+    wait 1.2 second
     kill {_display}
     
 on damage:
