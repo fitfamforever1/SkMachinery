@@ -213,15 +213,18 @@ function calculateCrit(p: player) :: number:
     return {_finalDamage}
 
 function displayDamage(attacker: player, victim: entity, damage: number):
-    set {_aLoc} to location of {_attacker}
-    set {_vLoc} to location of {_victim}
+    set {_radius} to 0.6
+    set {_theta} to random number between 0 and 360
+    set {_phi} to random number between 0 and 180
+    set {_offsetX} to {_radius} * sin({_phi}) * cos({_theta})
+    set {_offsetY} to {_radius} * cos({_phi})
+    set {_offsetZ} to {_radius} * sin({_phi}) * sin({_theta})
 
-    set {_midX} to (x-coordinate of {_aLoc} + x-coordinate of {_vLoc}) / 2
-    set {_midY} to (y-coordinate of {_aLoc} + y-coordinate of {_vLoc}) / 2
-    set {_midZ} to (z-coordinate of {_aLoc} + z-coordinate of {_vLoc}) / 2
-
-    set {_loc} to location({_midX}, {_midY}, {_midZ}, world of {_vLoc})
-    add 1 to y-coordinate of {_loc}
+    set {_loc} to location of {_victim}
+    add 1 to y-coordinate of {_loc} 
+    add {_offsetX} to x-coordinate of {_loc}
+    add {_offsetY} to y-coordinate of {_loc}
+    add {_offsetZ} to z-coordinate of {_loc}
 
     spawn text display at {_loc}
     set {_display} to last spawned text display
