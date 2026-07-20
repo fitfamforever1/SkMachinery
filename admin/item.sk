@@ -107,7 +107,10 @@ function openItemDialog(p: player):
 
                     set {_item} to unbreakable tool
                     set item flags of {_item} to all item flags
-
+                    
+                    if {_damage}, {_critchance}, {_critdamage}, {_health}, {_mana}, {_defense} or {_speed}:
+                        set {_max} to 1
+                    
                     set name of {_item} to "&f%{_name}%"
                     set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
                     set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_typeline}%"
