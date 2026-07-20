@@ -4,13 +4,12 @@ function statAdd(p: player, t: string, a: number):
     send "%{_current}% | %{_a}%" to {_p}
 
 function Actionbar(p: player):
-    set {_health} to number data tag "playerstat:health" of {_p}
+    set {_health} to number data tag "stat:health" of {_p}
     set {_current1} to number data tag "current:health" of {_p}
-    set {_mana} to number data tag "playerstat:mana" of {_p}
+    set {_mana} to number data tag "stat:mana" of {_p}
     set {_current2} to number data tag "current:mana" of {_p}
     
     set {_current1} to round({_current1})
-    #
     
     send action bar "&c%{_current1}%&8/&c%{_health}% &8| <##0096FF>%{_current2}%&8/<##0096FF>%{_mana}%" to {_p}
 
@@ -26,8 +25,8 @@ on join:
         set number data tag "current:mana" of player to 100
         set number data tag "current:health" of player to 20
         
-        set number data tag "current:crit_chance" of player to 30
-        set number data tag "current:crit_damage" of player to 50
+        set number data tag "playerstat:crit_chance" of player to 30
+        set number data tag "playersta:crit_damage" of player to 50
         
 command /statreset <player>:
     permission: admin.stat
@@ -41,23 +40,23 @@ command /statreset <player>:
         set number data tag "current:mana" of arg-1 to 100
         set number data tag "current:health" of arg-1 to 20
         
-        set number data tag "current:crit_chance" of arg-1 to 30
-        set number data tag "current:crit_damage" of arg-1 to 50
+        set number data tag "playerstat:crit_chance" of arg-1 to 30
+        set number data tag "playerstat:crit_damage" of arg-1 to 50
             
 command /stat <player>:
     permission: admin.stat
     trigger:
         send message "&a&lSTATS SET" to arg-1
-        send message "&7Damage: &f%data tag "playerstat:damage" of arg-1%" to arg-1
-        send message "&7Defense: &f%data tag "playerstat:defense" of arg-1%" to arg-1
-        send message "&7Speed: &f%data tag "playerstat:speed" of arg-1%" to arg-1
-        send message "&7Health: &f%data tag "playerstat:health" of arg-1%" to arg-1
-        send message "&7Mana: &f%data tag "playerstat:mana" of arg-1%" to arg-1
-        send message "&7Level: &f%data tag "playerstat:lvl" of arg-1%" to arg-1
+        send message "&7Damage: &f%data tag "stat:damage" of arg-1%" to arg-1
+        send message "&7Defense: &f%data tag "stat:defense" of arg-1%" to arg-1
+        send message "&7Speed: &f%data tag "stat:speed" of arg-1%" to arg-1
+        send message "&7Health: &f%data tag "stat:health" of arg-1%" to arg-1
+        send message "&7Mana: &f%data tag "stat:mana" of arg-1%" to arg-1
+        send message "&7Level: &f%data tag "stat:lvl" of arg-1%" to arg-1
         send message "&7Current Mana: &f%data tag "current:mana" of arg-1%" to arg-1
         send message "&7Current Health: &f%data tag "current:health" of arg-1%" to arg-1
-        send message "&7Crit Chance: &f%data tag "current:crit_chance" of arg-1%%%" to arg-1
-        send message "&7Crit Damage: &f%data tag "current:crit_damage" of arg-1%%%" to arg-1
+        send message "&7Crit Chance: &f%data tag "stat:crit_chance" of arg-1%%%" to arg-1
+        send message "&7Crit Damage: &f%data tag "stat:crit_damage" of arg-1%%%" to arg-1
         
 command /setlevel <number>:
     trigger:
@@ -72,11 +71,12 @@ command /statadd <text> <number>:
         else:
             send "&cInvalid stat." to player
 
+
 function RegenPlayer(p: player):
-    set {_health} to number data tag "playerstat:health" of {_p}
+    set {_health} to number data tag "stat:health" of {_p}
     set {_current1} to number data tag "current:health" of {_p}
     
-    set {_mana} to number data tag "playerstat:mana" of {_p}
+    set {_mana} to number data tag "stat:mana" of {_p}
     set {_current2} to number data tag "current:mana" of {_p}
 
     set {_temp} to {_mana} / 20
@@ -95,7 +95,7 @@ function RegenPlayer(p: player):
 
     
 function SyncSpeed(p: player):
-    set {_temp} to number data tag "playerstat:speed" of {_p}
+    set {_temp} to number data tag "stat:speed" of {_p}
     set {_temp} to {_temp} / 100
     
     set {_p}'s movement speed attribute to {_temp}
@@ -130,7 +130,7 @@ function removeHealth(p: player, amount: number):
             send "&cYou have failed the run." to {_p}
 
 function DamagePlayer(p: player, damage: number):
-    set {_defense} to number data tag "playerstat:defense" of {_p}
+    set {_defense} to number data tag "stat:defense" of {_p}
     
     if {_defense} < 0:
         set {_defense} to 0
@@ -169,29 +169,15 @@ command /removehealth <player> <number>:
         
        
 function heal(p: player):
-    set {_temp} to number data tag "playerstat:mana" of {_p}
+    set {_temp} to number data tag "stat:mana" of {_p}
     set number data tag "current:mana" of {_p} to {_temp}
         
-    set {_temp} to number data tag "playerstat:health" of {_p}
+    set {_temp} to number data tag "stat:health" of {_p}
     set number data tag "current:health" of {_p} to {_temp}
     
 on join:
     heal(player)
     
-function calculateDamage(attacker: player, defender: player) :: number:
-    set {_rawDamage} to {player::stat::physical_damage::%{_attacker}%}
-    set {_defense} to {player::stat::defense::%{_defender}%}
-
-    set {_mitigation} to {_defense} / ({_defense} + 100)
-    set {_damage} to {_rawDamage} * (1 - {_mitigation})
-
-    set {_variance} to (random number between -10 and 10) / 100
-    add ({_damage} * {_variance}) to {_damage}
-
-    if {_damage} < 1:
-        set {_damage} to 1
-
-    return round({_damage})
     
 command /damage <player> <number>:
     permission: admin.stat
@@ -199,14 +185,14 @@ command /damage <player> <number>:
         DamagePlayer(arg-1, arg-2)
         
 function calculateAttack(p: player) :: number:
-    set {_base} to number data tag "playerstat:damage" of {_p}
+    set {_base} to number data tag "stat:damage" of {_p}
     set {_finalDamage} to {_base}
 
     return {_finalDamage}
     
 function calculateCrit(p: player) :: number:
-    set {_base} to number data tag "playerstat:damage" of {_p}
-    set {_critDamage} to number data tag "current:crit_damage" of {_p}
+    set {_base} to number data tag "stat:damage" of {_p}
+    set {_critDamage} to number data tag "stat:crit_damage" of {_p}
     set {_critDamage} to {_critDamage} / 100
     set {_finalDamage} to {_base} + ({_base} * {_critDamage})
     
@@ -253,7 +239,7 @@ on damage:
             set damage to 0
             stop
     else if attacker is a player:
-        set {_critChance} to number data tag "current:crit_chance" of attacker
+        set {_critChance} to number data tag "stat:crit_chance" of attacker
         set {_roll} to a random number between 1 and 100
 
         if {_roll} <= {_critChance}:
@@ -278,3 +264,33 @@ function death(p: player):
 command /suicide:
     trigger:
         death(player)
+        
+
+function stat(p: player):
+    loop "damage", "defense", "speed", "health", "mana", "crit_chance", "crit_damage":
+        set {_value} to number data tag "playerstat:%loop-value%" of {_p}
+        if {_value} is not set:
+            set {_value} to 0
+
+        set number data tag "stat:%loop-value%" of {_p} to {_value}
+
+    item({_p}, tool of {_p})
+    item({_p}, helmet of {_p})
+    item({_p}, chestplate of {_p})
+    item({_p}, leggings of {_p})
+    item({_p}, boots of {_p})
+
+function item(p: player, item: item):
+    if {_item} is air:
+        stop
+
+    loop "damage", "defense", "speed", "health", "mana", "crit_chance", "crit_damage":
+        set {_value} to number data tag "itemstat:%loop-value%" of {_item}
+        if {_value} is not set:
+            set {_value} to 0
+
+        add {_value} to number data tag "stat:%loop-value%" of {_p}
+        
+command /statreload:
+    trigger:
+        stat(player)

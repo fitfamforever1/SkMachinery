@@ -100,34 +100,6 @@ function openItemDialog(p: player):
                     set {_rarityline} to getRarityLine({_rarity})
                     set {_typeline} to SmallCaps({_type})
 
-                    # ---- chat summary: only filled values, Hypixel-style colors ----
-                    send "&7Name: &f%{_name}%" to {_p}
-                    send "&7Rarity: &f%{_rarityline}%" to {_p}
-                    send "&7Type: &f%{_typeline}%" to {_p}
-                    set {_max} to 0
-                    if {_damage} is not "0":
-                        send "&7Damage: &c+%{_damage}%" to {_p}
-                        set {_max} to 1
-                    if {_critchance} is not "0":
-                        send "&7Crit Chance: &9+%{_critchance}%%%" to {_p}
-                        set {_max} to 1
-                    if {_critdamage} is not "0":
-                        send "&7Crit Damage: &9+%{_critdamage}%%%" to {_p}
-                        set {_max} to 1
-                    if {_health} is not "0":
-                        send "&7Health: &c+%{_health}%" to {_p}
-                        set {_max} to 1
-                    if {_mana} is not "0":
-                        send "&7Mana: &b+%{_mana}%" to {_p}
-                        set {_max} to 1
-                    if {_defense} is not "0":
-                        send "&7Defense: &a+%{_defense}%" to {_p}
-                        set {_max} to 1
-                    if {_speed} is not "0":
-                        send "&7Speed: &f+%{_speed}%" to {_p}
-                        set {_max} to 1
-
-                    # ---- build the item ----
                     set {_item} to {_p}'s tool
                     if {_item} is air:
                         send "&cYou must hold an item to modify." to {_p}
@@ -146,8 +118,6 @@ function openItemDialog(p: player):
                         set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
                         set {_line} to 5
 
-                        # Hypixel-style: Damage/Health = red, Crit Chance/Damage = blue,
-                        # Mana = aqua, Defense = green, Speed = white
                         if {_damage} is not "0":
                             add 1 to {_line}
                             set line {_line} of lore of {_item} to "&8┃ &7ᴅᴀᴍᴀɢᴇ &8» &c+%{_damage}%"
@@ -164,10 +134,6 @@ function openItemDialog(p: player):
                             add 1 to {_line}
                             set line {_line} of lore of {_item} to "&8┃ &7ʜᴇᴀʟᴛʜ &8» &c+%{_health}%"
                             set number data tag "itemstat:health" of {_item} to ({_health} parsed as a number)
-                        if {_mana} is not "0":
-                            add 1 to {_line}
-                            set line {_line} of lore of {_item} to "&8┃ &7ᴍᴀɴᴀ &8» &b+%{_mana}%"
-                            set number data tag "itemstat:mana" of {_item} to ({_mana} parsed as a number)
                         if {_defense} is not "0":
                             add 1 to {_line}
                             set line {_line} of lore of {_item} to "&8┃ &7ᴅᴇғᴇɴꜱᴇ &8» &a+%{_defense}%"
@@ -176,5 +142,9 @@ function openItemDialog(p: player):
                             add 1 to {_line}
                             set line {_line} of lore of {_item} to "&8┃ &7ꜱᴘᴇᴇᴅ &8» &f+%{_speed}%"
                             set number data tag "itemstat:speed" of {_item} to ({_speed} parsed as a number)
+                        if {_mana} is not "0":
+                            add 1 to {_line}
+                            set line {_line} of lore of {_item} to "&8┃ &7ᴍᴀɴᴀ &8» &b+%{_mana}%"
+                            set number data tag "itemstat:mana" of {_item} to ({_mana} parsed as a number)
 
                     set {_p}'s tool to {_item}
