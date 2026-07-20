@@ -113,13 +113,13 @@ function openItemDialog(p: player):
                     set name of {_item} to "&f%{_name}%"
                     set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
                     set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_typeline}%"
-                    set line 4 of lore of {_item} to "&8┃ &7ʟᴇᴠᴇʟ&8» &c%{_level}%"
+                    set line 3 of lore of {_item} to "&8┃ &7ʟᴇᴠᴇʟ&8» &c%{_level}%"
                     set number data tag "itemstat:level" of {_item} to ({_level} parsed as a number)
                     
                     if {_max} is 1:
-                        set line 5 of lore of {_item} to ""
-                        set line 6 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
-                        set {_line} to 6
+                        set line 4 of lore of {_item} to ""
+                        set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
+                        set {_line} to 5
 
                         if {_damage} is not "0":
                             add 1 to {_line}
