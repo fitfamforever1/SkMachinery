@@ -5,20 +5,20 @@ command /modifyitem:
 
 function getRarityLine(rarity: text) :: text:
     if {_rarity} is "common":
-        return "&fᴄᴏᴍᴍᴏɴ "
+        return "&fᴄᴏᴍᴍᴏɴ"
     if {_rarity} is "uncommon":
-        return "&aᴜɴᴄᴏᴍᴍᴏɴ "
+        return "&aᴜɴᴄᴏᴍᴍᴏɴ"
     if {_rarity} is "rare":
-        return "&9ʀᴀʀᴇ "
+        return "&9ʀᴀʀᴇ"
     if {_rarity} is "epic":
-        return "&5ᴇᴘɪᴄ "
+        return "&5ᴇᴘɪᴄ"
     if {_rarity} is "legendary":
         return "&6ʟᴇɢᴇɴᴅᴀʀʏ"
     if {_rarity} is "mythic":
-        return "&dᴍʏᴛʜɪᴄᴀʟ "
+        return "&dᴍʏᴛʜɪᴄᴀʟ"
     if {_rarity} is "special":
-        return "&cꜱᴘᴇᴄɪᴀʟ "
-    return ""
+        return "&cꜱᴘᴇᴄɪᴀʟ"
+    return {_rarity}
 
 function openItemDialog(p: player):
     open new multi action dialog to {_p}:
@@ -97,12 +97,14 @@ function openItemDialog(p: player):
                     set {_defense} to string tag "defense" of {_nbt}
                     set {_speed} to string tag "speed" of {_nbt}
 
-                    set {_rarity} to getRarityLine({_rarity})
-                    set {_type} to SmallCaps({_type})
-                    
+                    set {_rarityline} to getRarityLine({_rarity})
+                    set {_typeline} to SmallCaps({_type})
+
+                    # ---- chat summary: only filled values ----
                     send "&7Name: &f%{_name}%" to {_p}
-                    send "&7Rarity: &f%{_rarity}%" to {_p}
-                    send "&7Type: &f%{_type}%" to {_p}
+                    send "&7Rarity: &f%{_rarityline}%" to {_p}
+                    send "&7Type: &f%{_typeline}%" to {_p}
+                    set {_max} to 0
                     if {_damage} is not "0":
                         send "&7Damage: &f%{_damage}%" to {_p}
                         set {_max} to 1
@@ -124,22 +126,61 @@ function openItemDialog(p: player):
                     if {_speed} is not "0":
                         send "&7Speed: &f%{_speed}%" to {_p}
                         set {_max} to 1
-                        
+
+                    # ---- build the item ----
                     set {_item} to {_p}'s tool
                     if {_item} is air:
                         send "&cYou must hold an item to modify." to {_p}
                         stop
-                    
+
                     set {_item} to unbreakable tool
                     set item flags of {_item} to all item flags
-                    
+
                     set name of {_item} to "&f%{_name}%"
                     set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
-                    set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_type}%"
-                    set line 3 of lore of {_item} to "&8┃ &7ʀᴀʀɪᴛʏ &8» %{_rarity}%"
-                    
+                    set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_typeline}%"
+                    set line 3 of lore of {_item} to "&8┃ &7ʀᴀʀɪᴛʏ &8» %{_rarityline}%"
+
                     if {_max} is 1:
                         set line 4 of lore of {_item} to ""
                         set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
-                    
+                        set {_line} to 5
+
+                        if {_damage} is not "0":
+                            add 1 to {_line}
+                            set line {_line} of lore of {_item} to "&8┃ &7ᴅᴀᴍᴀɢᴇ &8» &c+%{_damage}%"
+                        if {_critchance} is not "0":
+                            add 1 to {_line}
+                            set line {_line} of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &a+%{_critchance}%%%"
+                        if {_critdamage} is not "0":
+                            add 1 to {_line}
+                            set line {_line} of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &6+%{_critdamage}%%%"
+                        if {_health} is not "0":
+                            add 1 to {_line}
+                            set line {_line} of lore of {_item} to "&8┃ &7ʜᴇᴀʟᴛʜ &8» &2+%{_health}%"
+                        if {_mana} is not "0":
+                            add 1 to {_line}
+                            set line {_line} of lore of {_item} to "&8┃ &7ᴍᴀɴᴀ &8» &b+%{_mana}%"
+                        if {_defense} is not "0":
+                            add 1 to {_line}
+                            set line {_line} of lore of {_item} to "&8┃ &7ᴅᴇғᴇɴꜱᴇ &8» &7+%{_defense}%"
+                        if {_speed} is not "0":
+                            add 1 to {_line}
+                            set line {_line} of lore of {_item} to "&8┃ &7ꜱᴘᴇᴇᴅ &8» &f+%{_speed}%"
+
+                        if {_damage} is not "0":
+                            set number data tag "itemstat:damage" of {_item} to {_damage}
+                        if {_critchance} is not "0":
+                            set number data tag "itemstat:crit_chance" of {_item} to {_damage}
+                        if {_critdamage} is not "0":
+                            set number data tag "itemstat:crit_damage" of {_item} to {_damage}
+                        if {_health} is not "0":
+                            set number data tag "itemstat:health" of {_item} to {_damage}
+                        if {_mana} is not "0":
+                            set number data tag "itemstat:mana" of {_item} to {_damage}
+                        if {_defense} is not "0":
+                            set number data tag "itemstat:defense" of {_item} to {_damage}
+                        if {_speed} is not "0":
+                            set number data tag "itemstat:speed" of {_item} to {_damage}
+
                     set {_p}'s tool to {_item}
