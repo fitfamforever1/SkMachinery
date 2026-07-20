@@ -33,11 +33,6 @@ function openItemDialog(p: player):
                 width: 200
                 max_length: 32
             add text input:
-                key: "item_rarity"
-                label: "Rarity *"
-                width: 200
-                max_length: 32
-            add text input:
                 key: "item_type"
                 label: "Item Type *"
                 width: 200
@@ -51,37 +46,37 @@ function openItemDialog(p: player):
                 key: "damage"
                 label: "Damage"
                 initial: "0"
-                width: 190
+                width: 200
             add text input:
                 key: "crit_chance"
                 label: "Crit Chance"
                 initial: "0"
-                width: 190
+                width: 200
             add text input:
                 key: "crit_damage"
                 label: "Crit Damage"
                 initial: "0"
-                width: 190
+                width: 200
             add text input:
                 key: "health"
                 label: "Health"
                 initial: "0"
-                width: 190
+                width: 200
             add text input:
                 key: "mana"
                 label: "Mana"
                 initial: "0"
-                width: 190
+                width: 200
             add text input:
                 key: "defense"
                 label: "Defense"
                 initial: "0"
-                width: 190
+                width: 200
             add text input:
                 key: "speed"
                 label: "Speed"
                 initial: "0"
-                width: 190
+                width: 200
         columns: 1
         actions:
             add callback action button:
@@ -92,7 +87,6 @@ function openItemDialog(p: player):
                     set {_p} to event-player
 
                     set {_name} to string tag "item_name" of {_nbt}
-                    set {_rarity} to string tag "item_rarity" of {_nbt}
                     set {_type} to string tag "item_type" of {_nbt}
                     set {_level} to string tag "level" of {_nbt}
                     set {_damage} to string tag "damage" of {_nbt}
@@ -103,7 +97,6 @@ function openItemDialog(p: player):
                     set {_defense} to string tag "defense" of {_nbt}
                     set {_speed} to string tag "speed" of {_nbt}
 
-                    set {_rarityline} to getRarityLine({_rarity})
                     set {_typeline} to SmallCaps({_type})
 
                     set {_item} to {_p}'s tool
@@ -120,7 +113,6 @@ function openItemDialog(p: player):
                     set name of {_item} to "&f%{_name}%"
                     set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
                     set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_typeline}%"
-                    set line 3 of lore of {_item} to "&8┃ &7ʀᴀʀɪᴛʏ &8» %{_rarityline}%"
                     set line 4 of lore of {_item} to "&8┃ &7ʟᴇᴠᴇʟ&8» &c%{_level}%"
                     set number data tag "itemstat:level" of {_item} to ({_level} parsed as a number)
                     
