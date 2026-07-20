@@ -6,8 +6,7 @@
 # Step 2: Damage, Crit Chance, Crit Damage, Health, Mana, Defense, Speed
 #
 # Values are collected via callback action buttons and printed to chat.
-# NOTE: value extraction from event-nbt uses "{_nbt}'s value "key""
-# — confirm this matches your SkBee build's NBT getter syntax.
+# Values are pulled from event-nbt using SkBee's `tag "key" of {_nbt}` syntax.
 ########################################
 
 command /modifyitem:
@@ -49,9 +48,9 @@ function openItemInfoDialog(p: player):
                     set {_p} to event-player
                     set {_uuid} to uuid of {_p}
 
-                    set {_name} to "%{_nbt}'s value "item_name"%"
-                    set {_rarity} to "%{_nbt}'s value "item_rarity"%"
-                    set {_type} to "%{_nbt}'s value "item_type"%"
+                    set {_name} to tag "item_name" of {_nbt}
+                    set {_rarity} to tag "item_rarity" of {_nbt}
+                    set {_type} to tag "item_type" of {_nbt}
 
                     set {itemwizard::%{_uuid}%::name} to {_name}
                     set {itemwizard::%{_uuid}%::rarity} to {_rarity}
@@ -112,13 +111,13 @@ function openStatsDialog(p: player):
                     set {_p} to event-player
                     set {_uuid} to uuid of {_p}
 
-                    set {_damage} to "%{_nbt}'s value "damage"%"
-                    set {_critchance} to "%{_nbt}'s value "crit_chance"%"
-                    set {_critdamage} to "%{_nbt}'s value "crit_damage"%"
-                    set {_health} to "%{_nbt}'s value "health"%"
-                    set {_mana} to "%{_nbt}'s value "mana"%"
-                    set {_defense} to "%{_nbt}'s value "defense"%"
-                    set {_speed} to "%{_nbt}'s value "speed"%"
+                    set {_damage} to tag "damage" of {_nbt}
+                    set {_critchance} to tag "crit_chance" of {_nbt}
+                    set {_critdamage} to tag "crit_damage" of {_nbt}
+                    set {_health} to tag "health" of {_nbt}
+                    set {_mana} to tag "mana" of {_nbt}
+                    set {_defense} to tag "defense" of {_nbt}
+                    set {_speed} to tag "speed" of {_nbt}
 
                     send "&8&m----------------------------" to {_p}
                     send "&a&lItem Created!" to {_p}
