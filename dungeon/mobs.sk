@@ -79,6 +79,8 @@ on death:
             set {_target} to number data tag "floor%{_floorId}%:max" of world "world"
             set {_target2} to number data tag "floor%{_floorId}%:min" of world "world"
             if {_target2} is set:
+                send title "" with subtitle "&cᴛʜᴇ ʙᴏꜱꜱ ʜᴀꜱ ʙᴇᴇɴ ꜱᴘᴀᴡɴᴇᴅ." to attacker for 0.8 seconds with fadein 0.2 second and fade out 0.2 second
+                wait 1 second
                 StartBoss({_room}, {_floor})
             if {_current} = {_target}:
                 EndRoom(attacker, {_room}, {_floor})
