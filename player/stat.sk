@@ -112,21 +112,20 @@ every 2 tick in "world":
             Actionbar(loop-player)
             
 function removeHealth(p: player, amount: number):
-    set {_max} to number data tag "playerstat:health" of {_p}
-    set {_current} to number data tag "current:health" of {_p}
-    set {_room} to number data tag "room:id" of {_p}
-    set {_floor} to number data tag "room%{_room}%:floor" of {_p}
-    
-    remove {_amount} from {_current}
+    set {_current} to (number data tag "current:health" of {_p}) - {_amount}
     set number data tag "current:health" of {_p} to {_current}
+
     if {_current} <= 0:
         if {respawning::%{_p}%} is set:
             stop
         set {respawning::%{_p}%} to true
-        if {_floor} is 0:
-            death({_p})
-            set {_room} to number data tag "room:id" of {_p}
-            set {_floor} to number data tag "room%{_room}%:floor" of {_p}
+
+        set {_room} to number data tag "room:id" of {_p}
+        set {_floor} to number data tag "room%{_room}%:floor" of {_p}
+
+        death({_p})
+
+        if {_floor} is not 0:
             EndRoom({_p}, {_room}, {_floor})
             send "&cYou have failed the run." to {_p}
 
