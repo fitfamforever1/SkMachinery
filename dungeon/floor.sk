@@ -4,6 +4,6 @@ on load:
 function StartFloor(room: number, floor: number):
     if {_floor} = 1:
         floor1({_room})
-        
+
 function floor1(room: number):
     spawnMob(8, {_room}, 1, "undead1", 1)

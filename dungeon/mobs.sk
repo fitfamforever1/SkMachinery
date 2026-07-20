@@ -1,78 +1,61 @@
 function spawn(loc: location, mob: text, roomId: number, floorId: number):
     if {_mob} is "undead1":
         spawnUndead1({_loc}, {_roomId}, {_floorId})
-    if {_mob} is "undead2":
+    else if {_mob} is "undead2":
         spawnUndead2({_loc}, {_roomId}, {_floorId})
-    if {_mob} is "undead3":
+    else if {_mob} is "undead3":
         spawnUndead3({_loc}, {_roomId}, {_floorId})
+
+function applyMobStats(e: entity, mobName: text, health: number, speed: number, damage: number, roomId: number, floorId: number):
+    set custom name of {_e} to {_mobName}
+    set max health of {_e} to {_health}
+    set health of {_e} to {_health}
+    set movement speed attribute of {_e} to {_speed}
+    set number data tag "mobstat:damage" of {_e} to {_damage}
+    set number data tag "mob:floor" of {_e} to {_floorId}
+    set number data tag "mob:room" of {_e} to {_roomId}
 
 function spawnUndead1(loc: location, roomId: number, floorId: number) :: entity:
     spawn zombie at {_loc}
     set {_e} to last spawned entity
-    set custom name of {_e} to "&cZombie"
-    set max health of {_e} to 50
-    set health of {_e} to 50
-    set movement speed attribute of {_e} to 0.2
     set tool of {_e} to air
-    set number data tag "mobstat:damage" of {_e} to 4
-    set number data tag "mob:floor" of {_e} to {_floorId}
-    set number data tag "mob:room" of {_e} to {_roomId}
+    applyMobStats({_e}, "&cZombie", 50, 0.2, 4, {_roomId}, {_floorId})
     return {_e}
 
 function spawnUndead2(loc: location, roomId: number, floorId: number) :: entity:
     spawn skeleton at {_loc}
     set {_e} to last spawned entity
-    set custom name of {_e} to "&cSkeleton"
-    set max health of {_e} to 35
-    set health of {_e} to 35
-    set movement speed attribute of {_e} to 0.18
     set tool of {_e} to bow
-    set number data tag "mobstat:damage" of {_e} to 6
-    set number data tag "mob:floor" of {_e} to {_floorId}
-    set number data tag "mob:room" of {_e} to {_roomId}
+    applyMobStats({_e}, "&cSkeleton", 35, 0.18, 6, {_roomId}, {_floorId})
     return {_e}
 
 function spawnUndead3(loc: location, roomId: number, floorId: number) :: entity:
     spawn zombie at {_loc}
     set {_e} to last spawned entity
-    set custom name of {_e} to "&cBrute"
-    set max health of {_e} to 75
-    set health of {_e} to 75
-    set movement speed attribute of {_e} to 0.14
     set tool of {_e} to air
     set scale attribute of {_e} to 1.4
-    set number data tag "mobstat:damage" of {_e} to 8
-    set number data tag "mob:floor" of {_e} to {_floorId}
-    set number data tag "mob:room" of {_e} to {_roomId}
+    applyMobStats({_e}, "&cBrute", 75, 0.14, 8, {_roomId}, {_floorId})
     return {_e}
 
 on shoot:
     if projectile is an arrow:
-        if shooter is not player:
+        if shooter is not a player:
             set {_arrow} to event-projectile
-            set {_temp} to number data tag "mobstat:damage" of shooter
-            set number data tag "mobstat:damage" of {_arrow} to {_temp}
+            set number data tag "mobstat:damage" of {_arrow} to number data tag "mobstat:damage" of shooter
             wait 10 seconds
             delete {_arrow}
-            
+
 on death:
-    if victim is not player:
-        set {_FloorId} to number data tag "mob:floor" of victim
-        set {_roomId} to number data tag "mob:room" of victim
-        send "%{_roomId}% | %{_floorId}%" to attacker
-        set {_target} to number data tag "floor1:max" of world "world"
+    if victim is not a player:
+        set {_floorId} to number data tag "mob:floor" of victim
         set {_room} to number data tag "room:id" of attacker
         set {_floor} to number data tag "room%{_room}%:floor" of attacker
-        
-        send "%{_floor}% | %{_room}%" to attacker
-        
+
         if {_floor} = {_floorId}:
-            set {_current} to number data tag "floor:current" of attacker
-            send "%{_current}% / %{_target}%" to attacker
-            set {_current} to {_current} + 1
+            set {_current} to (number data tag "floor:current" of attacker) + 1
             set number data tag "floor:current" of attacker to {_current}
-            send "%{_current}% / %{_target}%" to attacker
+
+            set {_target} to number data tag "floor%{_floorId}%:max" of world "world"
             if {_current} = {_target}:
                 EndRoom(attacker, {_room}, {_floor})
                 send "&aYou have completed the run." to attacker
-        

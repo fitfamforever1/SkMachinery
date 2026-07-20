@@ -1,63 +1,50 @@
+on load:
+    set {maxRooms} to 22
+
+    set {spawnPoints::baseX::1} to 92.9
+    set {spawnPoints::baseZ::1} to 107.9
+    set {spawnPoints::yaw::1} to -180
+
+    set {spawnPoints::baseX::2} to 100.9
+    set {spawnPoints::baseZ::2} to 107.9
+    set {spawnPoints::yaw::2} to 134
+
+    set {spawnPoints::baseX::3} to 108.9
+    set {spawnPoints::baseZ::3} to 107.9
+    set {spawnPoints::yaw::3} to 115
+
+    set {spawnPoints::baseX::4} to 108.9
+    set {spawnPoints::baseZ::4} to 99.9
+    set {spawnPoints::yaw::4} to 90
+
+    set {spawnPoints::baseX::5} to 108.9
+    set {spawnPoints::baseZ::5} to 91.9
+    set {spawnPoints::yaw::5} to 60
+
+    set {spawnPoints::baseX::6} to 100.9
+    set {spawnPoints::baseZ::6} to 91.9
+    set {spawnPoints::yaw::6} to 40
+
+    set {spawnPoints::baseX::7} to 92.9
+    set {spawnPoints::baseZ::7} to 91.9
+    set {spawnPoints::yaw::7} to 0
+
+    set {spawnPoints::baseX::8} to 100.9
+    set {spawnPoints::baseZ::8} to 99
+    set {spawnPoints::yaw::8} to 90
+
 function teleportToRoom(p: player, room: number):
-    set {_baseX} to 88.99
-    set {_baseY} to 1
-    set {_baseZ} to 99.99
-    set {_spacing} to 32
-
-    set {_targetZ} to {_baseZ} + (({_room} - 1) * {_spacing})
-
-    set {_loc} to location({_baseX}, {_baseY}, {_targetZ}, world of {_p},-90 ,0)
+    set {_loc} to location(88.99, 1, 99.99 + (({_room} - 1) * 32), world of {_p}, -90, 0)
     teleport {_p} to {_loc}
 
 function spawnMob(locId: number, roomId: number, floorId: number, mob: text, amount: number):
-    set {_baseX::1} to 92.9
-    set {_baseZ::1} to 107.9
-    set {_yaw::1} to -180
-
-    set {_baseX::2} to 100.9
-    set {_baseZ::2} to 107.9
-    set {_yaw::2} to 134
-
-    set {_baseX::3} to 108.9
-    set {_baseZ::3} to 107.9
-    set {_yaw::3} to 115
-
-    set {_baseX::4} to 108.9
-    set {_baseZ::4} to 99.9
-    set {_yaw::4} to 90
-
-    set {_baseX::5} to 108.9
-    set {_baseZ::5} to 91.9
-    set {_yaw::5} to 60
-
-    set {_baseX::6} to 100.9
-    set {_baseZ::6} to 91.9
-    set {_yaw::6} to 40
-
-    set {_baseX::7} to 92.9
-    set {_baseZ::7} to 91.9
-    set {_yaw::7} to 0
-
-    set {_baseX::8} to 100.9
-    set {_baseZ::8} to 99
-    set {_yaw::8} to 90
-
-    set {_spacing} to 32
-    set {_y} to 1
-    set {_pitch} to 0
-
-    set {_x} to {_baseX::%{_locId}%}
-    set {_z} to {_baseZ::%{_locId}%} + (({_roomId} - 1) * {_spacing})
-    set {_yawVal} to {_yaw::%{_locId}%}
-
-    set {_loc} to location({_x}, {_y}, {_z}, world "world", {_yawVal}, {_pitch})
+    set {_x} to {spawnPoints::baseX::%{_locId}%}
+    set {_z} to {spawnPoints::baseZ::%{_locId}%} + (({_roomId} - 1) * 32)
+    set {_yaw} to {spawnPoints::yaw::%{_locId}%}
+    set {_loc} to location({_x}, 1, {_z}, world "world", {_yaw}, 0)
 
     loop {_amount} times:
         spawn({_loc}, {_mob}, {_roomId}, {_floorId})
-        
-command /test1 <text>:
-    trigger:
-        spawnMob(8, 1, 10, arg-1, 1)
 
 function FreeRoom(max: number) :: number:
     loop {_max} times:
@@ -76,39 +63,36 @@ function StartRoom(p: player, room: number, floor: number):
     send title "" with subtitle "&cʏᴏᴜ ʜᴀᴠᴇ ᴇɴᴛᴇʀᴇᴅ ꜰʟᴏᴏʀ %{_floor}%." to {_p} for 0.8 seconds with fadein 0.2 second and fade out 0.2 second
     wait 1 second
     StartFloor({_room}, {_floor})
-    
+
 function EndRoom(p: player, room: number, floor: number):
     set boolean data tag "room%{_room}%:status" of world "world" to false
     set number data tag "room%{_room}%:floor" of {_p} to 0
     set number data tag "room%{_room}%:floor" of world "world" to 0
     set number data tag "floor:current" of {_p} to 0
-    teleport {_p} to location(0,0,0,"world")
-    
+    teleport {_p} to location(0, 0, 0, "world")
+
 command /room <number>:
     permission: admin.dungeon
     trigger:
         teleportToRoom(player, arg-1)
-        
+
 command /spawn <number> <number> <number> <text> <number>:
     permission: admin.dungeon
     trigger:
         spawnMob(arg-1, arg-2, arg-3, arg-4, arg-5)
-        
+
 command /floor <number>:
     trigger:
-        set {_room} to FreeRoom(22)
+        set {_room} to FreeRoom({maxRooms})
         if {_room} is 0:
             send "&cNo rooms are currently available." to player
             stop
         send "&aYou have been assigned Room" to player
         StartRoom(player, {_room}, arg-1)
-        
+
 command /dungeonreset:
     permission: admin.dungeon
     trigger:
-        loop 22 times:
+        loop {maxRooms} times:
             set boolean data tag "room%loop-number%:status" of world "world" to false
         send "&eAll rooms have been reset." to player
-        
-        
-        
