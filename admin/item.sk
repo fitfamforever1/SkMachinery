@@ -88,20 +88,6 @@ function openItemDialog(p: player):
                     set {_defense} to string tag "defense" of {_nbt}
                     set {_speed} to string tag "speed" of {_nbt}
 
-                    # --- required field validation ---
-                    if {_name} is "" or {_name} is not set:
-                        send "&cItem Name is required. Please try again." to {_p}
-                        openItemDialog({_p})
-                        stop
-                    if {_rarity} is "" or {_rarity} is not set:
-                        send "&cRarity is required. Please try again." to {_p}
-                        openItemDialog({_p})
-                        stop
-                    if {_type} is "" or {_type} is not set:
-                        send "&cItem Type is required. Please try again." to {_p}
-                        openItemDialog({_p})
-                        stop
-
                     # --- output, only showing filled-in values ---
                     send "&7Name: &f%{_name}%" to {_p}
                     send "&7Rarity: &f%{_rarity}%" to {_p}
