@@ -69,6 +69,6 @@ on death:
             set {_current} to {_current} + 1
             set number data tag "floor:current" of attacker to {_current}
             if {_current} >= {_target}:
-                EndRoom({_p})
+                EndRoom({_p}, {_room}, {_floor})
                 send "&aYou have completed the run." to {_p}
         
