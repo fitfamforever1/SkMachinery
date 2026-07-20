@@ -5,6 +5,8 @@ function spawn(loc: location, mob: text, roomId: number, floorId: number):
         spawnUndead2({_loc}, {_roomId}, {_floorId})
     else if {_mob} is "undead3":
         spawnUndead3({_loc}, {_roomId}, {_floorId})
+    else if {_mob} is "undead4":
+        spawnUndead4({_loc}, {_roomId}, {_floorId})
 
 function applyMobStats(e: entity, mobName: text, health: number, speed: number, damage: number, roomId: number, floorId: number):
     set custom name of {_e} to {_mobName}
