@@ -37,6 +37,12 @@ function spawnUndead3(loc: location, roomId: number, floorId: number) :: entity:
     applyMobStats({_e}, "&cBrute", 75, 0.14, 8, {_roomId}, {_floorId})
     return {_e}
 
+function clearRoomMobs(room: number):
+    loop all entities in world "world":
+        if loop-entity is not a player:
+            if (number data tag "mob:room" of loop-entity) is {_room}:
+                delete loop-entity
+
 on shoot:
     if projectile is an arrow:
         if shooter is not a player:
@@ -44,6 +50,11 @@ on shoot:
             set number data tag "mobstat:damage" of {_arrow} to number data tag "mobstat:damage" of shooter
             wait 10 seconds
             delete {_arrow}
+
+on projectile hit:
+    if projectile is an arrow:
+        if (number data tag "mobstat:damage" of projectile) is set:
+            delete projectile
 
 on death:
     if victim is not a player:
@@ -58,12 +69,4 @@ on death:
             set {_target} to number data tag "floor%{_floorId}%:max" of world "world"
             if {_current} = {_target}:
                 EndRoom(attacker, {_room}, {_floor})
-                send "&aYou have completed the run." to attacker    
-                
-function clearRoomMobs(room: number):
-    loop all entities in world "world":
-        if loop-entity is not a player:
-            if (number data tag "mob:room" of loop-entity) is {_room}:
-                delete loop-entity
-                
-                
+                send "&aYou have completed the run." to attacker
