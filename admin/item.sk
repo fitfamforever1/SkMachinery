@@ -1,28 +1,14 @@
-########################################
-# /modifyitem - two-step dialog wizard
-# Requires: SkBee 3.16.0+
-#
-# Step 1: Name, Rarity, Item Type
-# Step 2: Damage, Crit Chance, Crit Damage, Health, Mana, Defense, Speed
-#
-# Values are collected via callback action buttons and printed to chat.
-# Values are pulled from event-nbt using SkBee's `string tag "key" of {_nbt}`
-# syntax (explicit type avoids "not a number" errors from generic `tag`).
-########################################
-
 command /modifyitem:
-    permission: modifyitem.use
-    permission message: &cYou don't have permission to use this.
+    permission: admin.item
     trigger:
-        openItemInfoDialog(player)
+        openItemDialog(player)
 
-# ---------- STEP 1: Name / Rarity / Item Type ----------
-function openItemInfoDialog(p: player):
+function openItemDialog(p: player):
     open new multi action dialog to {_p}:
-        title: "<gold><b>Item Info (1/2)"
-        external_title: "Item Info"
+        title: "&bItem Editor"
+        external_title: "Item Editor"
         can_close_with_escape: true
-        after_action: "wait_for_response"
+        after_action: "close"
         inputs:
             add text input:
                 key: "item_name"
@@ -39,34 +25,6 @@ function openItemInfoDialog(p: player):
                 label: "Item Type"
                 width: 200
                 max_length: 32
-        columns: 1
-        actions:
-            add callback action button:
-                label: "<green>Next ->"
-                width: 200
-                trigger:
-                    set {_nbt} to event-nbt
-                    set {_p} to event-player
-                    set {_uuid} to uuid of {_p}
-
-                    set {_name} to string tag "item_name" of {_nbt}
-                    set {_rarity} to string tag "item_rarity" of {_nbt}
-                    set {_type} to string tag "item_type" of {_nbt}
-
-                    set {itemwizard::%{_uuid}%::name} to {_name}
-                    set {itemwizard::%{_uuid}%::rarity} to {_rarity}
-                    set {itemwizard::%{_uuid}%::type} to {_type}
-
-                    openStatsDialog({_p})
-
-# ---------- STEP 2: Stats ----------
-function openStatsDialog(p: player):
-    open new multi action dialog to {_p}:
-        title: "<gold><b>Item Stats (2/2)"
-        external_title: "Item Stats"
-        can_close_with_escape: true
-        after_action: "wait_for_response"
-        inputs:
             add text input:
                 key: "damage"
                 label: "Damage"
@@ -106,12 +64,14 @@ function openStatsDialog(p: player):
         actions:
             add callback action button:
                 label: "<green>Submit"
-                width: 150
+                width: 200
                 trigger:
                     set {_nbt} to event-nbt
                     set {_p} to event-player
-                    set {_uuid} to uuid of {_p}
 
+                    set {_name} to string tag "item_name" of {_nbt}
+                    set {_rarity} to string tag "item_rarity" of {_nbt}
+                    set {_type} to string tag "item_type" of {_nbt}
                     set {_damage} to string tag "damage" of {_nbt}
                     set {_critchance} to string tag "crit_chance" of {_nbt}
                     set {_critdamage} to string tag "crit_damage" of {_nbt}
@@ -122,9 +82,9 @@ function openStatsDialog(p: player):
 
                     send "&8&m----------------------------" to {_p}
                     send "&a&lItem Created!" to {_p}
-                    send "&7Name: &f%{itemwizard::%{_uuid}%::name}%" to {_p}
-                    send "&7Rarity: &f%{itemwizard::%{_uuid}%::rarity}%" to {_p}
-                    send "&7Type: &f%{itemwizard::%{_uuid}%::type}%" to {_p}
+                    send "&7Name: &f%{_name}%" to {_p}
+                    send "&7Rarity: &f%{_rarity}%" to {_p}
+                    send "&7Type: &f%{_type}%" to {_p}
                     send "&7Damage: &f%{_damage}%" to {_p}
                     send "&7Crit Chance: &f%{_critchance}%%%" to {_p}
                     send "&7Crit Damage: &f%{_critdamage}%%%" to {_p}
@@ -133,5 +93,3 @@ function openStatsDialog(p: player):
                     send "&7Defense: &f%{_defense}%" to {_p}
                     send "&7Speed: &f%{_speed}%" to {_p}
                     send "&8&m----------------------------" to {_p}
-
-                    delete {itemwizard::%{_uuid}%::*}
