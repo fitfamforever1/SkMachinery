@@ -108,7 +108,7 @@ function openItemDialog(p: player):
                     set {_item} to unbreakable tool
                     set item flags of {_item} to all item flags
                     
-                    if {_damage}, {_critchance}, {_critdamage}, {_health}, {_mana}, {_defense} or {_speed}:
+                    if {_damage}, {_critchance}, {_critdamage}, {_health}, {_mana}, {_defense} or {_speed} is not 0:
                         set {_max} to 1
                     
                     set name of {_item} to "&f%{_name}%"
