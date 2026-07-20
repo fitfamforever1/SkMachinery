@@ -92,19 +92,19 @@ function openItemDialog(p: player):
                     send "&7Name: &f%{_name}%" to {_p}
                     send "&7Rarity: &f%{_rarity}%" to {_p}
                     send "&7Type: &f%{_type}%" to {_p}
-                    if {_ability} is set:
+                    if {_ability} is not "0":
                         send "&7Ability: &f%{_ability}%" to {_p}
-                    if {_damage} is set:
+                    if {_damage} is not "0":
                         send "&7Damage: &f%{_damage}%" to {_p}
-                    if {_critchance} is set:
+                    if {_critchance} is not "0":
                         send "&7Crit Chance: &f%{_critchance}%%%" to {_p}
-                    if {_critdamage} is set:
+                    if {_critdamage} is not "0":
                         send "&7Crit Damage: &f%{_critdamage}%%%" to {_p}
-                    if {_health} is set:
+                    if {_health} is not "0":
                         send "&7Health: &f%{_health}%" to {_p}
-                    if {_mana} is set:
+                    if {_mana} is not "0":
                         send "&7Mana: &f%{_mana}%" to {_p}
-                    if {_defense} is set:
+                    if {_defense} is not "0":
                         send "&7Defense: &f%{_defense}%" to {_p}
-                    if {_speed} is set:
+                    if {_speed} is not "0":
                         send "&7Speed: &f%{_speed}%" to {_p}
