@@ -277,7 +277,7 @@ function stat(p: player):
 
     loop tool of {_p}, helmet of {_p}, chestplate of {_p}, leggings of {_p} and boots of {_p}:
         if loop-value is air:
-            next loop
+            break
 
         add number data tag "itemstat:damage" of loop-value to {_damage}
         add number data tag "itemstat:defense" of loop-value to {_defense}
