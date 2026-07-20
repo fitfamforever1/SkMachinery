@@ -57,10 +57,6 @@ on projectile hit:
         if (number data tag "mobstat:damage" of projectile) is set:
             delete projectile
             
-on target:
-    if target is not player:
-        if event-entity is a enderman, spider, witch, skeleton or zombie:
-            cancel the event
 
 on death:
     if victim is not a player:
