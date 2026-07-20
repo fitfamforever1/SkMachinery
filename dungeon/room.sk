@@ -141,7 +141,7 @@ command /dungeonreset:
 command /test <number>:
     trigger:
         if {spawnPoints::baseX::%arg-1%} is set:
-            teleport player to location({spawnPoints::baseX::%arg-1%}, 65, {spawnPoints::baseZ::%arg-1%}, player's world, {spawnPoints::yaw::%arg-1%}, 0)
+            teleport player to location({spawnPoints::baseX::%arg-1%}, 1, {spawnPoints::baseZ::%arg-1%}, player's world, {spawnPoints::yaw::%arg-1%}, 0)
             send "&aTeleported to spawn point %arg-1%." to player
         else:
             send "&cInvalid spawn point number. Use 1-8." to player
