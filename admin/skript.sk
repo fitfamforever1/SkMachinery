@@ -7,16 +7,19 @@ command /checkfiles:
     permission: admin.skript
     trigger:
         send "&aScanning Skripts" to player
-        set {_folder} to new File("plugins/Skript/scripts/")
-        set {_files::*} to {_folder}.listFiles()
+        set {_folder} to Paths.get("plugins/Skript/scripts/", new String[0])
         set {_total} to 0
+        set {_count} to 0
         
-        loop {_files::*}:
-            set {_file} to loop-value
-            if {_file}.isFile() is true:
-                if {_file}.getName().endsWith(".sk") is true:
-                    set {_path} to Paths.get({_file}.getAbsolutePath(), new String[0])
+        set {_paths::*} to Files.walk({_folder}).toArray()
+        
+        loop {_paths::*}:
+            set {_path} to loop-value
+            if {_path}.toFile().isFile() is true:
+                if {_path}.toString().endsWith(".sk") is true:
                     set {_lines} to Files.lines({_path}).count()
                     add {_lines} to {_total}
+                    add 1 to {_count}
+                    send "&e%{_path}.getFileName()%&7: &b%{_lines}% lines" to player
                     
-        send "&aScan complete! &7Total: &b%{_total}% lines" to player
+        send "&aScan complete! &7Found &b%{_count}%&7 files, &7Total: &b%{_total}% lines" to player
