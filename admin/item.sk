@@ -119,9 +119,13 @@ function openItemDialog(p: player):
                         send "&7Speed: &f%{_speed}%" to {_p}
                         
                     set {_item} to {_p}'s tool
-                    set the name of the {_item} to "&f%{_name}%"
+                    if {_item} is air:
+                        send "&cYou must hold an item to modify." to {_p}
+                        stop
+                    
+                    set name of {_item} to "&f%{_name}%"
                     set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
-                    set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e{_type}"
+                    set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_type}%"
                     set line 3 of lore of {_item} to "&8┃ &7ʀᴀʀɪᴛʏ &8» %{_rarity}%"
                     
                     set {_p}'s tool to {_item}
