@@ -15,8 +15,11 @@ command /checkfiles:
         delete {SkriptScan::*}
 
 function scanFolder(folder: object, p: object):
-    loop {_folder}.listFiles():
-        set {_item} to loop-value
+    set {_items} to {_folder}.listFiles()
+    set {_len} to {_items}.length
+    set {_i} to 0
+    while {_i} < {_len}:
+        set {_item} to {_items}[{_i}]
         if {_item}.isDirectory() is true:
             scanFolder({_item}, {_p})
         else if {_item}.getName().endsWith(".sk") is true:
@@ -24,3 +27,4 @@ function scanFolder(folder: object, p: object):
             add {_lines} to {SkriptScan::total}
             add 1 to {SkriptScan::count}
             send "&e%{_item}.getName()%&7: &b%{_lines}% lines" to {_p}
+        add 1 to {_i}
