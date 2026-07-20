@@ -200,18 +200,47 @@ command /damage <player> <number>:
         
 function calculateAttack(p: player) :: number:
     set {_base} to number data tag "playerstat:damage" of {_p}
-    set {_critChance} to number data tag "current:crit_chance" of {_p}
-    set {_critDamage} to number data tag "current:crit_damage" of {_p}
-
-    set {_roll} to a random number between 1 and 100
-
-    if {_roll} <= {_critChance}:
-        set {_critDamage} to {_critDamage} / 100
-        set {_finalDamage} to {_base} + ({_base} * {_critDamage} / 100)
-    else:
-        set {_finalDamage} to {_base}
+    set {_finalDamage} to {_base}
 
     return {_finalDamage}
+    
+function calculateCrit(p: player) :: number:
+    set {_base} to number data tag "playerstat:damage" of {_p}
+    set {_critDamage} to number data tag "current:crit_damage" of {_p}
+    set {_critDamage} to {_critDamage} / 100
+    set {_finalDamage} to {_base} + ({_base} * {_critDamage})
+    
+    return {_finalDamage}
+
+function displayDamage(attacker: player, victim: entity, damage: number):
+    set {_radius} to 0.6
+    set {_theta} to random number between 0 and 360
+    set {_phi} to random number between 0 and 180
+    set {_offsetX} to {_radius} * sin({_phi}) * cos({_theta})
+    set {_offsetY} to {_radius} * cos({_phi})
+    set {_offsetZ} to {_radius} * sin({_phi}) * sin({_theta})
+
+    set {_loc} to location of {_victim}
+    add 1 to y-coordinate of {_loc} 
+    add {_offsetX} to x-coordinate of {_loc}
+    add {_offsetY} to y-coordinate of {_loc}
+    add {_offsetZ} to z-coordinate of {_loc}
+
+    spawn text display at {_loc}
+    set {_display} to last spawned text display
+
+    set billboard of {_display} to center
+    set interpolation duration of {_display} to 2 ticks
+
+    if {_damage} >= 20:
+        set text of {_display} to "&4&l%round({_damage}, 1)%"
+    else if {_damage} >= 10:
+        set text of {_display} to "&c%round({_damage}, 1)%"
+    else:
+        set text of {_display} to "&e%round({_damage}, 1)%"
+
+    wait 1 second
+    delete {_display}
     
 on damage:
     if victim is a player:
@@ -228,7 +257,17 @@ on damage:
             set damage to 0
             stop
     else if attacker is a player:
-        set damage to calculateAttack(attacker)
+        set {_critChance} to number data tag "current:crit_chance" of attacker
+        set {_roll} to a random number between 1 and 100
+
+        if {_roll} <= {_critChance}:
+            set {_temp} to calculateCrit(attacker)
+            displayDamage(attacker, victim, {_test})
+            set damage to {_temp}
+        else:
+            set {_temp} to calculateAttack(attacker)
+            displayDamage(attacker, victim, {_test})
+            set damage to {_temp}
     else:
         cancel event
         
