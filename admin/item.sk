@@ -29,41 +29,41 @@ function openItemDialog(p: player):
                 key: "damage"
                 label: "Damage"
                 initial: "0"
-                width: 150
+                width: 190
             add text input:
                 key: "crit_chance"
                 label: "Crit Chance"
                 initial: "0"
-                width: 150
+                width: 190
             add text input:
                 key: "crit_damage"
                 label: "Crit Damage"
                 initial: "0"
-                width: 150
+                width: 190
             add text input:
                 key: "health"
                 label: "Health"
                 initial: "0"
-                width: 150
+                width: 190
             add text input:
                 key: "mana"
                 label: "Mana"
                 initial: "0"
-                width: 150
+                width: 190
             add text input:
                 key: "defense"
                 label: "Defense"
                 initial: "0"
-                width: 150
+                width: 190
             add text input:
                 key: "speed"
                 label: "Speed"
                 initial: "0"
-                width: 150
+                width: 190
         columns: 1
         actions:
             add callback action button:
-                label: "<green>Submit"
+                label: "&aSubmit"
                 width: 200
                 trigger:
                     set {_nbt} to event-nbt
