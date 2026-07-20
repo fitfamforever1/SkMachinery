@@ -135,8 +135,3 @@ function openStatsDialog(p: player):
                     send "&8&m----------------------------" to {_p}
 
                     delete {itemwizard::%{_uuid}%::*}
-            add static action button:
-                label: "<red><- Back"
-                width: 150
-                action:
-                    close dialog
