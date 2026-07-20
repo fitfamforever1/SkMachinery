@@ -26,7 +26,7 @@ on join:
         set number data tag "current:health" of player to 20
         
         set number data tag "playerstat:crit_chance" of player to 30
-        set number data tag "playersta:crit_damage" of player to 50
+        set number data tag "playerstat:crit_damage" of player to 50
         
 command /statreset <player>:
     permission: admin.stat
@@ -52,7 +52,7 @@ command /stat <player>:
         send message "&7Speed: &f%data tag "stat:speed" of arg-1%" to arg-1
         send message "&7Health: &f%data tag "stat:health" of arg-1%" to arg-1
         send message "&7Mana: &f%data tag "stat:mana" of arg-1%" to arg-1
-        send message "&7Level: &f%data tag "stat:lvl" of arg-1%" to arg-1
+        send message "&7Level: &f%data tag "playerstat:lvl" of arg-1%" to arg-1
         send message "&7Current Mana: &f%data tag "current:mana" of arg-1%" to arg-1
         send message "&7Current Health: &f%data tag "current:health" of arg-1%" to arg-1
         send message "&7Crit Chance: &f%data tag "stat:crit_chance" of arg-1%%%" to arg-1
