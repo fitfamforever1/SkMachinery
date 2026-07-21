@@ -199,7 +199,7 @@ function calculateCrit(p: player) :: number:
     return {_finalDamage}
 
 function displayDamage(victim: entity, damage: number):
-    set {_radius} to 1.4
+    set {_radius} to 1
     set {_theta} to random number between 0 and 360
     set {_phi} to random number between 0 and 180
     set {_offsetX} to {_radius} * sin({_phi}) * cos({_theta})
