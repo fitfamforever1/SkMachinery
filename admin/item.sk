@@ -166,7 +166,7 @@ command /pdcset [<text>] [<text>]:
         set player's held item to {_item}
         send "&aSet &e%{_key}% &a= &e%{_val}%&a on held item."
         
-function sword(item: item, level: number):
+function sword(item: item, level: number):: item:
     set {_type} to "sword"
 
     set {_damage} to round(8 + ({_level} * 1.8))
@@ -190,7 +190,7 @@ function sword(item: item, level: number):
     
     return {_item}
     
-function axe(item: item, level: number):
+function axe(item: item, level: number):: item:
     set {_type} to "axe"
 
     set {_damage} to round((8 + ({_level} * 1.8)) * 1.15)
