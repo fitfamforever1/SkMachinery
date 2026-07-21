@@ -1,19 +1,30 @@
 command /dummy [<text>]:
-    permission: admin.dummy
+    description: Spawns or removes a training dummy
+    permission: skript.dummy
+    permission message: &cYou don't have permission to do that.
     trigger:
         if arg-1 is "remove":
-            if {dummies::*} is set:
-                loop {dummies::*}:
-                    if loop-value is set:
-                        delete loop-value
-                delete {dummies::*}
-                send "&aAll training dummies removed." to player
-            else:
-                send "&cThere are no dummies to remove." to player
+            loop all armor stands in radius 10 of player:
+                set {_tag} to string tag "custom;dummy" of nbt of loop-entity
+                if {_tag} is "true":
+                    delete loop-entity
+            send "&aNearby training dummies removed." to player
             stop trigger
         set {_loc} to location 2 meters in front of player
         spawn armor stand at {_loc}:
             set {_dummy} to last spawned entity
-        set entity data of {_dummy} to nbt compound from string "{Invulnerable:1b,CustomName:'{""text"":""Dummy""}',CustomNameVisible:1b,NoGravity:1b}"
-        add {_dummy} to {dummies::*}
+        set string tag "custom;dummy" of nbt of {_dummy} to "true"
+        set string tag "CustomName" of nbt of {_dummy} to "{""text"":""Dummy""}"
+        set string tag "Invulnerable" of nbt of {_dummy} to "1b"
+        set string tag "CustomNameVisible" of nbt of {_dummy} to "1b"
+        set string tag "NoGravity" of nbt of {_dummy} to "1b"
         send "&aTraining dummy spawned!" to player
+
+on right click on armor stand:
+    if player is an operator:
+        set {_tag} to string tag "custom;dummy" of nbt of clicked entity
+        if {_tag} is "true":
+            delete clicked entity
+            send "&aDummy removed!" to player
+        else:
+            send "&cThat's not a dummy." to player
