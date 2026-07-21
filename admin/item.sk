@@ -3,23 +3,6 @@ command /modifyitem:
     trigger:
         openItemDialog(player)
 
-function getRarityLine(rarity: text) :: text:
-    if {_rarity} is "common":
-        return "&fᴄᴏᴍᴍᴏɴ"
-    if {_rarity} is "uncommon":
-        return "&aᴜɴᴄᴏᴍᴍᴏɴ"
-    if {_rarity} is "rare":
-        return "&9ʀᴀʀᴇ"
-    if {_rarity} is "epic":
-        return "&5ᴇᴘɪᴄ"
-    if {_rarity} is "legendary":
-        return "&6ʟᴇɢᴇɴᴅᴀʀʏ"
-    if {_rarity} is "mythic":
-        return "&dᴍʏᴛʜɪᴄᴀʟ"
-    if {_rarity} is "special":
-        return "&cꜱᴘᴇᴄɪᴀʟ"
-    return {_rarity}
-
 function openItemDialog(p: player):
     open new multi action dialog to {_p}:
         title: "&bItem Editor"
@@ -96,7 +79,9 @@ function openItemDialog(p: player):
                     set {_mana} to string tag "mana" of {_nbt}
                     set {_defense} to string tag "defense" of {_nbt}
                     set {_speed} to string tag "speed" of {_nbt}
-
+                    
+                    set data tag "itemstat:type" of {_item} to {_type}
+                    
                     set {_typeline} to SmallCaps({_type})
 
                     set {_item} to {_p}'s tool
@@ -180,3 +165,91 @@ command /pdcset [<text>] [<text>]:
         set data tag {_key} of {_item} to {_val}
         set player's held item to {_item}
         send "&aSet &e%{_key}% &a= &e%{_val}%&a on held item."
+        
+function sword(item: item, level: number):
+    set {_type} to "sword"
+
+    set {_damage} to round(8 + ({_level} * 1.8))
+    set {_critchance} to round(5 + ({_level} * 0.3))
+    set {_critdamage} to round(50 + ({_level} * 1.0))
+
+    set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
+    set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_type}%"
+    set line 3 of lore of {_item} to "&8┃ &7ʟᴇᴠᴇʟ &8» &c%{_level}%"
+    set line 4 of lore of {_item} to ""
+    set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
+    set line 6 of lore of {_item} to "&8┃ &7ᴅᴀᴍᴀɢᴇ &8» &c+%{_damage}%"
+    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%"
+    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%"
+
+    set number data tag "itemstat:level" of {_item} to {_level}
+    set data tag "itemstat:type" of {_item} to {_type}
+    set number data tag "itemstat:damage" of {_item} to {_damage}
+    set number data tag "itemstat:crit_chance" of {_item} to {_critchance}
+    set number data tag "itemstat:crit_damage" of {_item} to {_critdamage}
+    
+function axe(item: item, level: number):
+    set {_type} to "axe"
+
+    set {_damage} to round((8 + ({_level} * 1.8)) * 1.15)
+    set {_critchance} to round(2 + ({_level} * 0.08))
+    set {_critdamage} to round(35 + ({_level} * 0.5))
+
+    set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
+    set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_type}%"
+    set line 3 of lore of {_item} to "&8┃ &7ʟᴇᴠᴇʟ &8» &c%{_level}%"
+    set line 4 of lore of {_item} to ""
+    set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
+    set line 6 of lore of {_item} to "&8┃ &7ᴅᴀᴍᴀɢᴇ &8» &c+%{_damage}%"
+    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%"
+    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%"
+
+    set number data tag "itemstat:level" of {_item} to {_level}
+    set data tag "itemstat:type" of {_item} to {_type}
+    set number data tag "itemstat:damage" of {_item} to {_damage}
+    set number data tag "itemstat:crit_chance" of {_item} to {_critchance}
+    set number data tag "itemstat:crit_damage" of {_item} to {_critdamage}
+    
+function dagger(item: item, level: number):
+    set {_type} to "dagger"
+
+    set {_damage} to round((8 + ({_level} * 1.8)) * 0.8)
+    set {_critchance} to round(10 + ({_level} * 0.5))
+    set {_critdamage} to round(80 + ({_level} * 1.4))
+
+    set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
+    set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_type}%"
+    set line 3 of lore of {_item} to "&8┃ &7ʟᴇᴠᴇʟ &8» &c%{_level}%"
+    set line 4 of lore of {_item} to ""
+    set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
+    set line 6 of lore of {_item} to "&8┃ &7ᴅᴀᴍᴀɢᴇ &8» &c+%{_damage}%"
+    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%"
+    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%"
+
+    set number data tag "itemstat:level" of {_item} to {_level}
+    set data tag "itemstat:type" of {_item} to {_type}
+    set number data tag "itemstat:damage" of {_item} to {_damage}
+    set number data tag "itemstat:crit_chance" of {_item} to {_critchance}
+    set number data tag "itemstat:crit_damage" of {_item} to {_critdamage}
+    
+command /modifyweapon <text> <number>:
+    permission: op
+    trigger:
+        set {_item} to player's tool
+
+        if {_item} is air:
+            send "&cYou must be holding a weapon."
+            stop
+
+        if arg-1 is "sword":
+            sword({_item}, arg-2)
+        else if arg-1 is "axe":
+            axe({_item}, arg-2)
+        else if arg-1 is "dagger":
+            dagger({_item}, arg-2)
+        else:
+            send "&cTypes: sword, axe, dagger"
+            stop
+
+        set player's tool to {_item}
+        send "&aModified weapon to &eLvl %arg-2% %arg-1%&7)."
