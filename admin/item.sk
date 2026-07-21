@@ -179,8 +179,8 @@ function sword(item: item, level: number):
     set line 4 of lore of {_item} to ""
     set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
     set line 6 of lore of {_item} to "&8┃ &7ᴅᴀᴍᴀɢᴇ &8» &c+%{_damage}%"
-    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%"
-    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%"
+    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%%"
+    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%%"
 
     set number data tag "itemstat:level" of {_item} to {_level}
     set data tag "itemstat:type" of {_item} to {_type}
@@ -201,8 +201,8 @@ function axe(item: item, level: number):
     set line 4 of lore of {_item} to ""
     set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
     set line 6 of lore of {_item} to "&8┃ &7ᴅᴀᴍᴀɢᴇ &8» &c+%{_damage}%"
-    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%"
-    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%"
+    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%%"
+    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%%"
 
     set number data tag "itemstat:level" of {_item} to {_level}
     set data tag "itemstat:type" of {_item} to {_type}
@@ -223,8 +223,8 @@ function dagger(item: item, level: number):
     set line 4 of lore of {_item} to ""
     set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ꜱᴛᴀᴛꜱ"
     set line 6 of lore of {_item} to "&8┃ &7ᴅᴀᴍᴀɢᴇ &8» &c+%{_damage}%"
-    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%"
-    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%"
+    set line 7 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴄʜᴀɴᴄᴇ &8» &9+%{_critchance}%%%"
+    set line 8 of lore of {_item} to "&8┃ &7ᴄʀɪᴛ ᴅᴀᴍᴀɢᴇ &8» &9+%{_critdamage}%%%"
 
     set number data tag "itemstat:level" of {_item} to {_level}
     set data tag "itemstat:type" of {_item} to {_type}
