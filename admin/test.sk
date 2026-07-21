@@ -1,0 +1,19 @@
+command /dummy [<text>]:
+    permission: admin.dummy
+    trigger:
+        if arg-1 is "remove":
+            if {dummies::*} is set:
+                loop {dummies::*}:
+                    if loop-value is set:
+                        delete loop-value
+                delete {dummies::*}
+                send "&aAll training dummies removed." to player
+            else:
+                send "&cThere are no dummies to remove." to player
+            stop trigger
+        set {_loc} to location 2 meters in front of player
+        spawn armor stand at {_loc}:
+            set {_dummy} to last spawned entity
+        set entity data of {_dummy} to nbt compound from string "{Invulnerable:1b,CustomName:'{""text"":""Dummy""}',CustomNameVisible:1b,NoGravity:1b}"
+        add {_dummy} to {dummies::*}
+        send "&aTraining dummy spawned!" to player
