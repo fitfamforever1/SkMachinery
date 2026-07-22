@@ -297,18 +297,18 @@ function stat(p: player):
                 add number data tag "itemstat:crit_chance" of loop-value to {_crit_chance}
                 add number data tag "itemstat:crit_damage" of loop-value to {_crit_damage}
             
-    loop tool of {_p}:
-        if loop-value is not air:
-            if levelreq({_p}, loop-value) is true:
-                set {_temp} to number data tag "itemstat:type" of {_p}
-                if {_temp} is "weapan":
-                    add number data tag "itemstat:damage" of loop-value to {_damage}
-                    add number data tag "itemstat:defense" of loop-value to {_defense}
-                    add number data tag "itemstat:speed" of loop-value to {_speed}
-                    add number data tag "itemstat:health" of loop-value to {_health}
-                    add number data tag "itemstat:mana" of loop-value to {_mana}
-                    add number data tag "itemstat:crit_chance" of loop-value to {_crit_chance}
-                    add number data tag "itemstat:crit_damage" of loop-value to {_crit_damage}
+                set {_item} to {_p}'s tool
+                if {_item} is not air:
+                    if levelreq({_p}, {_item}) is true:
+                        set {_temp} to data tag "itemstat:type" of {_item}
+                        if {_temp} is "weapon":
+                            add number data tag "itemstat:damage" of {_item} to {_damage}
+                            add number data tag "itemstat:defense" of {_item} to {_defense}
+                            add number data tag "itemstat:speed" of {_item} to {_speed}
+                            add number data tag "itemstat:health" of {_item} to {_health}
+                            add number data tag "itemstat:mana" of {_item} to {_mana}
+                            add number data tag "itemstat:crit_chance" of {_item} to {_crit_chance}
+                            add number data tag "itemstat:crit_damage" of {_item} to {_crit_damage}
                 
     set number data tag "stat:damage" of {_p} to {_damage}
     set number data tag "stat:defense" of {_p} to {_defense}
