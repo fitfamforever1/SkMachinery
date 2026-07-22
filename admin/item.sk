@@ -387,7 +387,7 @@ command /modifyarmor <number>:
         if {_item} is tagged as item tag "helmets":
             set {_item} to helmet({_item}, arg-1)
             set {_slot} to "helmet"
-        else if {_item} is tagged as item tag"chestplates":
+        else if {_item} is tagged as item tag "chestplates":
             set {_item} to chestplate({_item}, arg-1)
             set {_slot} to "chestplate"
         else if {_item} is tagged as item tag "leggings":
