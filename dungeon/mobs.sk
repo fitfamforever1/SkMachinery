@@ -1,41 +1,32 @@
-function getFloorLevel(floorId: number) :: number:
-    set {_level} to {_floorId}
-    if {_level} < 1:
-        set {_level} to 1
-    return {_level}
-
-function scaleStat(base: number, level: number, growth: number) :: number:
-    return {_base} + (({_level} - 1) * {_growth})
-
 function getCategoryStat(category: text, stat: text, level: number) :: number:
     if {_category} is "balanced":
         if {_stat} is "health":
-            return scaleStat(90, {_level}, 10)
+            return 90 + (({_level} - 1) * 10)
         else if {_stat} is "speed":
-            return scaleStat(0.2, {_level}, 0.0015)
+            return 0.2
         else if {_stat} is "damage":
-            return scaleStat(8, {_level}, 1.2)
+            return 8 + (({_level} - 1) * 1.2)
     else if {_category} is "tank":
         if {_stat} is "health":
-            return scaleStat(180, {_level}, 20)
+            return 180 + (({_level} - 1) * 20)
         else if {_stat} is "speed":
-            return scaleStat(0.14, {_level}, 0.0008)
+            return 0.14
         else if {_stat} is "damage":
-            return scaleStat(18, {_level}, 2.5)
+            return 18 + (({_level} - 1) * 2.5)
     else if {_category} is "ranged":
         if {_stat} is "health":
-            return scaleStat(70, {_level}, 8)
+            return 70 + (({_level} - 1) * 8)
         else if {_stat} is "speed":
-            return scaleStat(0.18, {_level}, 0.001)
+            return 0.18
         else if {_stat} is "damage":
-            return scaleStat(10, {_level}, 1.5)
+            return 10 + (({_level} - 1) * 1.5)
     else if {_category} is "boss":
         if {_stat} is "health":
-            return scaleStat(400, {_level}, 50)
+            return 400 + (({_level} - 1) * 50)
         else if {_stat} is "speed":
-            return scaleStat(0.2, {_level}, 0.0015)
+            return 0.2
         else if {_stat} is "damage":
-            return scaleStat(40, {_level}, 5)
+            return 40 + (({_level} - 1) * 5)
     return 0
 
 function spawn(loc: location, mob: text, roomId: number, floorId: number):
@@ -49,7 +40,7 @@ function spawn(loc: location, mob: text, roomId: number, floorId: number):
         spawnUndead4({_loc}, {_roomId}, {_floorId})
 
 function applyMobStats(e: entity, mobName: text, category: text, health: number, speed: number, damage: number, roomId: number, floorId: number, level: number):
-    set custom name of {_e} to "%{_mobName}% &7[Lv. %{_level}%]"
+    set custom name of {_e} to "%{_mobName}% &8[&a%{_level}%&8]"
     set max health of {_e} to {_health}
     set health of {_e} to {_health}
     set movement speed attribute of {_e} to {_speed}
@@ -63,7 +54,7 @@ function applyMobStats(e: entity, mobName: text, category: text, health: number,
 
 
 function spawnUndead1(loc: location, roomId: number, floorId: number) :: entity:
-    set {_level} to getFloorLevel({_floorId})
+    set {_level} to {_floorId}
     set {_category} to "balanced"
     set {_health} to getCategoryStat({_category}, "health", {_level})
     set {_speed} to getCategoryStat({_category}, "speed", {_level})
@@ -76,7 +67,7 @@ function spawnUndead1(loc: location, roomId: number, floorId: number) :: entity:
     return {_e}
 
 function spawnUndead2(loc: location, roomId: number, floorId: number) :: entity:
-    set {_level} to getFloorLevel({_floorId})
+    set {_level} to {_floorId}
     set {_category} to "ranged"
     set {_health} to getCategoryStat({_category}, "health", {_level})
     set {_speed} to getCategoryStat({_category}, "speed", {_level})
@@ -89,7 +80,7 @@ function spawnUndead2(loc: location, roomId: number, floorId: number) :: entity:
     return {_e}
 
 function spawnUndead3(loc: location, roomId: number, floorId: number) :: entity:
-    set {_level} to getFloorLevel({_floorId})
+    set {_level} to {_floorId}
     set {_category} to "tank"
     set {_health} to getCategoryStat({_category}, "health", {_level})
     set {_speed} to getCategoryStat({_category}, "speed", {_level})
@@ -103,7 +94,7 @@ function spawnUndead3(loc: location, roomId: number, floorId: number) :: entity:
     return {_e}
 
 function spawnUndead4(loc: location, roomId: number, floorId: number) :: entity:
-    set {_level} to getFloorLevel({_floorId})
+    set {_level} to {_floorId}
     set {_category} to "boss"
     set {_health} to getCategoryStat({_category}, "health", {_level})
     set {_speed} to getCategoryStat({_category}, "speed", {_level})
