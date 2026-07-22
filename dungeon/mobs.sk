@@ -23,7 +23,7 @@ function spawnUndead1(loc: location, roomId: number, floorId: number) :: entity:
     spawn zombie at {_loc}
     set {_e} to last spawned entity
     set tool of {_e} to air
-    applyMobStats({_e}, "&cZombie", 50, 0.2, 8, {_roomId}, {_floorId})
+    applyMobStats({_e}, "&cZombie", 100, 0.2, 8, {_roomId}, {_floorId})
     return {_e}
 
 function spawnUndead2(loc: location, roomId: number, floorId: number) :: entity:
@@ -38,7 +38,7 @@ function spawnUndead3(loc: location, roomId: number, floorId: number) :: entity:
     set {_e} to last spawned entity
     set tool of {_e} to air
     set scale attribute of {_e} to 1.4
-    applyMobStats({_e}, "&cBrute", 150, 0.14, 18, {_roomId}, {_floorId})
+    applyMobStats({_e}, "&cBrute", 200, 0.14, 18, {_roomId}, {_floorId})
     return {_e}
     
 function spawnUndead4(loc: location, roomId: number, floorId: number) :: entity:
