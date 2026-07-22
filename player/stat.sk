@@ -301,8 +301,7 @@ function stat(p: player):
                 if {_item} is not air:
                     if levelreq({_p}, {_item}) is true:
                         set {_temp} to data tag "itemstat:type" of {_item}
-                        send "%{_temp}%" to {_p}
-                        if {_temp} is "weapon":
+                        if {_temp} is "sword", "dagger" or "axe":
                             
                             add number data tag "itemstat:damage" of {_item} to {_damage}
                             add number data tag "itemstat:defense" of {_item} to {_defense}
