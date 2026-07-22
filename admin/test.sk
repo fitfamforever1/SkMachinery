@@ -7,4 +7,158 @@ command /dummy:
         set max health of {_e} to 1000
         set health of {_e} to 1000
        
-        
+command /giveweapon <text>:
+    permission: op
+    trigger:
+        if arg-1 is "rustedshortsword":
+            give sword(wooden sword named "&fRusted Shortsword", 1) to player
+        else if arg-1 is "huntersknife":
+            give dagger(golden sword named "&fHunter's Knife", 1) to player
+
+        else if arg-1 is "lumberhatchet":
+            give axe(stone axe named "&fLumber Hatchet", 2) to player
+        else if arg-1 is "bronzesword":
+            give sword(stone sword named "&fBronze Sword", 2) to player
+
+        else if arg-1 is "scoutdirk":
+            give dagger(golden sword named "&fScout Dirk", 3) to player
+        else if arg-1 is "splitteraxe":
+            give axe(stone axe named "&fSplitter Axe", 3) to player
+
+        else if arg-1 is "guardsword":
+            give sword(iron sword named "&fGuard Sword", 4) to player
+        else if arg-1 is "banditshiv":
+            give dagger(golden sword named "&fBandit Shiv", 4) to player
+
+        else if arg-1 is "raideraxe":
+            give axe(iron axe named "&fRaider Axe", 5) to player
+        else if arg-1 is "ironbroadsword":
+            give sword(iron sword named "&fIron Broadsword", 5) to player
+
+        else if arg-1 is "twinfangs":
+            give dagger(golden sword named "&fTwin Fangs", 6) to player
+        else if arg-1 is "heavycleaver":
+            give axe(iron axe named "&fHeavy Cleaver", 6) to player
+
+        else if arg-1 is "mercenaryblade":
+            give sword(iron sword named "&fMercenary Blade", 7) to player
+        else if arg-1 is "woodmansaxe":
+            give axe(iron axe named "&fWoodman's Axe", 7) to player
+
+        else if arg-1 is "venomfang":
+            give dagger(golden sword named "&fVenom Fang", 8) to player
+        else if arg-1 is "soldiersword":
+            give sword(iron sword named "&fSoldier Sword", 8) to player
+
+        else if arg-1 is "skullsplitter":
+            give axe(iron axe named "&fSkull Splitter", 9) to player
+        else if arg-1 is "knightsblade":
+            give sword(iron sword named "&fKnight's Blade", 9) to player
+
+        else if arg-1 is "silentdagger":
+            give dagger(golden sword named "&fSilent Dagger", 10) to player
+        else if arg-1 is "waraxe":
+            give axe(diamond axe named "&fWar Axe", 10) to player
+
+        else if arg-1 is "crimsonsaber":
+            give sword(diamond sword named "&fCrimson Saber", 11) to player
+        else if arg-1 is "butchercleaver":
+            give axe(diamond axe named "&fButcher Cleaver", 11) to player
+
+        else if arg-1 is "shadowfang":
+            give dagger(golden sword named "&fShadow Fang", 12) to player
+        else if arg-1 is "wardenblade":
+            give sword(diamond sword named "&fWarden Blade", 12) to player
+
+        else if arg-1 is "ravageraxe":
+            give axe(diamond axe named "&fRavager Axe", 13) to player
+        else if arg-1 is "moonsteelsword":
+            give sword(diamond sword named "&fMoonsteel Sword", 13) to player
+
+        else if arg-1 is "assassindirk":
+            give dagger(golden sword named "&fAssassin Dirk", 14) to player
+        else if arg-1 is "paladinblade":
+            give sword(diamond sword named "&fPaladin Blade", 14) to player
+
+        else if arg-1 is "frostfang":
+            give sword(diamond sword named "&fFrostfang", 15) to player
+        else if arg-1 is "crusheraxe":
+            give axe(diamond axe named "&fCrusher Axe", 15) to player
+
+        else if arg-1 is "phantomknife":
+            give dagger(golden sword named "&fPhantom Knife", 16) to player
+        else if arg-1 is "championsword":
+            give sword(diamond sword named "&fChampion Sword", 16) to player
+
+        else if arg-1 is "bloodletter":
+            give dagger(golden sword named "&fBloodletter", 17) to player
+        else if arg-1 is "mountainbreaker":
+            give axe(diamond axe named "&fMountain Breaker", 17) to player
+
+        else if arg-1 is "dragonbonesword":
+            give sword(diamond sword named "&fDragonbone Sword", 18) to player
+        else if arg-1 is "dreadcleaver":
+            give axe(diamond axe named "&fDread Cleaver", 18) to player
+
+        else if arg-1 is "serpenttooth":
+            give dagger(golden sword named "&fSerpent Tooth", 19) to player
+        else if arg-1 is "royallongsword":
+            give sword(diamond sword named "&fRoyal Longsword", 19) to player
+
+        else if arg-1 is "colossusaxe":
+            give axe(diamond axe named "&fColossus Axe", 20) to player
+        else if arg-1 is "sunfireblade":
+            give sword(diamond sword named "&fSunfire Blade", 20) to player
+
+        else if arg-1 is "blacklotus":
+            give dagger(golden sword named "&fBlack Lotus", 21) to player
+        else if arg-1 is "infernalaxe":
+            give axe(diamond axe named "&fInfernal Axe", 21) to player
+
+        else if arg-1 is "hollowedge":
+            give sword(diamond sword named "&fHollow Edge", 22) to player
+        else if arg-1 is "ghostfang":
+            give dagger(golden sword named "&fGhost Fang", 22) to player
+
+        else if arg-1 is "titancleaver":
+            give axe(diamond axe named "&fTitan Cleaver", 23) to player
+        else if arg-1 is "guardiansword":
+            give sword(diamond sword named "&fGuardian Sword", 23) to player
+
+        else if arg-1 is "eclipsefang":
+            give dagger(golden sword named "&fEclipse Fang", 24) to player
+        else if arg-1 is "bloodreaver":
+            give axe(diamond axe named "&fBlood Reaver", 24) to player
+
+        else if arg-1 is "kingsblade":
+            give sword(diamond sword named "&fKing's Blade", 25) to player
+        else if arg-1 is "reaperknife":
+            give dagger(golden sword named "&fReaper Knife", 25) to player
+
+        else if arg-1 is "doomaxe":
+            give axe(diamond axe named "&fDoom Axe", 26) to player
+        else if arg-1 is "celestialsaber":
+            give sword(diamond sword named "&fCelestial Saber", 26) to player
+
+        else if arg-1 is "abyssfang":
+            give dagger(golden sword named "&fAbyss Fang", 27) to player
+        else if arg-1 is "leviathanaxe":
+            give axe(diamond axe named "&fLeviathan Axe", 27) to player
+
+        else if arg-1 is "tempestblade":
+            give sword(diamond sword named "&fTempest Blade", 28) to player
+        else if arg-1 is "voiddirk":
+            give dagger(golden sword named "&fVoid Dirk", 28) to player
+
+        else if arg-1 is "worldsplitter":
+            give axe(diamond axe named "&fWorld Splitter", 29) to player
+        else if arg-1 is "emperorssword":
+            give sword(diamond sword named "&fEmperor's Sword", 29) to player
+
+        else if arg-1 is "heavensfang":
+            give dagger(golden sword named "&fHeaven's Fang", 30) to player
+        else if arg-1 is "eternalexecutioner":
+            give axe(diamond axe named "&fEternal Executioner", 30) to player
+
+        else:
+            send "&cUnknown weapon."

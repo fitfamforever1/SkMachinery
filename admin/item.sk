@@ -255,7 +255,7 @@ function dagger(item: item, level: number):: item:
     return {_item}
     
 command /modifyweapon <text> <number>:
-    permission: op
+    permission: admin.item
     trigger:
         set {_item} to player's tool
 
@@ -378,7 +378,7 @@ function boots(item: item, level: number):: item:
     return {_item}
     
 command /modifyarmor <number>:
-    permission: op
+    permission: admin.item
     trigger:
         set {_item} to player's tool
         if {_item} is air:
