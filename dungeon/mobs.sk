@@ -46,7 +46,8 @@ function applyMobStats(e: entity, mobName: text, category: text, health: number,
     set movement speed attribute of {_e} to {_speed}
     set age of {_e} to 0
     set knockback resistance attribute of {_e} to 100
-    set entity interaction range attribute of {_e} to 3.5
+    set entity interaction range attribute of {_e} to 5
+    set block interaction range attribute of {_e} to 5
     set number data tag "mobstat:damage" of {_e} to {_damage}
     set number data tag "mobstat:level" of {_e} to {_level}
     set text data tag "mobstat:category" of {_e} to {_category}
