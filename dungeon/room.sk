@@ -140,3 +140,25 @@ command /dungeonreset:
         resetDungeon()
         send "&eAll dungeon has been fully reset." to player
         
+command /dungeondebug:
+    trigger:
+        set {_room} to number data tag "room:id" of player
+        set {_floor} to number data tag "room%{_room}%:floor" of player
+        set {_worldFloor} to number data tag "room%{_room}%:floor" of world "world"
+        set {_current} to number data tag "floor:current" of player
+        set {_status} to boolean data tag "room%{_room}%:status" of world "world"
+
+        send "&8&m----------&r &c[Dungeon Debug] &8&m----------" to player
+        send "&7room:id &f= &e%{_room}%" to player
+        send "&7room%{_room}%:floor (player) &f= &e%{_floor}%" to player
+        send "&7room%{_room}%:floor (world) &f= &e%{_worldFloor}%" to player
+        send "&7floor:current &f= &e%{_current}%" to player
+        send "&7room%{_room}%:status (world) &f= &e%{_status}%" to player
+
+        if {_floor} is set:
+            set {_target} to number data tag "floor%{_floor}%:max" of world "world"
+            set {_target2} to number data tag "floor%{_floor}%:min" of world "world"
+            send "&7floor%{_floor}%:max &f= &e%{_target}%" to player
+            send "&7floor%{_floor}%:min &f= &e%{_target2}%" to player
+        send "&8&m--------------------------------" to player
+        
