@@ -223,7 +223,15 @@ function displayDamage(victim: entity, damage: number):
 
     wait 1 second
     kill {_display}
-    
+   
+import:
+    org.bukkit.Particle
+
+on packet event play_server_world_particles:
+    set {_p} to field 9 of event-packet
+    if event-packet.getNewParticles().read(0).getParticle() is Particle.DAMAGE_INDICATOR:
+        cancel event
+   
 on damage:
     if victim is a player:
         if projectile is an arrow:
