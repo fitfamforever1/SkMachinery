@@ -187,6 +187,9 @@ function sword(item: item, level: number):: item:
     set {_item} to unbreakable {_item}
     set item flags of {_item} to all item flags
     
+    apply attack range component to {_item}:
+        max_reach: 3
+    
     set number data tag "itemstat:level" of {_item} to {_level}
     set data tag "itemstat:type" of {_item} to {_type}
     set number data tag "itemstat:damage" of {_item} to {_damage}
@@ -215,6 +218,9 @@ function axe(item: item, level: number):: item:
     
     set {_item} to unbreakable {_item}
     set item flags of {_item} to all item flags
+    
+    apply attack range component to {_item}:
+        max_reach: 3
 
     set number data tag "itemstat:level" of {_item} to {_level}
     set data tag "itemstat:type" of {_item} to {_type}
@@ -244,6 +250,9 @@ function dagger(item: item, level: number):: item:
     
     set {_item} to unbreakable {_item}
     set item flags of {_item} to all item flags
+    
+    apply attack range component to {_item}:
+        max_reach: 3
 
     set number data tag "itemstat:level" of {_item} to {_level}
     set data tag "itemstat:type" of {_item} to {_type}
