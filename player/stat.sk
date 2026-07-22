@@ -286,7 +286,7 @@ function stat(p: player):
     set {_crit_chance} to number data tag "playerstat:crit_chance" of {_p}
     set {_crit_damage} to number data tag "playerstat:crit_damage" of {_p}
     
-    loop tool of {_p}, helmet of {_p}, chestplate of {_p}, leggings of {_p} and boots of {_p}:
+    loop helmet of {_p}, chestplate of {_p}, leggings of {_p} and boots of {_p}:
         if loop-value is not air:
             if levelreq({_p}, loop-value) is true:
                 add number data tag "itemstat:damage" of loop-value to {_damage}
@@ -296,6 +296,19 @@ function stat(p: player):
                 add number data tag "itemstat:mana" of loop-value to {_mana}
                 add number data tag "itemstat:crit_chance" of loop-value to {_crit_chance}
                 add number data tag "itemstat:crit_damage" of loop-value to {_crit_damage}
+            
+    loop tool of {_p}:
+        if loop-value is not air:
+            if levelreq({_p}, loop-value) is true:
+                set {_temp} to number data tag "itemstat:type" of {_p}
+                if {_temp} is "weapan":
+                    add number data tag "itemstat:damage" of loop-value to {_damage}
+                    add number data tag "itemstat:defense" of loop-value to {_defense}
+                    add number data tag "itemstat:speed" of loop-value to {_speed}
+                    add number data tag "itemstat:health" of loop-value to {_health}
+                    add number data tag "itemstat:mana" of loop-value to {_mana}
+                    add number data tag "itemstat:crit_chance" of loop-value to {_crit_chance}
+                    add number data tag "itemstat:crit_damage" of loop-value to {_crit_damage}
                 
     set number data tag "stat:damage" of {_p} to {_damage}
     set number data tag "stat:defense" of {_p} to {_defense}
