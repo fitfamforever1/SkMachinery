@@ -130,10 +130,6 @@ on projectile hit:
                 
 
 on death:
-    if victim is a player:
-        stop
-    if attacker is not a player:
-        stop
     set {_floorId} to number data tag "mob:floor" of victim
     if {_floorId} is not set:
         send "debug1" to attacker
