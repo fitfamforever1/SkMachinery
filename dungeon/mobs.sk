@@ -30,7 +30,7 @@ function spawnUndead2(loc: location, roomId: number, floorId: number) :: entity:
     spawn skeleton at {_loc}
     set {_e} to last spawned entity
     set tool of {_e} to bow
-    applyMobStats({_e}, "&cSkeleton", 35, 0.18, 12, {_roomId}, {_floorId})
+    applyMobStats({_e}, "&cSkeleton", 80, 0.18, 12, {_roomId}, {_floorId})
     return {_e}
 
 function spawnUndead3(loc: location, roomId: number, floorId: number) :: entity:
@@ -38,7 +38,7 @@ function spawnUndead3(loc: location, roomId: number, floorId: number) :: entity:
     set {_e} to last spawned entity
     set tool of {_e} to air
     set scale attribute of {_e} to 1.4
-    applyMobStats({_e}, "&cBrute", 75, 0.14, 18, {_roomId}, {_floorId})
+    applyMobStats({_e}, "&cBrute", 150, 0.14, 18, {_roomId}, {_floorId})
     return {_e}
     
 function spawnUndead4(loc: location, roomId: number, floorId: number) :: entity:
@@ -46,7 +46,7 @@ function spawnUndead4(loc: location, roomId: number, floorId: number) :: entity:
     set {_e} to last spawned entity
     set tool of {_e} to air
     set scale attribute of {_e} to 1.2
-    applyMobStats({_e}, "&cZombie Lord", 150, 0.22, 28, {_roomId}, {_floorId})
+    applyMobStats({_e}, "&cZombie Lord", 500, 0.22, 50, {_roomId}, {_floorId})
     return {_e}
 
 function clearRoomMobs(room: number):
