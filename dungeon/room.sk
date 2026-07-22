@@ -74,7 +74,7 @@ function FreeRoom(max: number) :: number:
 function StartRoom(p: player, room: number, floor: number):
     set number data tag "room%{_room}%:floor" of world "world" to {_floor}
     set number data tag "room:id" of {_p} to {_room}
-    send "%{_room}%"
+    send "%{_room}%" to {_p}
     set number data tag "room%{_room}%:floor" of {_p} to {_floor}
     set number data tag "floor:current" of {_p} to 0
     teleportToRoom({_p}, {_room})
