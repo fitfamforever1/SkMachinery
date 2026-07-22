@@ -86,7 +86,7 @@ function RegenPlayer(p: player):
     set {_temp} to round({_temp})
     set number data tag "current:mana" of {_p} to {_temp}
     
-    set {_temp} to {_health} / 40
+    set {_temp} to {_health} / 80
     set {_temp} to {_temp} + {_current1}
     if {_temp} >= {_health}:
         set {_temp} to {_health}
