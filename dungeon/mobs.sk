@@ -136,12 +136,15 @@ on death:
         stop
     set {_floorId} to number data tag "mob:floor" of victim
     if {_floorId} is not set:
+        send "debug1" to attacker
         stop
     set {_room} to number data tag "room:id" of attacker
     if {_room} is not set:
+        send "debug2" to attacker
         stop
     set {_floor} to number data tag "room%{_room}%:floor" of attacker
     if {_floor} is not set:
+        send "debug3" to attacker
         stop
 
     if {_floor} = {_floorId}:
