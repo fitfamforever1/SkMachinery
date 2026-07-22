@@ -284,9 +284,10 @@ command /modifyweapon <text> <number> <text> <item type>:
         give {_item} to player
         send "&aGave &eLvl %arg-2% %arg-1% (%arg-3%)&a."
         
-function helmet(baseitem: item, name: text, level: number):: item:
+function helmet(baseitem: item, name: text, level: number, c1: number, c2: number, c3: number):: item:
     set {_item} to {_baseitem}
     set {_type} to "helmet"
+    dye {_item} ({_c1}, {_c2}, {_c3})
     set {_health} to round((30 + ({_level} * 3)) * 1.15)
     set {_defense} to round(8 + ({_level} * 1.2))
     set {_mana} to round(15 + ({_level} * 2))
@@ -315,9 +316,10 @@ function helmet(baseitem: item, name: text, level: number):: item:
     
     return {_item}
 
-function chestplate(baseitem: item, name: text, level: number):: item:
+function chestplate(baseitem: item, name: text, level: number, c1: number, c2: number, c3: number):: item:
     set {_item} to {_baseitem}
     set {_type} to "chestplate"
+    dye {_item} ({_c1}, {_c2}, {_c3})
     set {_health} to round((40 + ({_level} * 3.5)) * 1.15)
     set {_defense} to round(12 + ({_level} * 1.8))
     
@@ -343,9 +345,10 @@ function chestplate(baseitem: item, name: text, level: number):: item:
     
     return {_item}
 
-function leggings(baseitem: item, name: text, level: number):: item:
+function leggings(baseitem: item, name: text, level: number, c1: number, c2: number, c3: number):: item:
     set {_item} to {_baseitem}
     set {_type} to "leggings"
+    dye {_item} ({_c1}, {_c2}, {_c3})
     set {_health} to round((35 + ({_level} * 3)) * 1.15)
     set {_damage} to round(3 + ({_level} * 0.8))
     set {_critdamage} to round(10 + ({_level} * 0.3))
@@ -374,9 +377,11 @@ function leggings(baseitem: item, name: text, level: number):: item:
     
     return {_item}
 
-function boots(baseitem: item, name: text, level: number):: item:
+function boots(baseitem: item, name: text, level: number, c1: number, c2: number, c3: number):: item:
+   
     set {_item} to {_baseitem}
     set {_type} to "boots"
+    dye {_item} ({_c1}, {_c2}, {_c3})
     set {_health} to round((25 + ({_level} * 2.5)) * 1.15)
     set {_speed} to round(2 + ({_level} * 0.15))
     set {_critchance} to round(1 + ({_level} * 0.06))
