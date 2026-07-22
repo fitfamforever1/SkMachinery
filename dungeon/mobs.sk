@@ -10,34 +10,33 @@ function scaleStat(base: number, level: number, growth: number) :: number:
 function getCategoryStat(category: text, stat: text, level: number) :: number:
     if {_category} is "balanced":
         if {_stat} is "health":
-            return scaleStat(100, {_level}, 15)
+            return scaleStat(90, {_level}, 10)
         else if {_stat} is "speed":
-            return scaleStat(0.2, {_level}, 0.002)
+            return scaleStat(0.2, {_level}, 0.0015)
         else if {_stat} is "damage":
-            return scaleStat(12, {_level}, 2)
+            return scaleStat(8, {_level}, 1.2)
     else if {_category} is "tank":
         if {_stat} is "health":
-            return scaleStat(200, {_level}, 30)
+            return scaleStat(180, {_level}, 20)
         else if {_stat} is "speed":
-            return scaleStat(0.14, {_level}, 0.001)
+            return scaleStat(0.14, {_level}, 0.0008)
         else if {_stat} is "damage":
-            return scaleStat(28, {_level}, 4)
+            return scaleStat(18, {_level}, 2.5)
     else if {_category} is "ranged":
         if {_stat} is "health":
-            return scaleStat(80, {_level}, 12)
+            return scaleStat(70, {_level}, 8)
         else if {_stat} is "speed":
-            return scaleStat(0.18, {_level}, 0.0015)
+            return scaleStat(0.18, {_level}, 0.001)
         else if {_stat} is "damage":
-            return scaleStat(16, {_level}, 2.5)
+            return scaleStat(10, {_level}, 1.5)
     else if {_category} is "boss":
         if {_stat} is "health":
-            return scaleStat(500, {_level}, 75)
+            return scaleStat(400, {_level}, 50)
         else if {_stat} is "speed":
-            return scaleStat(0.22, {_level}, 0.002)
+            return scaleStat(0.2, {_level}, 0.0015)
         else if {_stat} is "damage":
-            return scaleStat(60, {_level}, 8)
+            return scaleStat(40, {_level}, 5)
     return 0
-
 
 function spawn(loc: location, mob: text, roomId: number, floorId: number):
     if {_mob} is "undead1":
