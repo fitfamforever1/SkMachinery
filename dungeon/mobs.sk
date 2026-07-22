@@ -14,7 +14,7 @@ function applyMobStats(e: entity, mobName: text, health: number, speed: number, 
     set health of {_e} to {_health}
     set movement speed attribute of {_e} to {_speed}
     set age of {_e} to 0
-    set knockback resistance attribute of {_e} to 0
+    set knockback resistance attribute of {_e} to 100
     set number data tag "mobstat:damage" of {_e} to {_damage}
     set number data tag "mob:floor" of {_e} to {_floorId}
     set number data tag "mob:room" of {_e} to {_roomId}
