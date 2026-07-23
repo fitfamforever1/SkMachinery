@@ -66,7 +66,7 @@ function giveHelmet(p: player, id: number):
 function giveChestplate(p: player, id: number):
     switch {_id}:
         case 1:
-            give chestplate(leather chestplate, "Rotten Vest", 1, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Rotten Vest", 1, 99, 87, 37) to {_p}
         case 2:
             give chestplate(leather chestplate, "Frosted Cuirass", 2, 0, 0, 0) to {_p}
         case 3:
@@ -131,7 +131,7 @@ function giveChestplate(p: player, id: number):
 function giveLeggings(p: player, id: number):
     switch {_id}:
         case 1:
-            give leggings(leather leggings, "Rotten Leggings", 1, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Rotten Leggings", 1, 99, 87, 37) to {_p}
         case 2:
             give leggings(leather leggings, "Frosted Greaves", 2, 0, 0, 0) to {_p}
         case 3:
@@ -196,7 +196,7 @@ function giveLeggings(p: player, id: number):
 function giveBoots(p: player, id: number):
     switch {_id}:
         case 1:
-            give boots(leather boots, "Rotten Boots", 1, 0, 0, 0) to {_p}
+            give boots(leather boots, "Rotten Boots", 1, 99, 87, 37) to {_p}
         case 2:
             give boots(leather boots, "Frosted Treads", 2, 0, 0, 0) to {_p}
         case 3:
