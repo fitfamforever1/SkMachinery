@@ -419,9 +419,6 @@ function lootbox(name: text, type: text, level: number):: item:
     set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
     set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &eʟᴏᴏᴛ ʙᴏx"
     set line 3 of lore of {_item} to "&8┃ &7ʟᴇᴠᴇʟ &8» &b1&8-&b10"
-    set line 4 of lore of {_item} to ""
-    set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ᴀʙɪʟɪᴛʏ"
-    set line 6 of lore of {_item} to "&8┃ &aʀɪɢʜᴛ ᴄʟɪᴄᴋ &8»&7 ᴛᴏ ɢᴀɪɴ ʟᴏᴏᴛ"
     
     set {_item} to unbreakable {_item}
     set item flags of {_item} to all item flags
