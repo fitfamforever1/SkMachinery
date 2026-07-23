@@ -49,11 +49,11 @@ function giveHelmet(p: player, id: number):
         case 24:
             give helmet("Fallen Helm", 24, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTNmZTY3NmJiMzg4ODBjNjU5ZWY2NzIxMzM1N2FiYWJhODI0NWQwOTk1NjRhYzY3ODY5NWYwMzgzMzdiZmM2YiJ9fX0=") to {_p}
         case 25:
-            give helmet("Blood Cap", 25, " ") to {_p}
+            give helmet("Blood Cap", 25, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjAzMjMyOTVhOTRlMTBkODU0NDU3ZGUwOTEwNzYyZTM0YmZiN2I1MjYyNzdhMjE1YjI4MGRmYzkwOWNiZTJjOSJ9fX0=") to {_p}
         case 26:
-            give helmet("Fairy Hood", 26, " ") to {_p}
+            give helmet("Fairy Hood", 26, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWMyYmE2YWNkMzcwZGU2M2U4YzUxN2YxYzY4MTc5YjkzODg4YmQyYjlhYTE1ODI0ODAwOTFkZTM1MjU5ODY3YSJ9fX0=") to {_p}
         case 27:
-            give helmet("Diva Casque", 27, " ") to {_p}
+            give helmet("Divan Casque", 27, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVjMmY3ZDlhNjMwYTE3OTljYTYzYmQwNmYxNzA1NTE3ZTk2NjljN2ExMTFhMjAwMjg1YTVkNTNmODE5NzIxNCJ9fX0=") to {_p}
         case 28:
             give helmet("Ashfall Cap", 28, " ") to {_p}
         case 29:
@@ -114,11 +114,11 @@ function giveChestplate(p: player, id: number):
         case 24:
             give chestplate(leather chestplate, "Fallen Guard", 24, 70, 70, 70) to {_p}
         case 25:
-            give chestplate(leather chestplate, "Blood Plate", 25, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Blood Plate", 25, 240, 103, 102) to {_p}
         case 26:
-            give chestplate(leather chestplate, "Fairy Vest", 26, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Fairy Vest", 26, 78, 65, 189) to {_p}
         case 27:
-            give chestplate(leather chestplate, "Diva Cuirass", 27, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Divan Cuirass", 27, 42, 83, 166) to {_p}
         case 28:
             give chestplate(leather chestplate, "Ashfall Plate", 28, 0, 0, 0) to {_p}
         case 29:
@@ -179,11 +179,11 @@ function giveLeggings(p: player, id: number):
         case 24:
             give leggings(leather leggings, "Fallen Legguard", 24, 70, 70, 70) to {_p}
         case 25:
-            give leggings(leather leggings, "Blood Greaves", 25, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Blood Greaves", 25, 240, 103, 102) to {_p}
         case 26:
-            give leggings(leather leggings, "Fairy Leggings", 26, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Fairy Leggings", 26, 78, 65, 189) to {_p}
         case 27:
-            give leggings(leather leggings, "Diva Greaves", 27, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Divan Greaves", 27, 42, 83, 166) to {_p}
         case 28:
             give leggings(leather leggings, "Ashfall Chausses", 28, 0, 0, 0) to {_p}
         case 29:
@@ -244,11 +244,11 @@ function giveBoots(p: player, id: number):
         case 24:
             give boots(leather boots, "Fallen Boots", 24, 70, 70, 70) to {_p}
         case 25:
-            give boots(leather boots, "Blood Treads", 25, 0, 0, 0) to {_p}
+            give boots(leather boots, "Blood Treads", 25, 240, 103, 102) to {_p}
         case 26:
-            give boots(leather boots, "Fairy Boots", 26, 0, 0, 0) to {_p}
+            give boots(leather boots, "Fairy Boots", 26, 78, 65, 189) to {_p}
         case 27:
-            give boots(leather boots, "Diva Treads", 27, 0, 0, 0) to {_p}
+            give boots(leather boots, "Divan Treads", 27, 42, 83, 166) to {_p}
         case 28:
             give boots(leather boots, "Ashfall Striders", 28, 0, 0, 0) to {_p}
         case 29:
