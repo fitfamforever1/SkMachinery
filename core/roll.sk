@@ -4,27 +4,37 @@ function spinBoxes(p: player, type: text, id: number):
     set {_ticks} to 100      # 5 seconds * 20 ticks/sec
     set {_speed} to 6        # degrees added to yaw each tick
 
+    # --- convert tier (1/2/3) into an actual item id (1-10 / 11-20 / 21-30) ---
+    if {_id} is 1:
+        set {_realid} to a random integer between 1 and 10
+    else if {_id} is 2:
+        set {_realid} to a random integer between 11 and 20
+    else if {_id} is 3:
+        set {_realid} to a random integer between 21 and 30
+    else:
+        stop
+
     # --- give the item and figure out what to display ---
     if {_type} is "helmet":
-        giveHelmet({_p}, {_id})
+        giveHelmet({_p}, {_realid})
         set {_item} to helmet of {_p}
     else if {_type} is "chestplate":
-        giveChestplate({_p}, {_id})
+        giveChestplate({_p}, {_realid})
         set {_item} to chestplate of {_p}
     else if {_type} is "leggings":
-        giveLeggings({_p}, {_id})
+        giveLeggings({_p}, {_realid})
         set {_item} to leggings of {_p}
     else if {_type} is "boots":
-        giveBoots({_p}, {_id})
+        giveBoots({_p}, {_realid})
         set {_item} to boots of {_p}
     else if {_type} is "sword":
-        giveSword({_p}, {_id})
+        giveSword({_p}, {_realid})
         set {_item} to {_p}'s tool
     else if {_type} is "axe":
-        giveAxe({_p}, {_id})
+        giveAxe({_p}, {_realid})
         set {_item} to {_p}'s tool
     else if {_type} is "dagger":
-        giveDagger({_p}, {_id})
+        giveDagger({_p}, {_realid})
         set {_item} to {_p}'s tool
     else:
         stop
@@ -39,7 +49,6 @@ function spinBoxes(p: player, type: text, id: number):
         set {_dx} to {_radius} * cos({_baseangle::%loop-number%})
         set {_dz} to {_radius} * sin({_baseangle::%loop-number%})
 
-        # face toward the fixed origin point (computed once at spawn, never recalculated)
         set {_facex} to {_origin}'s x - ({_origin}'s x + {_dx})
         set {_facez} to {_origin}'s z - ({_origin}'s z + {_dz})
         set {_faceyaw} to atan2({_facex}, {_facez})
