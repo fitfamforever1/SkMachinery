@@ -25,7 +25,7 @@ function giveHelmet(p: player, id: number):
         case 12:
             give helmet("Frostbite Casque", 12, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjMwMDA3YTgzODliNDkzODdmMDZkZWYwNjY5NjhlMmVkMDAyYmJmMDM0NjIyZTE0OGE2MDA0MDUyZTM4MmJhZiJ9fX0=") to {_p}
         case 13:
-            give helmet("Blazing Cap", 13, " ") to {_p}
+            give helmet("Blazing Cap", 13, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmIzMGY1NzkzNDUyMjNjMGZjOTM4YWFlNGFjYzlhYTZkNmI1YzZlM2U3N2ZhMTFjZDJiMmM0MTY4NDE4ZWY1YSJ9fX0=") to {_p}
         case 14:
             give helmet("Tombstone Helm", 14, " ") to {_p}
         case 15:
@@ -90,7 +90,7 @@ function giveChestplate(p: player, id: number):
         case 12:
             give chestplate(leather chestplate, "Frostbite Cuirass", 12, 64, 81, 90) to {_p}
         case 13:
-            give chestplate(leather chestplate, "Blazing Plate", 13, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Blazing Plate", 13, 159, 59, 16) to {_p}
         case 14:
             give chestplate(leather chestplate, "Tombstone Guard", 14, 0, 0, 0) to {_p}
         case 15:
@@ -155,7 +155,7 @@ function giveLeggings(p: player, id: number):
         case 12:
             give leggings(leather leggings, "Frostbite Greaves", 12, 64, 81, 90) to {_p}
         case 13:
-            give leggings(leather leggings, "Blazing Chausses", 13, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Blazing Chausses", 13, 159, 59, 16) to {_p}
         case 14:
             give leggings(leather leggings, "Tombstone Legguard", 14, 0, 0, 0) to {_p}
         case 15:
@@ -220,7 +220,7 @@ function giveBoots(p: player, id: number):
         case 12:
             give boots(leather boots, "Frostbite Treads", 12, 64, 81, 90) to {_p}
         case 13:
-            give boots(leather boots, "Blazing Striders", 13, 0, 0, 0) to {_p}
+            give boots(leather boots, "Blazing Striders", 13, 159, 59, 16) to {_p}
         case 14:
             give boots(leather boots, "Tombstone Boots", 14, 0, 0, 0) to {_p}
         case 15:
