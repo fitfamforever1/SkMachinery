@@ -15,9 +15,9 @@ function giveHelmet(p: player, id: number):
         case 7:
             give helmet("Glacier Casque", 7, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTFlZGIxNDI1OWYxNmE3YTQxZDNjZmFlZGZhYzBmZDBlNjdhMWEzMGE0YTc5NTQwMzdiYTYxNzU3YzUzZjdkIn19fQ==") to {_p}
         case 8:
-            give helmet("Cinder Hood", 8, " ") to {_p}
+            give helmet("Cinder Hood", 8, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzc0ZjY1ZjliOTk1OGE2MzkyYzhiNjMzMjRkNzZlODBkMmI1MDljMTk4NWEwMDIzMmFlY2NlNDA5NTg1YWUyYSJ9fX0=") to {_p}
         case 9:
-            give helmet("Bonecrusher Helm", 9, " ") to {_p}
+            give helmet("Bonecrusher Helm", 9, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmIwMjkyNDQwNDJlZTY5NDFkMDEwNzU1ZTMwYWI1ZjRkMDk1YTMwZmE4MGZmNThiYmE2N2U4NWNhNWI4OTU3ZCJ9fX0=") to {_p}
         case 10:
             give helmet("Rustbite Cap", 10, " ") to {_p}
         case 11:
@@ -80,9 +80,9 @@ function giveChestplate(p: player, id: number):
         case 7:
             give chestplate(leather chestplate, "Glacier Cuirass", 7, 57, 89, 113) to {_p}
         case 8:
-            give chestplate(leather chestplate, "Cinder Plate", 8, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Cinder Plate", 8, 243, 77, 0) to {_p}
         case 9:
-            give chestplate(leather chestplate, "Bonecrusher Guard", 9, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Bonecrusher Guard", 9, 245, 245, 245) to {_p}
         case 10:
             give chestplate(leather chestplate, "Rustbite Plate", 10, 0, 0, 0) to {_p}
         case 11:
@@ -145,9 +145,9 @@ function giveLeggings(p: player, id: number):
         case 7:
             give leggings(leather leggings, "Glacier Greaves", 7, 57, 89, 113) to {_p}
         case 8:
-            give leggings(leather leggings, "Cinder Chausses", 8, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Cinder Chausses", 8, 243, 77, 0) to {_p}
         case 9:
-            give leggings(leather leggings, "Bonecrusher Legguard", 9, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Bonecrusher Legguard", 9, 245, 245, 245) to {_p}
         case 10:
             give leggings(leather leggings, "Rustbite Greaves", 10, 0, 0, 0) to {_p}
         case 11:
@@ -210,9 +210,9 @@ function giveBoots(p: player, id: number):
         case 7:
             give boots(leather boots, "Glacier Treads", 7, 57, 89, 113) to {_p}
         case 8:
-            give boots(leather boots, "Cinder Striders", 8, 0, 0, 0) to {_p}
+            give boots(leather boots, "Cinder Striders", 8, 243, 77, 0) to {_p}
         case 9:
-            give boots(leather boots, "Bonecrusher Boots", 9, 0, 0, 0) to {_p}
+            give boots(leather boots, "Bonecrusher Boots", 9, 245, 245, 245) to {_p}
         case 10:
             give boots(leather boots, "Rustbite Treads", 10, 0, 0, 0) to {_p}
         case 11:
