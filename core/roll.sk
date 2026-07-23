@@ -1,6 +1,6 @@
 function spinBoxes(p: player):
     # --- config ---
-    set {_radius} to 2.0
+    set {_radius} to 2.5
     set {_ticks} to 100      # 5 seconds * 20 ticks/sec
     set {_speed} to 6        # degrees added to yaw each tick
 
@@ -9,7 +9,7 @@ function spinBoxes(p: player):
     delete {_displays::*}
     delete {_baseangle::*}
 
-    # spawn 10 item displays evenly spaced in a circle (36 degrees apart)
+
     loop 10 times:
         set {_baseangle::%loop-number%} to (loop-number - 1) * 36
         set {_dx} to {_radius} * cos({_baseangle::%loop-number%})
@@ -40,8 +40,8 @@ function spinBoxes(p: player):
             set {_faceyaw} to {_faceyaw} * -1
             set {_newloc} to location({_center}'s x + {_dx}, {_center}'s y + 1, {_center}'s z + {_dz}, world of {_center}, {_faceyaw}, 0)
             teleport {_disp} to {_newloc}
+        wait 1 tick
 
-    # --- cleanup ---
     loop {_displays::*}:
         set {_disp} to {_displays::%loop-index%}
         kill {_disp}
