@@ -410,3 +410,29 @@ function boots(baseitem: item, name: text, level: number, c1: number, c2: number
     
     return {_item}
     
+function lootbox(name: text, type: text, level: number):: item:
+    set {_item} to player head
+    set the skull texture of {_item} to "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDdlYzQxZTBkZjhlMTcwZDk3ZjliOWFmMWQ2NWVkYWQ0OTc5Yzc4Yzg5YjAxYjE4MGYzODllZTA4YTYxYWY4MiJ9fX0="
+    
+    set {_min} to 1
+    set {_max} to 10
+    
+    set {_typeline} to SmallCaps({_type})
+
+    set name of {_item} to "&fUnknown %{_name}%"
+
+    set line 1 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ɪɴғᴏ"
+    set line 2 of lore of {_item} to "&8┃ &7ᴛʏᴘᴇ &8» &e%{_typeLine}%"
+    set line 3 of lore of {_item} to "&8┃ &7ʟᴇᴠᴇʟ &8» &b%{_min}%&8-&b%{_max}%"
+    set line 4 of lore of {_item} to ""
+    set line 5 of lore of {_item} to "&8┃ &7» ɪᴛᴇᴍ ᴀʙɪʟɪᴛʏ"
+    set line 6 of lore of {_item} to "&8┃ &aʀɪɢʜᴛ ᴄʟɪᴄᴋ &8»&7 ᴛᴏ ɢᴀɪɴ ʟᴏᴏᴛ"
+    
+    set {_item} to unbreakable {_item}
+    set item flags of {_item} to all item flags
+    set number data tag "lootbox:status" of {_item} to 1
+    set number data tag "lootbox:level" of {_item} to {_level}
+    set data tag "lootbox:type" of {_item} to {_type}
+    
+    return {_item}
+    

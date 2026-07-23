@@ -1,5 +1,14 @@
+function giveLoot(p: player, id: number):: item:
+    switch {_id}:
+        case 1:
+            set {_item} to helmet("Sword", "sword", 1)
+        give {_item} to {_p}
+        
+command /test2 <number>:
+    trigger:
+        giveLoot(player, 1)
+
 function spinBoxes(p: player, type: text, id: number):
-    # --- config ---
     set {_radius} to 2.5
     set {_ticks} to 60     
     set {_speed} to 6        
