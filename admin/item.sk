@@ -284,7 +284,7 @@ command /modifyweapon <text> <number> <text> <item type>:
         give {_item} to player
         send "&aGave &eLvl %arg-2% %arg-1% (%arg-3%)&a."
         
-function helmet(name: text, level: number, base: text):: item:
+function helmet(baseitem: item, name: text, level: number, base: text):: item:
     set {_item} to {_baseitem}
     set {_type} to "helmet"
     set the skull texture of {_item} to "%{_base}%"
