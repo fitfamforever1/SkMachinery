@@ -1,24 +1,24 @@
-function giveLoot1(p: player, id: number):: item:
+function giveLoot1(p: player, id: number, level: number):: item:
     switch {_id}:
         case 1:
-            set {_item} to lootbox("Sword", "sword", 1)
+            set {_item} to lootbox("Sword", "sword", {_level})
         case 2:
-            set {_item} to lootbox("Dagger", "dagger", 1)
+            set {_item} to lootbox("Dagger", "dagger", {_level})
         case 3:
-            set {_item} to lootbox("Axe", "axe", 1)
+            set {_item} to lootbox("Axe", "axe", {_level})
         case 4:
-            set {_item} to lootbox("Helmet", "helmet", 1)
+            set {_item} to lootbox("Helmet", "helmet", {_level})
         case 5:
-            set {_item} to lootbox("Chestplate", "chestplate", 1)
+            set {_item} to lootbox("Chestplate", "chestplate", {_level})
         case 6:
-            set {_item} to lootbox("Leggings", "leggings", 1)
+            set {_item} to lootbox("Leggings", "leggings", {_level})
         case 7:
-            set {_item} to lootbox("Boots", "boots", 1)
+            set {_item} to lootbox("Boots", "boots", {_level})
     give {_item} to {_p}
         
-command /test2 <number>:
+command /test2 <number> <number>:
     trigger:
-        giveLoot1(player, arg-1)
+        giveLoot1(player, arg-1, arg-2)
 
 on right click with player head:
     set {_item} to player's tool
