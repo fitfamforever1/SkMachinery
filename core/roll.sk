@@ -27,6 +27,7 @@ on right click with player head:
         set {_id} to number data tag "lootbox:level" of {_item}
         set {_type} to data tag "lootbox:type" of {_item}
         spinBoxes(player, "%{_type}%", {_id})
+        remove {_item}
 
 function spinBoxes(p: player, type: text, id: number):
     set {_radius} to 2.5
