@@ -207,4 +207,3 @@ command /givedagger <number>:
     permission: admin.item
     trigger:
         giveDagger(player, arg-1)
-
