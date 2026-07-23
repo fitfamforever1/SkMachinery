@@ -82,7 +82,7 @@ function giveChestplate(p: player, id: number):
         case 8:
             give chestplate(leather chestplate, "Cinder Plate", 8, 243, 77, 0) to {_p}
         case 9:
-            give chestplate(leather chestplate, "Bonecrusher Guard", 9, 245, 245, 245) to {_p}
+            give chestplate(leather chestplate, "Bonecrusher Guard", 9, 255, 255, 255) to {_p}
         case 10:
             give chestplate(leather chestplate, "Rustbite Plate", 10, 0, 0, 0) to {_p}
         case 11:
@@ -147,7 +147,7 @@ function giveLeggings(p: player, id: number):
         case 8:
             give leggings(leather leggings, "Cinder Chausses", 8, 243, 77, 0) to {_p}
         case 9:
-            give leggings(leather leggings, "Bonecrusher Legguard", 9, 245, 245, 245) to {_p}
+            give leggings(leather leggings, "Bonecrusher Legguard", 9, 255, 255, 255) to {_p}
         case 10:
             give leggings(leather leggings, "Rustbite Greaves", 10, 0, 0, 0) to {_p}
         case 11:
@@ -212,7 +212,7 @@ function giveBoots(p: player, id: number):
         case 8:
             give boots(leather boots, "Cinder Striders", 8, 243, 77, 0) to {_p}
         case 9:
-            give boots(leather boots, "Bonecrusher Boots", 9, 245, 245, 245) to {_p}
+            give boots(leather boots, "Bonecrusher Boots", 9, 255, 255, 255) to {_p}
         case 10:
             give boots(leather boots, "Rustbite Treads", 10, 0, 0, 0) to {_p}
         case 11:
