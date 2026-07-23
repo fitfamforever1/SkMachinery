@@ -1,32 +1,62 @@
-function spinBoxes(p: player):
+function spinBoxes(p: player, type: text, id: number):
     # --- config ---
     set {_radius} to 2.5
     set {_ticks} to 100      # 5 seconds * 20 ticks/sec
     set {_speed} to 6        # degrees added to yaw each tick
+
+    # --- give the item and figure out what to display ---
+    if {_type} is "helmet":
+        giveHelmet({_p}, {_id})
+        set {_item} to helmet of {_p}
+    else if {_type} is "chestplate":
+        giveChestplate({_p}, {_id})
+        set {_item} to chestplate of {_p}
+    else if {_type} is "leggings":
+        giveLeggings({_p}, {_id})
+        set {_item} to leggings of {_p}
+    else if {_type} is "boots":
+        giveBoots({_p}, {_id})
+        set {_item} to boots of {_p}
+    else if {_type} is "sword":
+        giveSword({_p}, {_id})
+        set {_item} to {_p}'s tool
+    else if {_type} is "axe":
+        giveAxe({_p}, {_id})
+        set {_item} to {_p}'s tool
+    else if {_type} is "dagger":
+        giveDagger({_p}, {_id})
+        set {_item} to {_p}'s tool
+    else:
+        stop
 
     # --- setup ---
     set {_origin} to location of {_p}
     delete {_displays::*}
     delete {_baseangle::*}
 
-
     loop 10 times:
         set {_baseangle::%loop-number%} to (loop-number - 1) * 36
         set {_dx} to {_radius} * cos({_baseangle::%loop-number%})
         set {_dz} to {_radius} * sin({_baseangle::%loop-number%})
-        set {_spawnloc} to location({_origin}'s x + {_dx}, {_origin}'s y + 1, {_origin}'s z + {_dz}, world of {_origin})
+
+        # face toward the fixed origin point (computed once at spawn, never recalculated)
+        set {_facex} to {_origin}'s x - ({_origin}'s x + {_dx})
+        set {_facez} to {_origin}'s z - ({_origin}'s z + {_dz})
+        set {_faceyaw} to atan2({_facex}, {_facez})
+        set {_faceyaw} to {_faceyaw} * -1
+
+        set {_spawnloc} to location({_origin}'s x + {_dx}, {_origin}'s y + 1, {_origin}'s z + {_dz}, world of {_origin}, {_faceyaw}, 0)
         spawn item display at {_spawnloc}
         set {_display} to last spawned entity
-        set item of {_display} to {_p}'s tool
+        set item of {_display} to {_item}
         set interpolation duration of {_display} to 0 tick
         set interpolation delay of {_display} to 0 ticks
         add {_display} to {_displays::*}
 
-    # --- spin loop ---
+    # --- spin loop (orbits around the fixed origin, not the player) ---
     set {_yawoffset} to 0
     loop {_ticks} times:
         add {_speed} to {_yawoffset}
-        set {_center} to location of {_p}
         set {_i} to 0
         loop {_displays::*}:
             set {_disp} to {_displays::%loop-index%}
@@ -34,20 +64,23 @@ function spinBoxes(p: player):
             set {_angle} to {_baseangle::%{_i}%} + {_yawoffset}
             set {_dx} to {_radius} * cos({_angle})
             set {_dz} to {_radius} * sin({_angle})
-            set {_facex} to {_center}'s x - ({_center}'s x + {_dx})
-            set {_facez} to {_center}'s z - ({_center}'s z + {_dz})
+
+            set {_facex} to {_origin}'s x - ({_origin}'s x + {_dx})
+            set {_facez} to {_origin}'s z - ({_origin}'s z + {_dz})
             set {_faceyaw} to atan2({_facex}, {_facez})
             set {_faceyaw} to {_faceyaw} * -1
-            set {_newloc} to location({_center}'s x + {_dx}, {_center}'s y + 1, {_center}'s z + {_dz}, world of {_center}, {_faceyaw}, 0)
+
+            set {_newloc} to location({_origin}'s x + {_dx}, {_origin}'s y + 1, {_origin}'s z + {_dz}, world of {_origin}, {_faceyaw}, 0)
             teleport {_disp} to {_newloc}
         wait 1 tick
 
+    # --- cleanup ---
     loop {_displays::*}:
         set {_disp} to {_displays::%loop-index%}
         kill {_disp}
     delete {_displays::*}
     delete {_baseangle::*}
 
-command /spinboxes:
+command /spinboxes <text> <number>:
     trigger:
-        spinBoxes(player)
+        spinBoxes(player, arg-1, arg-2)
