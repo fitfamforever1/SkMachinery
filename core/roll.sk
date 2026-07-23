@@ -18,7 +18,7 @@ function spinBoxes(p: player):
         spawn item display at {_spawnloc}
         set {_display} to last spawned entity
         set item of {_display} to {_p}'s tool
-        set interpolation duration of {_display} to 1 tick
+        set interpolation duration of {_display} to 0 tick
         set interpolation delay of {_display} to 0 ticks
         add {_display} to {_displays::*}
 
