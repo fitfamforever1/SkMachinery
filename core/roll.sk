@@ -26,7 +26,7 @@ command /spinboxes:
             set {_center} to location of player
             set {_i} to 0
             loop {_displays::*}:
-                set {_disp} to loop-value from loop {_displays::*}
+                set {_disp} to {_displays::%loop-index%}
                 add 1 to {_i}
                 set {_angle} to {_baseangle::%{_i}%} + {_yawoffset}
                 set {_dx} to {_radius} * cos({_angle})
@@ -37,7 +37,7 @@ command /spinboxes:
 
         # --- cleanup ---
         loop {_displays::*}:
-            set {_disp} to loop-value from loop {_displays::*}
+            set {_disp} to {_displays::%loop-index%}
             kill {_disp}
         delete {_displays::*}
         delete {_baseangle::*}
