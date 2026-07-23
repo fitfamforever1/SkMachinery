@@ -149,7 +149,7 @@ function giveLeggings(p: player, id: number):
         case 9:
             give leggings(leather leggings, "Bonecrusher Legguard", 9, 255, 255, 255) to {_p}
         case 10:
-            give leggings(leather leggings, "Rustbite Greaves", 10, 145, 114, 85 to {_p}
+            give leggings(leather leggings, "Rustbite Greaves", 10, 145, 114, 85) to {_p}
         case 11:
             give leggings(leather leggings, "Timberfang Leggings", 11, 0, 0, 0) to {_p}
         case 12:
