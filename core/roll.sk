@@ -27,6 +27,8 @@ on right click with player head:
         remove {_item} from player
     else:
         remove {_item} from player
+        set {_item2} to player's helmet
+        give {_item2} to player
         set player's helmet to {_item}
 
 function spinBoxes(p: player, type: text, id: number):
