@@ -16,7 +16,7 @@ command /spinboxes:
             set {_dz} to {_radius} * sin({_baseangle::%loop-number%})
             set {_spawnloc} to location({_origin}'s x + {_dx}, {_origin}'s y + 1, {_origin}'s z + {_dz}, world of {_origin})
             spawn block display at {_spawnloc}:
-                set block of entity to dirt
+                set block of entity to player's tool
                 add entity to {_displays::*}
 
         # --- spin loop ---
@@ -26,7 +26,7 @@ command /spinboxes:
             set {_center} to location of player
             set {_i} to 0
             loop {_displays::*}:
-                set {_disp} to loop-value
+                set {_disp} to loop-value from loop {_displays::*}
                 add 1 to {_i}
                 set {_angle} to {_baseangle::%{_i}%} + {_yawoffset}
                 set {_dx} to {_radius} * cos({_angle})
@@ -37,7 +37,7 @@ command /spinboxes:
 
         # --- cleanup ---
         loop {_displays::*}:
-            set {_disp} to loop-value
+            set {_disp} to loop-value from loop {_displays::*}
             kill {_disp}
         delete {_displays::*}
         delete {_baseangle::*}
