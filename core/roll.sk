@@ -16,7 +16,7 @@ command /spinboxes:
             set {_dz} to {_radius} * sin({_baseangle::%loop-number%})
             set {_spawnloc} to location({_origin}'s x + {_dx}, {_origin}'s y + 1, {_origin}'s z + {_dz}, world of {_origin})
             spawn block display at {_spawnloc}:
-                set block of entity to player's tool
+                set item of {_display} to player's tool
                 add entity to {_displays::*}
 
         # --- spin loop ---
