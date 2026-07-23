@@ -1,65 +1,65 @@
 function giveHelmet(p: player, id: number):
     switch {_id}:
         case 1:
-            give helmet(player head, "Rotten Hood", 1, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGM2ZjI3MmZjMzI0MDU1NzUxMGQ2ZTQ2MzRhZmEzNzRjZTZjMDJmOThiYjU2YmE2MzEyMjk5ZTU1MWM3Nzg1YSJ9fX0=") to {_p}
+            give helmet("Rotten Hood", 1, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGM2ZjI3MmZjMzI0MDU1NzUxMGQ2ZTQ2MzRhZmEzNzRjZTZjMDJmOThiYjU2YmE2MzEyMjk5ZTU1MWM3Nzg1YSJ9fX0=") to {_p}
         case 2:
-            give helmet(leather helmet, "Frosted Casque", 2, " ") to {_p}
+            give helmet("Frosted Casque", 2, " ") to {_p}
         case 3:
-            give helmet(leather helmet, "Molten Cap", 3, " ") to {_p}
+            give helmet("Molten Cap", 3, " ") to {_p}
         case 4:
-            give helmet(leather helmet, "Gravedigger's Hood", 4, " ") to {_p}
+            give helmet("Gravedigger's Hood", 4, " ") to {_p}
         case 5:
-            give helmet(leather helmet, "Shadow Helm", 5, " ") to {_p}
+            give helmet("Shadow Helm", 5, " ") to {_p}
         case 6:
-            give helmet(leather helmet, "Splintered Cap", 6, " ") to {_p}
+            give helmet("Splintered Cap", 6, " ") to {_p}
         case 7:
-            give helmet(leather helmet, "Glacier Casque", 7, " ") to {_p}
+            give helmet("Glacier Casque", 7, " ") to {_p}
         case 8:
-            give helmet(leather helmet, "Cinder Hood", 8, " ") to {_p}
+            give helmet("Cinder Hood", 8, " ") to {_p}
         case 9:
-            give helmet(leather helmet, "Bonecrusher Helm", 9, " ") to {_p}
+            give helmet("Bonecrusher Helm", 9, " ") to {_p}
         case 10:
-            give helmet(leather helmet, "Rustbite Cap", 10, " ") to {_p}
+            give helmet("Rustbite Cap", 10, " ") to {_p}
         case 11:
-            give helmet(leather helmet, "Timberfang Hood", 11, " ") to {_p}
+            give helmet("Timberfang Hood", 11, " ") to {_p}
         case 12:
-            give helmet(leather helmet, "Frostbite Casque", 12, " ") to {_p}
+            give helmet("Frostbite Casque", 12, " ") to {_p}
         case 13:
-            give helmet(leather helmet, "Blazing Cap", 13, " ") to {_p}
+            give helmet("Blazing Cap", 13, " ") to {_p}
         case 14:
-            give helmet(leather helmet, "Tombstone Helm", 14, " ") to {_p}
+            give helmet("Tombstone Helm", 14, " ") to {_p}
         case 15:
-            give helmet(leather helmet, "leathershank Cap", 15, " ") to {_p}
+            give helmet("leathershank Cap", 15, " ") to {_p}
         case 16:
-            give helmet(leather helmet, "Withered Hood", 16, " ") to {_p}
+            give helmet("Withered Hood", 16, " ") to {_p}
         case 17:
-            give helmet(leather helmet, "Crystal Casque", 17, " ") to {_p}
+            give helmet("Crystal Casque", 17, " ") to {_p}
         case 18:
-            give helmet(leather helmet, "Emberfall Cap", 18, " ") to {_p}
+            give helmet("Emberfall Cap", 18, " ") to {_p}
         case 19:
-            give helmet(leather helmet, "Cairnbreaker Helm", 19, " ") to {_p}
+            give helmet("Cairnbreaker Helm", 19, " ") to {_p}
         case 20:
-            give helmet(leather helmet, "Steelclaw Cap", 20, " ") to {_p}
+            give helmet("Steelclaw Cap", 20, " ") to {_p}
         case 21:
-            give helmet(leather helmet, "Rotwood Hood", 21, " ") to {_p}
+            give helmet("Rotwood Hood", 21, " ") to {_p}
         case 22:
-            give helmet(leather helmet, "Starlight Casque", 22, " ") to {_p}
+            give helmet("Starlight Casque", 22, " ") to {_p}
         case 23:
-            give helmet(leather helmet, "Wildfire Cap", 23, " ") to {_p}
+            give helmet("Wildfire Cap", 23, " ") to {_p}
         case 24:
-            give helmet(leather helmet, "Gravebound Helm", 24, " ") to {_p}
+            give helmet("Gravebound Helm", 24, " ") to {_p}
         case 25:
-            give helmet(leather helmet, "Bloodleather Cap", 25, " ") to {_p}
+            give helmet("Bloodleather Cap", 25, " ") to {_p}
         case 26:
-            give helmet(leather helmet, "Driftwood Hood", 26, " ") to {_p}
+            give helmet("Driftwood Hood", 26, " ") to {_p}
         case 27:
-            give helmet(leather helmet, "Icebound Casque", 27, " ") to {_p}
+            give helmet("Icebound Casque", 27, " ") to {_p}
         case 28:
-            give helmet(leather helmet, "Ashfall Cap", 28, " ") to {_p}
+            give helmet("Ashfall Cap", 28, " ") to {_p}
         case 29:
-            give helmet(leather helmet, "Boneyard Helm", 29, " ") to {_p}
+            give helmet("Boneyard Helm", 29, " ") to {_p}
         case 30:
-            give helmet(leather helmet, "Warforged Cap", 30, " ") to {_p}
+            give helmet("Warforged Cap", 30, " ") to {_p}
         default:
             send "&cInvalid armor ID." to {_p}
 
