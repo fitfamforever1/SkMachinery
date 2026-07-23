@@ -3,7 +3,7 @@ function giveHelmet(p: player, id: number):
         case 1:
             give helmet("Rotten Hood", 1, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGM2ZjI3MmZjMzI0MDU1NzUxMGQ2ZTQ2MzRhZmEzNzRjZTZjMDJmOThiYjU2YmE2MzEyMjk5ZTU1MWM3Nzg1YSJ9fX0=") to {_p}
         case 2:
-            give helmet("Frosted Casque", 2, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA4NzQ0NjJhN2QzNjE4ZWFmYTFjNThlZjdjNTY2ZjQ4ZDgzOGVmNTNiNGY1MjBhMzhkNGJhNmExYWRjMTgxMSJ9fX0=") to {_p}
+            give helmet("Frost Casque", 2, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA4NzQ0NjJhN2QzNjE4ZWFmYTFjNThlZjdjNTY2ZjQ4ZDgzOGVmNTNiNGY1MjBhMzhkNGJhNmExYWRjMTgxMSJ9fX0=") to {_p}
         case 3:
             give helmet("Molten Mask", 3, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTExNGRiZDJiMGNjZjcyNDRiM2ZjYzI1ZWY0Y2RjYzBhNTYwYTQyOGU5OTNkNGU3YTI4ZGIzZGRhYjNmOGVlOSJ9fX0=") to {_p}
         case 4:
@@ -17,47 +17,47 @@ function giveHelmet(p: player, id: number):
         case 8:
             give helmet("Cinder Hood", 8, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzc0ZjY1ZjliOTk1OGE2MzkyYzhiNjMzMjRkNzZlODBkMmI1MDljMTk4NWEwMDIzMmFlY2NlNDA5NTg1YWUyYSJ9fX0=") to {_p}
         case 9:
-            give helmet("Bonecrusher Helm", 9, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmIwMjkyNDQwNDJlZTY5NDFkMDEwNzU1ZTMwYWI1ZjRkMDk1YTMwZmE4MGZmNThiYmE2N2U4NWNhNWI4OTU3ZCJ9fX0=") to {_p}
+            give helmet("Bone Helm", 9, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmIwMjkyNDQwNDJlZTY5NDFkMDEwNzU1ZTMwYWI1ZjRkMDk1YTMwZmE4MGZmNThiYmE2N2U4NWNhNWI4OTU3ZCJ9fX0=") to {_p}
         case 10:
-            give helmet("Rustbite Cap", 10, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzAwOGU1MjNjYTQ5NDI0NDhiOGVjNzFhNzRlMGI1NzRlNTE2Y2E1NmZmOWQ2MjIxYTRiMjFkOWNiZDdhZjQ2ZCJ9fX0=") to {_p}
+            give helmet("Rusty Cap", 10, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzAwOGU1MjNjYTQ5NDI0NDhiOGVjNzFhNzRlMGI1NzRlNTE2Y2E1NmZmOWQ2MjIxYTRiMjFkOWNiZDdhZjQ2ZCJ9fX0=") to {_p}
         case 11:
-            give helmet("Timberfang Hood", 11, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGE1Yjc4NzI1OTk1YzdhYjNlYTVkNDg3OGU1ODk3YjExNDhiZmIwM2JjYjdkN2RjMDgwOGZlZDYzNjYwZDA0NCJ9fX0=") to {_p}
+            give helmet("Timber Hood", 11, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGE1Yjc4NzI1OTk1YzdhYjNlYTVkNDg3OGU1ODk3YjExNDhiZmIwM2JjYjdkN2RjMDgwOGZlZDYzNjYwZDA0NCJ9fX0=") to {_p}
         case 12:
-            give helmet("Frostbite Casque", 12, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjMwMDA3YTgzODliNDkzODdmMDZkZWYwNjY5NjhlMmVkMDAyYmJmMDM0NjIyZTE0OGE2MDA0MDUyZTM4MmJhZiJ9fX0=") to {_p}
+            give helmet("Frost Casque", 12, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjMwMDA3YTgzODliNDkzODdmMDZkZWYwNjY5NjhlMmVkMDAyYmJmMDM0NjIyZTE0OGE2MDA0MDUyZTM4MmJhZiJ9fX0=") to {_p}
         case 13:
-            give helmet("Blazing Cap", 13, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmIzMGY1NzkzNDUyMjNjMGZjOTM4YWFlNGFjYzlhYTZkNmI1YzZlM2U3N2ZhMTFjZDJiMmM0MTY4NDE4ZWY1YSJ9fX0=") to {_p}
+            give helmet("Blaze Cap", 13, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmIzMGY1NzkzNDUyMjNjMGZjOTM4YWFlNGFjYzlhYTZkNmI1YzZlM2U3N2ZhMTFjZDJiMmM0MTY4NDE4ZWY1YSJ9fX0=") to {_p}
         case 14:
             give helmet("Ender Helm", 14, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzQwZTg5NjIxNDNlZjQxZGVmYjBiNjQ4OWQ3MzZiNGZhODhhOTM4N2Y4Y2RlMGM1ZjM2NjkyODY4NzkxMjE0NCJ9fX0=") to {_p}
         case 15:
-            give helmet("leathershank Cap", 15, " ") to {_p}
+            give helmet("Warden Cap", 15, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YzU5YmYwMmQ1OTZhM2E4ZDc1N2ViZjQzYzkyMGI4MzNmMGRlYzFhZmFmOTlhMzNhZjBmN2Q4YWMyYTMzNyJ9fX0=") to {_p}
         case 16:
-            give helmet("Withered Hood", 16, " ") to {_p}
+            give helmet("Wither Hood", 16, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTBiYTBhY2YwZWY2ODhmOTNjYmFhMjQ1NzE2ZGNjMzM5MGU4YzcwOTIzZTI5YzI2NTdkZWRlOGYxMjlkYjM4NiJ9fX0=") to {_p}
         case 17:
-            give helmet("Crystal Casque", 17, " ") to {_p}
+            give helmet("Crystal Casque", 17, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTY1NDAxODZlYjBlNzQ4NjY4ZGZjZGIwODAwZDkwMzJlMjFjYTY2NTg2ZjM2OTU0ODA0NjY4Y2ExOGVhMDBkMyJ9fX0=") to {_p}
         case 18:
-            give helmet("Emberfall Cap", 18, " ") to {_p}
+            give helmet("Ember Cap", 18, " ") to {_p}
         case 19:
-            give helmet("Cairnbreaker Helm", 19, " ") to {_p}
+            give helmet("Chaos Helm", 19, " ") to {_p}
         case 20:
-            give helmet("Steelclaw Cap", 20, " ") to {_p}
+            give helmet("Heavy Cap", 20, " ") to {_p}
         case 21:
-            give helmet("Rotwood Hood", 21, " ") to {_p}
+            give helmet("Divine Hood", 21, " ") to {_p}
         case 22:
-            give helmet("Starlight Casque", 22, " ") to {_p}
+            give helmet("Starfall Casque", 22, " ") to {_p}
         case 23:
-            give helmet("Wildfire Cap", 23, " ") to {_p}
+            give helmet("Dragon Cap", 23, " ") to {_p}
         case 24:
-            give helmet("Gravebound Helm", 24, " ") to {_p}
+            give helmet("Fallen Helm", 24, " ") to {_p}
         case 25:
-            give helmet("Bloodleather Cap", 25, " ") to {_p}
+            give helmet("Blood Cap", 25, " ") to {_p}
         case 26:
-            give helmet("Driftwood Hood", 26, " ") to {_p}
+            give helmet("Fairy Hood", 26, " ") to {_p}
         case 27:
-            give helmet("Icebound Casque", 27, " ") to {_p}
+            give helmet("Diva Casque", 27, " ") to {_p}
         case 28:
             give helmet("Ashfall Cap", 28, " ") to {_p}
         case 29:
-            give helmet("Boneyard Helm", 29, " ") to {_p}
+            give helmet("Bone Helm", 29, " ") to {_p}
         case 30:
             give helmet("Warforged Cap", 30, " ") to {_p}
         default:
@@ -68,7 +68,7 @@ function giveChestplate(p: player, id: number):
         case 1:
             give chestplate(leather chestplate, "Rotten Vest", 1, 121, 127, 68) to {_p}
         case 2:
-            give chestplate(leather chestplate, "Frosted Cuirass", 2, 113, 178, 201) to {_p}
+            give chestplate(leather chestplate, "Frost Cuirass", 2, 113, 178, 201) to {_p}
         case 3:
             give chestplate(leather chestplate, "Molten Plate", 3, 35, 35, 39) to {_p}
         case 4:
@@ -82,47 +82,47 @@ function giveChestplate(p: player, id: number):
         case 8:
             give chestplate(leather chestplate, "Cinder Plate", 8, 243, 77, 0) to {_p}
         case 9:
-            give chestplate(leather chestplate, "Bonecrusher Guard", 9, 255, 255, 255) to {_p}
+            give chestplate(leather chestplate, "Bone Guard", 9, 255, 255, 255) to {_p}
         case 10:
-            give chestplate(leather chestplate, "Rustbite Plate", 10, 145, 114, 85) to {_p}
+            give chestplate(leather chestplate, "Rusty Plate", 10, 145, 114, 85) to {_p}
         case 11:
-            give chestplate(leather chestplate, "Timberfang Vest", 11, 121, 104, 91) to {_p}
+            give chestplate(leather chestplate, "Timber Vest", 11, 121, 104, 91) to {_p}
         case 12:
-            give chestplate(leather chestplate, "Frostbite Cuirass", 12, 64, 81, 90) to {_p}
+            give chestplate(leather chestplate, "Frost Cuirass", 12, 64, 81, 90) to {_p}
         case 13:
-            give chestplate(leather chestplate, "Blazing Plate", 13, 159, 59, 16) to {_p}
+            give chestplate(leather chestplate, "Blaze Plate", 13, 159, 59, 16) to {_p}
         case 14:
             give chestplate(leather chestplate, "Ender Guard", 14, 72, 72, 74) to {_p}
         case 15:
-            give chestplate(leather chestplate, "leathershank Plate", 15, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Warden Plate", 15, 84, 72, 86) to {_p}
         case 16:
-            give chestplate(leather chestplate, "Withered Vest", 16, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Wither Vest", 16, 48, 47, 46 to {_p}
         case 17:
-            give chestplate(leather chestplate, "Crystal Cuirass", 17, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Crystal Cuirass", 17, 87, 86, 134) to {_p}
         case 18:
-            give chestplate(leather chestplate, "Emberfall Plate", 18, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Ember Plate", 18, 0, 0, 0) to {_p}
         case 19:
-            give chestplate(leather chestplate, "Cairnbreaker Guard", 19, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Chaos Guard", 19, 0, 0, 0) to {_p}
         case 20:
-            give chestplate(leather chestplate, "Steelclaw Plate", 20, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Heavy Plate", 20, 0, 0, 0) to {_p}
         case 21:
-            give chestplate(leather chestplate, "Rotwood Vest", 21, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Divine Vest", 21, 0, 0, 0) to {_p}
         case 22:
-            give chestplate(leather chestplate, "Starlight Cuirass", 22, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Starfall Cuirass", 22, 0, 0, 0) to {_p}
         case 23:
-            give chestplate(leather chestplate, "Wildfire Plate", 23, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Dragon Plate", 23, 0, 0, 0) to {_p}
         case 24:
-            give chestplate(leather chestplate, "Gravebound Guard", 24, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Fallen Guard", 24, 0, 0, 0) to {_p}
         case 25:
-            give chestplate(leather chestplate, "Bloodleather Plate", 25, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Blood Plate", 25, 0, 0, 0) to {_p}
         case 26:
-            give chestplate(leather chestplate, "Driftwood Vest", 26, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Fairy Vest", 26, 0, 0, 0) to {_p}
         case 27:
-            give chestplate(leather chestplate, "Icebound Cuirass", 27, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Diva Cuirass", 27, 0, 0, 0) to {_p}
         case 28:
             give chestplate(leather chestplate, "Ashfall Plate", 28, 0, 0, 0) to {_p}
         case 29:
-            give chestplate(leather chestplate, "Boneyard Guard", 29, 0, 0, 0) to {_p}
+            give chestplate(leather chestplate, "Bone Guard", 29, 0, 0, 0) to {_p}
         case 30:
             give chestplate(leather chestplate, "Warforged Plate", 30, 0, 0, 0) to {_p}
         default:
@@ -133,7 +133,7 @@ function giveLeggings(p: player, id: number):
         case 1:
             give leggings(leather leggings, "Rotten Leggings", 1, 121, 127, 68) to {_p}
         case 2:
-            give leggings(leather leggings, "Frosted Greaves", 2, 113, 178, 201) to {_p}
+            give leggings(leather leggings, "Frost Greaves", 2, 113, 178, 201) to {_p}
         case 3:
             give leggings(leather leggings, "Molten Chausses", 3, 35, 35, 39) to {_p}
         case 4:
@@ -147,47 +147,47 @@ function giveLeggings(p: player, id: number):
         case 8:
             give leggings(leather leggings, "Cinder Chausses", 8, 243, 77, 0) to {_p}
         case 9:
-            give leggings(leather leggings, "Bonecrusher Legguard", 9, 255, 255, 255) to {_p}
+            give leggings(leather leggings, "Bone Legguard", 9, 255, 255, 255) to {_p}
         case 10:
-            give leggings(leather leggings, "Rustbite Greaves", 10, 145, 114, 85) to {_p}
+            give leggings(leather leggings, "Rusty Greaves", 10, 145, 114, 85) to {_p}
         case 11:
-            give leggings(leather leggings, "Timberfang Leggings", 11, 121, 104, 91) to {_p}
+            give leggings(leather leggings, "Timber Leggings", 11, 121, 104, 91) to {_p}
         case 12:
-            give leggings(leather leggings, "Frostbite Greaves", 12, 64, 81, 90) to {_p}
+            give leggings(leather leggings, "Frost Greaves", 12, 64, 81, 90) to {_p}
         case 13:
-            give leggings(leather leggings, "Blazing Chausses", 13, 159, 59, 16) to {_p}
+            give leggings(leather leggings, "Blaze Chausses", 13, 159, 59, 16) to {_p}
         case 14:
             give leggings(leather leggings, "Ender Legguard", 14, 72, 72, 74) to {_p}
         case 15:
-            give leggings(leather leggings, "leathershank Greaves", 15, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Warden Greaves", 15, 84, 72, 86) to {_p}
         case 16:
-            give leggings(leather leggings, "Withered Leggings", 16, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Wither Leggings", 16, 48, 47, 46) to {_p}
         case 17:
-            give leggings(leather leggings, "Crystal Greaves", 17, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Crystal Greaves", 17, 87, 86, 134) to {_p}
         case 18:
-            give leggings(leather leggings, "Emberfall Chausses", 18, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Ember Chausses", 18, 0, 0, 0) to {_p}
         case 19:
-            give leggings(leather leggings, "Cairnbreaker Legguard", 19, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Chaos Legguard", 19, 0, 0, 0) to {_p}
         case 20:
-            give leggings(leather leggings, "Steelclaw Greaves", 20, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Heavy Greaves", 20, 0, 0, 0) to {_p}
         case 21:
-            give leggings(leather leggings, "Rotwood Leggings", 21, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Divine Leggings", 21, 0, 0, 0) to {_p}
         case 22:
-            give leggings(leather leggings, "Starlight Greaves", 22, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Starfall Greaves", 22, 0, 0, 0) to {_p}
         case 23:
-            give leggings(leather leggings, "Wildfire Chausses", 23, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Dragon Chausses", 23, 0, 0, 0) to {_p}
         case 24:
-            give leggings(leather leggings, "Gravebound Legguard", 24, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Fallen Legguard", 24, 0, 0, 0) to {_p}
         case 25:
-            give leggings(leather leggings, "Bloodleather Greaves", 25, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Blood Greaves", 25, 0, 0, 0) to {_p}
         case 26:
-            give leggings(leather leggings, "Driftwood Leggings", 26, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Fairy Leggings", 26, 0, 0, 0) to {_p}
         case 27:
-            give leggings(leather leggings, "Icebound Greaves", 27, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Diva Greaves", 27, 0, 0, 0) to {_p}
         case 28:
             give leggings(leather leggings, "Ashfall Chausses", 28, 0, 0, 0) to {_p}
         case 29:
-            give leggings(leather leggings, "Boneyard Legguard", 29, 0, 0, 0) to {_p}
+            give leggings(leather leggings, "Bone Legguard", 29, 0, 0, 0) to {_p}
         case 30:
             give leggings(leather leggings, "Warforged Greaves", 30, 0, 0, 0) to {_p}
         default:
@@ -198,7 +198,7 @@ function giveBoots(p: player, id: number):
         case 1:
             give boots(leather boots, "Rotten Boots", 1, 121, 127, 68) to {_p}
         case 2:
-            give boots(leather boots, "Frosted Treads", 2, 113, 178, 201) to {_p}
+            give boots(leather boots, "Frost Treads", 2, 113, 178, 201) to {_p}
         case 3:
             give boots(leather boots, "Molten Striders", 3, 35, 35, 39) to {_p}
         case 4:
@@ -212,47 +212,47 @@ function giveBoots(p: player, id: number):
         case 8:
             give boots(leather boots, "Cinder Striders", 8, 243, 77, 0) to {_p}
         case 9:
-            give boots(leather boots, "Bonecrusher Boots", 9, 255, 255, 255) to {_p}
+            give boots(leather boots, "Bone Boots", 9, 255, 255, 255) to {_p}
         case 10:
-            give boots(leather boots, "Rustbite Treads", 10, 145, 114, 85) to {_p}
+            give boots(leather boots, "Rusty Treads", 10, 145, 114, 85) to {_p}
         case 11:
-            give boots(leather boots, "Timberfang Boots", 11, 121, 104, 91) to {_p}
+            give boots(leather boots, "Timber Boots", 11, 121, 104, 91) to {_p}
         case 12:
-            give boots(leather boots, "Frostbite Treads", 12, 64, 81, 90) to {_p}
+            give boots(leather boots, "Frost Treads", 12, 64, 81, 90) to {_p}
         case 13:
-            give boots(leather boots, "Blazing Striders", 13, 159, 59, 16) to {_p}
+            give boots(leather boots, "Blaze Striders", 13, 159, 59, 16) to {_p}
         case 14:
             give boots(leather boots, "Ender Boots", 14, 72, 72, 74) to {_p}
         case 15:
-            give boots(leather boots, "leathershank Treads", 15, 0, 0, 0) to {_p}
+            give boots(leather boots, "Warden Treads", 15, 84, 72, 86) to {_p}
         case 16:
-            give boots(leather boots, "Withered Boots", 16, 0, 0, 0) to {_p}
+            give boots(leather boots, "Wither Boots", 16, 48, 47, 46) to {_p}
         case 17:
-            give boots(leather boots, "Crystal Treads", 17, 0, 0, 0) to {_p}
+            give boots(leather boots, "Crystal Treads", 17, 87, 86, 134) to {_p}
         case 18:
-            give boots(leather boots, "Emberfall Striders", 18, 0, 0, 0) to {_p}
+            give boots(leather boots, "Ember Striders", 18, 0, 0, 0) to {_p}
         case 19:
-            give boots(leather boots, "Cairnbreaker Boots", 19, 0, 0, 0) to {_p}
+            give boots(leather boots, "Chaos Boots", 19, 0, 0, 0) to {_p}
         case 20:
-            give boots(leather boots, "Steelclaw Treads", 20, 0, 0, 0) to {_p}
+            give boots(leather boots, "Heavy Treads", 20, 0, 0, 0) to {_p}
         case 21:
-            give boots(leather boots, "Rotwood Boots", 21, 0, 0, 0) to {_p}
+            give boots(leather boots, "Divine Boots", 21, 0, 0, 0) to {_p}
         case 22:
-            give boots(leather boots, "Starlight Treads", 22, 0, 0, 0) to {_p}
+            give boots(leather boots, "Starfall Treads", 22, 0, 0, 0) to {_p}
         case 23:
-            give boots(leather boots, "Wildfire Striders", 23, 0, 0, 0) to {_p}
+            give boots(leather boots, "Dragon Striders", 23, 0, 0, 0) to {_p}
         case 24:
-            give boots(leather boots, "Gravebound Boots", 24, 0, 0, 0) to {_p}
+            give boots(leather boots, "Fallen Boots", 24, 0, 0, 0) to {_p}
         case 25:
-            give boots(leather boots, "Bloodleather Treads", 25, 0, 0, 0) to {_p}
+            give boots(leather boots, "Blood Treads", 25, 0, 0, 0) to {_p}
         case 26:
-            give boots(leather boots, "Driftwood Boots", 26, 0, 0, 0) to {_p}
+            give boots(leather boots, "Fairy Boots", 26, 0, 0, 0) to {_p}
         case 27:
-            give boots(leather boots, "Icebound Treads", 27, 0, 0, 0) to {_p}
+            give boots(leather boots, "Diva Treads", 27, 0, 0, 0) to {_p}
         case 28:
             give boots(leather boots, "Ashfall Striders", 28, 0, 0, 0) to {_p}
         case 29:
-            give boots(leather boots, "Boneyard Boots", 29, 0, 0, 0) to {_p}
+            give boots(leather boots, "Bone Boots", 29, 0, 0, 0) to {_p}
         case 30:
             give boots(leather boots, "Warforged Treads", 30, 0, 0, 0) to {_p}
         default:
