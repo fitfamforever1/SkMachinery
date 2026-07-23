@@ -36,7 +36,8 @@ function spinBoxes(p: player):
             set {_dz} to {_radius} * sin({_angle})
             set {_facex} to {_center}'s x - ({_center}'s x + {_dx})
             set {_facez} to {_center}'s z - ({_center}'s z + {_dz})
-            set {_faceyaw} to -atan2({_facex}, {_facez})
+            set {_faceyaw} to atan2({_facex}, {_facez})
+            set {_faceyaw} to {_faceyaw} * -1
             set {_newloc} to location({_center}'s x + {_dx}, {_center}'s y + 1, {_center}'s z + {_dz}, world of {_center}, {_faceyaw}, 0)
             teleport {_disp} to {_newloc}
         wait 1 tick
