@@ -17,7 +17,7 @@ function giveLoot(p: player, id: number, level: number):: item:
     give {_item} to {_p}
         
 function lootroll(p: player, level: number):: item:
-    set {_temp} to random number between 1 and 7
+    set {_temp} to random integer between 1 and 7
     if {_level} >= 10:
         set {_level} to 1
     else if {_level} >= 20:
