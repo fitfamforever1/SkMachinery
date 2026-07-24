@@ -24,7 +24,7 @@ function lootroll(p: player, level: number):: item:
         set {_level} to 2
     if {_level} <= 30:
         set {_level} to 3
-    giveLoot({_player}, {_temp}, {_level})
+    giveLoot({_p}, {_temp}, {_level})
     
 
 on right click with player head:
