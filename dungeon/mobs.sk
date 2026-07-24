@@ -160,6 +160,6 @@ on death:
                     lootroll(attacker, {_floorId})
                     
 on target:
-    if target is not player:
+    if entity's target is not a player:
         cancel event
 
