@@ -156,4 +156,5 @@ on death:
                 set {_temp} to text data tag "mobstat:category" of victim
                 if {_temp} is "boss":
                     set {_floorId} to {_floorId} + 1
+                    send "{_floorId}"
                     lootroll(attacker, {_floorId})
