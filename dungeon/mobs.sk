@@ -139,7 +139,7 @@ on death:
             set {_current} to (number data tag "floor:current" of attacker) + 1
             set number data tag "floor:current" of attacker to {_current}
             
-            giveloot(attacker, {_floorId})
+            lootroll(attacker, {_floorId})
             
             set {_target} to number data tag "floor%{_floorId}%:max" of world "world"
             set {_target2} to number data tag "floor%{_floorId}%:min" of world "world"
