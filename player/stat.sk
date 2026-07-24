@@ -337,3 +337,5 @@ on player's held item change:
     wait 1 tick
     stat(player)
     
+on food level change:
+  cancel event
