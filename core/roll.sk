@@ -25,6 +25,7 @@ function lootroll(p: player, level: number) :: item:
         set {_tier} to 2
     else if {_level} >= 10:
         set {_tier} to 1
+    send "%{_level}% | %{_tier}%"
     giveLoot({_p}, {_temp}, {_tier})
     
 
