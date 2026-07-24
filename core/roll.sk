@@ -25,7 +25,6 @@ function lootroll(p: player, level: number):: item:
     else if {_level} >= 30:
         set {_level} to 3
     giveLoot({_p}, {_temp}, {_level})
-    send "%{_temp}% | %{_level}%" to {_p}
     
 
 on right click with player head:
