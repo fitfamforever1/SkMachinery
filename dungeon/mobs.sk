@@ -140,8 +140,8 @@ on death:
             set number data tag "floor:current" of attacker to {_current}
             
             cancel drops
-            
-            lootroll(attacker, {_floorId})
+            chance of 10%:
+                lootroll(attacker, {_floorId})
             
             set {_target} to number data tag "floor%{_floorId}%:max" of world "world"
             set {_target2} to number data tag "floor%{_floorId}%:min" of world "world"
@@ -153,3 +153,5 @@ on death:
             if {_current} = {_target}:
                 EndRoom(attacker, {_room}, {_floor})
                 send "&aYou have completed the run." to attacker
+                set {_floorId} to {_floorId} + 1
+                lootroll(attacker, {_floorId})
